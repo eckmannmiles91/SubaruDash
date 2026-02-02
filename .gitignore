@@ -1,0 +1,28 @@
+# EEPROM backup files (may contain sensitive data: VIN, mileage)
+*.bin
+*.eep
+*.hex
+*_backup.*
+*_original.*
+
+# AsProgrammer user settings
+tools/AsProgrammer/settings.xml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
