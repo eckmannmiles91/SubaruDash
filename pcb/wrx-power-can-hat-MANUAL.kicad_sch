@@ -9528,6 +9528,16 @@
 		)
 		(uuid "230c8949-46c5-4127-84ad-b8d8b4687109")
 	)
+	(label "OSC2"
+		(at 422.91 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "28ac8a06-3041-4917-a289-829b89c36277")
+	)
 	(label "SPI_SCLK"
 		(at 429.26 119.38 0)
 		(effects
@@ -9548,6 +9558,16 @@
 		)
 		(uuid "2b32272a-29a1-4b74-943b-dc1908b7cca1")
 	)
+	(label "OSC1"
+		(at 433.07 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2e874146-0184-4b87-80cc-16a2ddf2d9ef")
+	)
 	(label "GND"
 		(at 561.34 703.58 0)
 		(effects
@@ -9557,6 +9577,26 @@
 			(justify left bottom)
 		)
 		(uuid "38988a2d-945e-48ff-825b-6809ff765c1b")
+	)
+	(label "GND"
+		(at 433.07 157.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "438f5594-8bf8-4dfb-b86a-17579a8246fb")
+	)
+	(label "OSC2"
+		(at 424.18 152.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "58234e47-b9d6-4a1b-93ba-c293feb037aa")
 	)
 	(label "SPI_MOSI"
 		(at 429.26 111.76 0)
@@ -9648,6 +9688,16 @@
 		)
 		(uuid "b94cbaed-f6c0-40d9-a345-a937a8e70ebf")
 	)
+	(label "GND"
+		(at 424.18 160.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bce7e9e3-7ae5-4cb2-acc2-9d751a3574f0")
+	)
 	(label "SHUTDOWN_REQ"
 		(at 269.24 510.54 0)
 		(effects
@@ -9697,6 +9747,16 @@
 			(justify left bottom)
 		)
 		(uuid "e290dd7b-aabe-4941-a67c-8f78071f6a49")
+	)
+	(label "OSC1"
+		(at 430.53 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e3a48884-6d50-40c5-a12c-ab833712b250")
 	)
 	(label "+3.3V"
 		(at 254 492.76 0)
@@ -13349,6 +13409,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 433.07 153.67 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5cc9be67-0a14-4ce0-ada2-0c6144e61acc")
+		(property "Reference" "C16"
+			(at 436.88 152.3999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22pF"
+			(at 436.88 154.9399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 434.0352 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 433.07 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 433.07 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3e5f9c72-acf2-4803-8a39-4114034fea30")
+		)
+		(pin "2"
+			(uuid "9ce8462c-0078-4a67-982b-287f40bfda1b")
+		)
+		(instances
+			(project ""
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "C16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 571.5 825.5 0)
 		(unit 1)
@@ -13676,6 +13806,76 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "JP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 424.18 156.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8081f443-55c4-4d36-aacf-2726a62b37c7")
+		(property "Reference" "C17"
+			(at 427.99 154.9399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22pF"
+			(at 427.99 157.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 425.1452 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 424.18 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 424.18 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dc76739c-e177-4c04-8795-191b5a6b8316")
+		)
+		(pin "2"
+			(uuid "7cd00754-5277-4a46-b2d8-0d5be572fe41")
+		)
+		(instances
+			(project ""
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "C17")
 					(unit 1)
 				)
 			)
@@ -14188,6 +14388,74 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Crystal")
+		(at 426.72 147.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "925eefef-2835-4b8e-ba4e-d19bf329c2e9")
+		(property "Reference" "Y2"
+			(at 426.72 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "16Mhz Crystal"
+			(at 426.72 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 426.72 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 426.72 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Two pin crystal"
+			(at 426.72 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0ae61248-ebd0-411c-a8f0-021fb840053a")
+		)
+		(pin "2"
+			(uuid "a517421f-52a1-4241-94ff-4c911295817b")
+		)
+		(instances
+			(project ""
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "Y2")
 					(unit 1)
 				)
 			)
