@@ -1,0 +1,14 @@
+# KiCad temporary files
+*.lck
+*-backups/
+*-cache.lib
+*-rescue.lib
+fp-info-cache
+*.bak
+*.bck
+
+# ERC/DRC reports (regenerated each time)
+*.rpt
+
+# KiCad auto-save files
+_autosave-*
