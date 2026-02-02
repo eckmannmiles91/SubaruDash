@@ -13,44 +13,129 @@ Guide for sniffing CAN bus data using Raspberry Pi 5 with OpenDash and MCP2515 m
 - ✅ 12V to 5V buck converter
 
 ### What You Need to Buy:
-- 📦 **OBD-II Splitter Cable** - Male-to-Dual-Female Y-cable (~$15-25)
-  - [Amazon Search](https://www.amazon.com/s?k=obd2+splitter+cable)
+- 📦 ~~**OBD-II Splitter Cable**~~ - ✅ Already have
+- 🚨 **REQUIRED: Bidirectional Logic Level Shifter** - 4 or 5 channel, 3.3V ↔ 5V (~$5-15)
+  - [Amazon Search: "bidirectional logic level shifter"](https://www.amazon.com/s?k=bidirectional+logic+level+shifter+5v+3.3v)
+  - **SparkFun BOB-12009** or **Adafruit 757** recommended
+  - **Must be bidirectional** (not just unidirectional buffer)
+
+---
+
+## ⚠️ CRITICAL: 5V Logic Level Warning
+
+**Your HiLetgo MCP2515 modules with TJA1050 transceivers use 5V logic levels, which WILL DAMAGE the Raspberry Pi 5's 3.3V GPIO pins!**
+
+### The Problem
+
+The MCP2515 chip and most TJA1050-based modules operate at **5V logic levels**. When powered from the Pi's 5V pin, the MCP2515's SPI output pins (especially **MISO/SO**) will output **5V signals** to the Pi's GPIO pins, which are only rated for **3.3V maximum**.
+
+**Result:** Immediate or gradual damage to the Raspberry Pi 5's GPIO pins.
+
+### How to Identify Your Module's Logic Level
+
+**HiLetgo MCP2515 with TJA1050 transceiver = 5V logic (NOT Pi-safe)**
+
+Check your module:
+- If it has a **TJA1050** transceiver chip → **5V logic** (needs level shifter)
+- If it has a **SN65HVD230** transceiver chip → **3.3V logic** (Pi-safe)
+- Look for "3.3V" or "5V" markings on the PCB
+
+### Solution 1: Use a Logic Level Shifter (Recommended)
+
+Use a **bidirectional 4-channel logic level shifter** between the Pi and MCP2515.
+
+**Required connections through level shifter:**
+- CS (GPIO 8)
+- MISO (GPIO 9) ← **Most critical - this outputs from MCP2515**
+- MOSI (GPIO 10)
+- SCK (GPIO 11)
+- INT (GPIO 25)
+
+**Level Shifter Wiring:**
+```
+Raspberry Pi 5 (3.3V side)     Level Shifter     MCP2515 (5V side)
+========================       =============     =================
+3.3V (Pin 1)        ────────→  LV (3.3V)
+GND (Pin 6)         ────────→  GND            ←──── GND
+                                HV (5V)        ←──── VCC (5V from Pi Pin 2)
+
+GPIO 8  (Pin 24)    ────────→  LV1  ←→  HV1   ←──── CS
+GPIO 9  (Pin 21)    ────────→  LV2  ←→  HV2   ←──── MISO/SO
+GPIO 10 (Pin 19)    ────────→  LV3  ←→  HV3   ←──── MOSI/SI
+GPIO 11 (Pin 23)    ────────→  LV4  ←→  HV4   ←──── SCK
+GPIO 25 (Pin 22)    ────────→  LV5  ←→  HV5   ←──── INT (if using 5-channel shifter)
+```
+
+**Recommended level shifters:**
+- **SparkFun Logic Level Converter - Bi-Directional (BOB-12009)** - 4 channels
+- **Adafruit 4-channel I2C-safe Bi-directional Logic Level Converter** - 4 channels
+- **HiLetgo 8 Channel Logic Level Converter** - 8 channels (more than needed, but works)
+
+**Amazon Search:** "bidirectional logic level shifter 5v 3.3v"
+
+### Solution 2: Buy a 3.3V-Compatible Module (Alternative)
+
+Replace your HiLetgo modules with **3.3V-compatible MCP2515 modules** that use the **SN65HVD230** CAN transceiver instead of TJA1050.
+
+**Look for modules labeled:**
+- "MCP2515 SN65HVD230"
+- "3.3V/5V compatible"
+- "Raspberry Pi compatible"
+
+**Note:** These are less common than the 5V TJA1050 versions.
+
+### DO NOT Connect Directly Without Protection!
+
+**NEVER connect your HiLetgo MCP2515 (TJA1050) directly to Pi GPIO!** This is a "works until it doesn't" situation - you might get lucky initially, but it **will** damage your Pi5.
 
 ---
 
 ## MCP2515 to Raspberry Pi 5 Wiring
 
+**IMPORTANT: This wiring assumes you are using a logic level shifter as described above!**
+
 The MCP2515 uses SPI to communicate with the Raspberry Pi.
 
-### Pin Connections
+### Pin Connections (WITH Logic Level Shifter)
 
-| MCP2515 Pin | Pi5 GPIO Pin | Pi5 Pin # | Notes |
-|-------------|--------------|-----------|-------|
-| **VCC** | 5V Power | Pin 2 or 4 | 5V power |
-| **GND** | Ground | Pin 6, 9, 14, 20, etc | Common ground |
-| **CS** | GPIO 8 (CE0) | Pin 24 | SPI Chip Select |
-| **SO (MISO)** | GPIO 9 (MISO) | Pin 21 | SPI Data Out |
-| **SI (MOSI)** | GPIO 10 (MOSI) | Pin 19 | SPI Data In |
-| **SCK** | GPIO 11 (SCLK) | Pin 23 | SPI Clock |
-| **INT** | GPIO 25 | Pin 22 | Interrupt (optional but recommended) |
+**Power connections:**
+| Connection | Details |
+|------------|---------|
+| MCP2515 VCC | 5V Power from Pi (Pin 2 or 4) |
+| MCP2515 GND | Common ground with Pi (Pin 6, 9, 14, 20, etc) |
+| Level Shifter HV | 5V Power from Pi (Pin 2 or 4) |
+| Level Shifter LV | 3.3V Power from Pi (Pin 1 or 17) |
+| Level Shifter GND | Common ground with Pi (Pin 6, 9, 14, 20, etc) |
 
-### Visual Pinout
+**SPI signals through level shifter:**
+| MCP2515 Pin | Level Shifter | Pi5 GPIO Pin | Pi5 Pin # | Notes |
+|-------------|---------------|--------------|-----------|-------|
+| **CS** | HV1 ↔ LV1 | GPIO 8 (CE0) | Pin 24 | SPI Chip Select |
+| **SO (MISO)** | HV2 ↔ LV2 | GPIO 9 (MISO) | Pin 21 | **Critical: 5V output from MCP2515** |
+| **SI (MOSI)** | HV3 ↔ LV3 | GPIO 10 (MOSI) | Pin 19 | SPI Data In (to MCP2515) |
+| **SCK** | HV4 ↔ LV4 | GPIO 11 (SCLK) | Pin 23 | SPI Clock |
+| **INT** | HV5 ↔ LV5 | GPIO 25 | Pin 22 | Interrupt (optional but recommended) |
+
+### Visual Pinout (WITH Level Shifter)
 
 ```
 Raspberry Pi 5 GPIO Header (view from above):
-        3.3V [ 1] [ 2] 5V     ← Connect VCC here
+        3.3V [ 1] [ 2] 5V     ← MCP2515 VCC + Level Shifter HV
        GPIO2 [ 3] [ 4] 5V
-       GPIO3 [ 5] [ 6] GND    ← Connect GND here
+       GPIO3 [ 5] [ 6] GND    ← Common GND for all
        GPIO4 [ 7] [ 8] GPIO14
          GND [ 9] [10] GPIO15
       GPIO17 [11] [12] GPIO18
       GPIO27 [13] [14] GND
       GPIO22 [15] [16] GPIO23
-        3.3V [17] [18] GPIO24
- MOSI/GPIO10 [19] [20] GND
- MISO/GPIO9  [21] [22] GPIO25 ← Connect INT here
- SCLK/GPIO11 [23] [24] GPIO8  ← Connect CS here
+        3.3V [17] [18] GPIO24 ← Level Shifter LV (3.3V)
+ MOSI/GPIO10 [19] [20] GND    ← Via Level Shifter LV3
+ MISO/GPIO9  [21] [22] GPIO25 ← Via Level Shifter LV2 (CRITICAL!)
+ SCLK/GPIO11 [23] [24] GPIO8  ← Via Level Shifter LV4 and LV1
          GND [25] [26] GPIO7
+
+IMPORTANT: ALL SPI pins (CS, MISO, MOSI, SCK, INT) must go through the
+bidirectional level shifter. NEVER connect MCP2515 SPI pins directly to Pi!
 ```
 
 ---
