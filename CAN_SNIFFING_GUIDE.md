@@ -44,34 +44,58 @@ Check your module:
 
 Use a **bidirectional 4-channel logic level shifter** between the Pi and MCP2515.
 
+**You have: 4-Channel IIC I2C Level Converter Module (Bi-Directional, 5V ↔ 3.3V)**
+
 **Required connections through level shifter:**
 - CS (GPIO 8)
-- MISO (GPIO 9) ← **Most critical - this outputs from MCP2515**
+- MISO (GPIO 9) ← **Most critical - this outputs 5V from MCP2515**
 - MOSI (GPIO 10)
 - SCK (GPIO 11)
-- INT (GPIO 25)
+- INT (GPIO 25) ← *Optional: Can connect directly to Pi (see note below)*
 
-**Level Shifter Wiring:**
+**Level Shifter Module Pinout:**
+Your modules have these pins:
+- **HV** - High voltage power (5V)
+- **LV** - Low voltage power (3.3V)
+- **GND** - Common ground
+- **HV1, HV2, HV3, HV4** - High voltage signals (5V side)
+- **LV1, LV2, LV3, LV4** - Low voltage signals (3.3V side)
+
+**Complete Wiring Diagram:**
 ```
-Raspberry Pi 5 (3.3V side)     Level Shifter     MCP2515 (5V side)
-========================       =============     =================
-3.3V (Pin 1)        ────────→  LV (3.3V)
-GND (Pin 6)         ────────→  GND            ←──── GND
-                                HV (5V)        ←──── VCC (5V from Pi Pin 2)
+Raspberry Pi 5              Level Shifter Module        MCP2515 Module
+==============              ====================        ==============
 
-GPIO 8  (Pin 24)    ────────→  LV1  ←→  HV1   ←──── CS
-GPIO 9  (Pin 21)    ────────→  LV2  ←→  HV2   ←──── MISO/SO
-GPIO 10 (Pin 19)    ────────→  LV3  ←→  HV3   ←──── MOSI/SI
-GPIO 11 (Pin 23)    ────────→  LV4  ←→  HV4   ←──── SCK
-GPIO 25 (Pin 22)    ────────→  LV5  ←→  HV5   ←──── INT (if using 5-channel shifter)
+Power Connections:
+─────────────────
+5V (Pin 2) ────────────────→ HV
+                             GND ←───────────────────── GND
+3.3V (Pin 1) ──────────────→ LV
+GND (Pin 6) ───────────────→ GND
+
+5V (Pin 2) ──────────────────────────────────────────→ VCC
+GND (Pin 6) ─────────────────────────────────────────→ GND
+
+SPI Signal Connections (through level shifter):
+───────────────────────────────────────────────
+GPIO 8  (Pin 24) ──────────→ LV1 ←→ HV1 ──────────────→ CS
+GPIO 9  (Pin 21) ──────────→ LV2 ←→ HV2 ──────────────→ MISO (SO)
+GPIO 10 (Pin 19) ──────────→ LV3 ←→ HV3 ──────────────→ MOSI (SI)
+GPIO 11 (Pin 23) ──────────→ LV4 ←→ HV4 ──────────────→ SCK
+
+Interrupt (Optional):
+────────────────────
+GPIO 25 (Pin 22) ──────────────────────────────────────→ INT
+                  (Direct connection - INT is open-drain, safe at 3.3V)
 ```
 
-**Recommended level shifters:**
-- **SparkFun Logic Level Converter - Bi-Directional (BOB-12009)** - 4 channels
-- **Adafruit 4-channel I2C-safe Bi-directional Logic Level Converter** - 4 channels
-- **HiLetgo 8 Channel Logic Level Converter** - 8 channels (more than needed, but works)
+**Note about INT pin:** The MCP2515's INT pin is **open-drain** (pulls to GND when active), so it's safe to connect directly to the Pi's 3.3V GPIO without a level shifter. You can use a 10kΩ pull-up resistor to 3.3V if needed, but the Pi's internal pull-up usually works fine.
 
-**Amazon Search:** "bidirectional logic level shifter 5v 3.3v"
+**Your Level Shifter Modules:**
+- ✅ 4-Channel IIC I2C Level Converter
+- ✅ Bidirectional (MOSFETs, not just buffers)
+- ✅ Presoldered and compact
+- ✅ Perfect for this application
 
 ### Solution 2: Buy a 3.3V-Compatible Module (Alternative)
 
@@ -90,52 +114,171 @@ Replace your HiLetgo modules with **3.3V-compatible MCP2515 modules** that use t
 
 ---
 
+## Quick Start Checklist (When Level Shifters Arrive)
+
+Use this checklist to wire everything correctly:
+
+### Power Connections (5 wires):
+- [ ] Pi Pin 2 (5V) → Level Shifter **HV**
+- [ ] Pi Pin 1 (3.3V) → Level Shifter **LV**
+- [ ] Pi Pin 6 (GND) → Level Shifter **GND**
+- [ ] Pi Pin 2 (5V) → MCP2515 **VCC** (can share with level shifter wire)
+- [ ] Pi Pin 6 (GND) → MCP2515 **GND** (can share with level shifter wire)
+
+### SPI Signal Connections (8 wires through level shifter):
+- [ ] Pi Pin 24 (GPIO 8) → Level Shifter **LV1** → Level Shifter **HV1** → MCP2515 **CS**
+- [ ] Pi Pin 21 (GPIO 9) → Level Shifter **LV2** → Level Shifter **HV2** → MCP2515 **MISO/SO**
+- [ ] Pi Pin 19 (GPIO 10) → Level Shifter **LV3** → Level Shifter **HV3** → MCP2515 **MOSI/SI**
+- [ ] Pi Pin 23 (GPIO 11) → Level Shifter **LV4** → Level Shifter **HV4** → MCP2515 **SCK**
+
+### Optional Interrupt (1 wire, direct):
+- [ ] Pi Pin 22 (GPIO 25) → MCP2515 **INT** (direct connection, no level shifter needed)
+
+### CAN Bus Connections (to OBD-II):
+- [ ] MCP2515 **CAN-H** → OBD-II Pin 6
+- [ ] MCP2515 **CAN-L** → OBD-II Pin 14
+- [ ] MCP2515 **GND** → OBD-II Pin 4 or 5
+
+### Verification:
+- [ ] Double-check all connections match the diagrams above
+- [ ] Verify level shifter HV is connected to 5V, LV to 3.3V
+- [ ] Ensure NO direct connections between MCP2515 SPI pins and Pi GPIO
+- [ ] All grounds are connected together (Pi, level shifter, MCP2515)
+
+**Total wire count:** ~14 wires (5 power + 8 SPI through shifter + 1 INT)
+
+---
+
 ## MCP2515 to Raspberry Pi 5 Wiring
 
 **IMPORTANT: This wiring assumes you are using a logic level shifter as described above!**
 
 The MCP2515 uses SPI to communicate with the Raspberry Pi.
 
-### Pin Connections (WITH Logic Level Shifter)
+### Pin Connections (WITH 4-Channel Level Shifter)
 
-**Power connections:**
-| Connection | Details |
-|------------|---------|
-| MCP2515 VCC | 5V Power from Pi (Pin 2 or 4) |
-| MCP2515 GND | Common ground with Pi (Pin 6, 9, 14, 20, etc) |
-| Level Shifter HV | 5V Power from Pi (Pin 2 or 4) |
-| Level Shifter LV | 3.3V Power from Pi (Pin 1 or 17) |
-| Level Shifter GND | Common ground with Pi (Pin 6, 9, 14, 20, etc) |
+**Step-by-step wiring table:**
 
-**SPI signals through level shifter:**
-| MCP2515 Pin | Level Shifter | Pi5 GPIO Pin | Pi5 Pin # | Notes |
-|-------------|---------------|--------------|-----------|-------|
-| **CS** | HV1 ↔ LV1 | GPIO 8 (CE0) | Pin 24 | SPI Chip Select |
-| **SO (MISO)** | HV2 ↔ LV2 | GPIO 9 (MISO) | Pin 21 | **Critical: 5V output from MCP2515** |
-| **SI (MOSI)** | HV3 ↔ LV3 | GPIO 10 (MOSI) | Pin 19 | SPI Data In (to MCP2515) |
-| **SCK** | HV4 ↔ LV4 | GPIO 11 (SCLK) | Pin 23 | SPI Clock |
-| **INT** | HV5 ↔ LV5 | GPIO 25 | Pin 22 | Interrupt (optional but recommended) |
+| Step | Component | Pin | Wire Color | Connects To | Component | Pin |
+|------|-----------|-----|------------|-------------|-----------|-----|
+| **POWER CONNECTIONS** |
+| 1 | Raspberry Pi 5 | Pin 2 (5V) | Red | → | Level Shifter | HV |
+| 2 | Raspberry Pi 5 | Pin 1 (3.3V) | Orange | → | Level Shifter | LV |
+| 3 | Raspberry Pi 5 | Pin 6 (GND) | Black | → | Level Shifter | GND |
+| 4 | Raspberry Pi 5 | Pin 2 (5V) | Red | → | MCP2515 | VCC |
+| 5 | Raspberry Pi 5 | Pin 6 (GND) | Black | → | MCP2515 | GND |
+| **SPI SIGNAL CONNECTIONS** (through level shifter) |
+| 6 | Raspberry Pi 5 | Pin 24 (GPIO 8) | White | → | Level Shifter | LV1 |
+| 7 | Level Shifter | HV1 | White | → | MCP2515 | CS |
+| 8 | Raspberry Pi 5 | Pin 21 (GPIO 9) | Yellow | → | Level Shifter | LV2 |
+| 9 | Level Shifter | HV2 | Yellow | → | MCP2515 | MISO (SO) |
+| 10 | Raspberry Pi 5 | Pin 19 (GPIO 10) | Green | → | Level Shifter | LV3 |
+| 11 | Level Shifter | HV3 | Green | → | MCP2515 | MOSI (SI) |
+| 12 | Raspberry Pi 5 | Pin 23 (GPIO 11) | Blue | → | Level Shifter | LV4 |
+| 13 | Level Shifter | HV4 | Blue | → | MCP2515 | SCK |
+| **INTERRUPT (Optional)** |
+| 14 | Raspberry Pi 5 | Pin 22 (GPIO 25) | Purple | → | MCP2515 | INT |
 
-### Visual Pinout (WITH Level Shifter)
+**Notes:**
+- Wire colors are suggestions - use whatever you have available
+- Steps 1-3: Power the level shifter from Pi (both 5V and 3.3V needed)
+- Steps 4-5: Power the MCP2515 from Pi 5V
+- Steps 6-13: SPI signals go through level shifter (Pi 3.3V ↔ MCP2515 5V)
+- Step 14: INT can connect directly (open-drain, safe at 3.3V)
+
+### Visual Wiring Diagram (WITH 4-Channel Level Shifter)
 
 ```
-Raspberry Pi 5 GPIO Header (view from above):
-        3.3V [ 1] [ 2] 5V     ← MCP2515 VCC + Level Shifter HV
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         COMPLETE WIRING DIAGRAM                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+    RASPBERRY PI 5              LEVEL SHIFTER             MCP2515 MODULE
+    ==============              =============             ==============
+    GPIO Header                 4-Ch Module               CAN Controller
+
+    Pin 1  (3.3V) ────────────→ LV
+    Pin 2  (5V)   ───┬────────→ HV          ┌──────────→ VCC
+                     │                      │
+    Pin 6  (GND)  ───┼────────→ GND ────────┼──────────→ GND
+                     │                      │
+                     └──────────────────────┘
+
+    Pin 24 (GPIO 8)  ────────→ LV1 ←→ HV1 ───────────→ CS
+
+    Pin 21 (GPIO 9)  ────────→ LV2 ←→ HV2 ───────────→ MISO (SO)
+                                         ↑
+                                         └─ CRITICAL: 5V → 3.3V conversion!
+
+    Pin 19 (GPIO 10) ────────→ LV3 ←→ HV3 ───────────→ MOSI (SI)
+
+    Pin 23 (GPIO 11) ────────→ LV4 ←→ HV4 ───────────→ SCK
+
+    Pin 22 (GPIO 25) ─────────────────────────────────→ INT (direct)
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    LEVEL SHIFTER MODULE PINOUT                          │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Your 4-Channel IIC I2C Level Converter module looks like this:
+
+        LV Side (3.3V)              HV Side (5V)
+        ==============              ============
+
+        [ LV4 ]                     [ HV4 ]  ← To MCP2515 SCK
+        [ LV3 ]                     [ HV3 ]  ← To MCP2515 MOSI
+        [ LV2 ]                     [ HV2 ]  ← To MCP2515 MISO
+        [ LV1 ]                     [ HV1 ]  ← To MCP2515 CS
+        [ GND ]  ← Common ground
+        [ LV  ]  ← 3.3V from Pi
+        [ HV  ]  ← 5V from Pi
+
+        ↑                           ↑
+        From Pi GPIO                To MCP2515
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                  RASPBERRY PI 5 GPIO HEADER                             │
+└─────────────────────────────────────────────────────────────────────────┘
+
+View from above (USB ports at bottom):
+
+        3.3V [ 1] [ 2] 5V     ← To Level Shifter LV and HV, MCP2515 VCC
        GPIO2 [ 3] [ 4] 5V
-       GPIO3 [ 5] [ 6] GND    ← Common GND for all
+       GPIO3 [ 5] [ 6] GND    ← Common GND (to Level Shifter & MCP2515)
        GPIO4 [ 7] [ 8] GPIO14
          GND [ 9] [10] GPIO15
       GPIO17 [11] [12] GPIO18
       GPIO27 [13] [14] GND
       GPIO22 [15] [16] GPIO23
-        3.3V [17] [18] GPIO24 ← Level Shifter LV (3.3V)
- MOSI/GPIO10 [19] [20] GND    ← Via Level Shifter LV3
- MISO/GPIO9  [21] [22] GPIO25 ← Via Level Shifter LV2 (CRITICAL!)
- SCLK/GPIO11 [23] [24] GPIO8  ← Via Level Shifter LV4 and LV1
+        3.3V [17] [18] GPIO24
+ MOSI/GPIO10 [19] [20] GND    ← To Level Shifter LV3
+ MISO/GPIO9  [21] [22] GPIO25 ← To Level Shifter LV2 | To MCP2515 INT
+ SCLK/GPIO11 [23] [24] GPIO8  ← To Level Shifter LV4 | To Level Shifter LV1
          GND [25] [26] GPIO7
 
-IMPORTANT: ALL SPI pins (CS, MISO, MOSI, SCK, INT) must go through the
-bidirectional level shifter. NEVER connect MCP2515 SPI pins directly to Pi!
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      MCP2515 MODULE PINOUT                              │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Typical HiLetgo MCP2515 module pin headers:
+
+    [ VCC  ]  ← 5V from Pi Pin 2
+    [ GND  ]  ← GND from Pi Pin 6
+    [ CS   ]  ← From Level Shifter HV1
+    [ SO   ]  ← To Level Shifter HV2 (MISO - outputs 5V!)
+    [ SI   ]  ← From Level Shifter HV3 (MOSI)
+    [ SCK  ]  ← From Level Shifter HV4
+    [ INT  ]  ← To Pi GPIO 25 (optional, can be direct)
+
+    [ CANH ]  ← To OBD-II Pin 6
+    [ CANL ]  ← To OBD-II Pin 14
+
+
+IMPORTANT: ALL 4 SPI signals (CS, MISO, MOSI, SCK) MUST go through the
+level shifter. NEVER connect MCP2515 SPI pins directly to Pi GPIO!
 ```
 
 ---
