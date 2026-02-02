@@ -10,6 +10,7 @@ This project documents the development of a custom digital dashboard for a 2013 
 
 - [CLUSTER_EEPROM_GUIDE.md](CLUSTER_EEPROM_GUIDE.md) - Guide for reading and writing the instrument cluster EEPROM using CH341A programmer
 - [CAN_SNIFFING_GUIDE.md](CAN_SNIFFING_GUIDE.md) - Guide for CAN bus sniffing using Raspberry Pi 5 and MCP2515 module
+- [CUSTOM_PCB_DESIGN.md](CUSTOM_PCB_DESIGN.md) - Custom "WRX Power & CAN HAT" PCB design specification
 
 ## Tools
 
