@@ -7133,6 +7133,16 @@
 		)
 		(uuid "309f9415-39a1-4f4e-a978-76b1dc3587c6")
 	)
+	(label "U1_BOOT"
+		(at 139.7 334.01 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "336f050a-3506-48d6-acd2-e9e4a55e8ff8")
+	)
 	(label "GND"
 		(at 561.34 703.58 0)
 		(effects
@@ -7164,6 +7174,16 @@
 		(uuid "58234e47-b9d6-4a1b-93ba-c293feb037aa")
 	)
 	(label "U1_SW"
+		(at 168.91 342.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5d6db1c4-37c8-4f17-b1de-54e32d01fbb8")
+	)
+	(label "U1_SW"
 		(at 190.5 313.69 0)
 		(effects
 			(font
@@ -7192,6 +7212,16 @@
 			(justify left bottom)
 		)
 		(uuid "614943e9-b55f-4593-80a3-8885e344c775")
+	)
+	(label "U1_BOOT"
+		(at 168.91 350.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6153f4a8-fff7-4ff3-b3bc-5095dce62aaf")
 	)
 	(label "+5V"
 		(at 373.38 433.07 0)
@@ -9592,7 +9622,7 @@
 				)
 			)
 		)
-		(property "Value" "1.5k"
+		(property "Value" "10k"
 			(at 254 386 0)
 			(effects
 				(font
@@ -9658,7 +9688,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "51k"
 			(at 317.5 386 0)
 			(effects
 				(font
@@ -11814,6 +11844,76 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 168.91 346.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "854d53e5-61cd-43fc-8785-bd1a33f15d07")
+		(property "Reference" "C_BOOT"
+			(at 172.72 345.4399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 172.72 347.9799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 169.8752 350.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 168.91 346.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 168.91 346.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "43b65f97-ca25-4f5d-868e-874339216901")
+		)
+		(pin "2"
+			(uuid "3f3f2a2c-2c26-47fb-be06-da4d2b3dd66c")
+		)
+		(instances
+			(project ""
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "C_BOOT")
 					(unit 1)
 				)
 			)
