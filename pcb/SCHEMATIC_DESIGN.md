@@ -65,10 +65,22 @@ Add these symbol libraries in KiCad:
 | **C1** | 100µF | EEE-FK1E101P | Radial | 25V electrolytic | P122094-ND | Input filter |
 | **LED1** | Green | LTST-C150GKT | 0805 | Green LED | 160-1427-1-ND | Power indicator |
 
-### Power Input Connector
-| Ref | Part Number | Package | Specs | Digi-Key |
-|-----|-------------|---------|-------|----------|
-| **J1** | ED555/2DS | 5mm pitch | 2-position screw terminal | ED2635-ND |
+### Power Input Connector (ISO 10487-A Standard)
+| Ref | Part Number | Package | Specs | Digi-Key | Notes |
+|-----|-------------|---------|-------|----------|-------|
+| **J1** | Molex 171822-0008 | 8-pin ISO | ISO 10487-A Power | WM18753-ND | Universal car harness |
+
+**J1 Pinout (ISO 10487-A):**
+```
+Pin 1: Speed/CAN    - Not connected (future use)
+Pin 2: Phone mute   - Not connected
+Pin 3: N/C          - Not connected
+Pin 4: 12V Battery  → 12V_IN (to F1 fuse)
+Pin 5: Antenna      - Not connected (future use)
+Pin 6: Illumination - Not connected (optional dimming)
+Pin 7: 12V ACC      → IGNITION_DETECT (to PC817 input)
+Pin 8: Ground       → GND
+```
 
 ### Net Labels
 - `12V_IN` - Raw 12V from car
@@ -157,29 +169,41 @@ For LM2596-ADJ (if you want adjustable voltage later):
 
 ### Schematic
 ```
-                        ┌─────────┐
-    3.3V ───[C6]───────┤VCC   PB0├──── TIMER_OUTPUT (to Q1 gate driver)
-                        │         │
- IGNITION_DETECT ───────┤PB1   PB1├──── Not used
-                        │         │
-  SHUTDOWN_SIG ─────────┤PB2   PB2├──── Not used
-                        │         │
-          12V_SENSE ────┤PB3   PB3├──── Not used (ADC input for voltage)
-                        │         │
-           LED_TIMER ───┤PB4   GND├──── GND
-                        └─────────┘
-                        ATtiny85-20SU
+ATtiny85-20PU DIP-8 Pinout:
+
+                         ┌────────┐
+    RESET ─────[R8]─────┤1 RST  8├──── VCC (3.3V via C6)
+                         │        │
+   TIMER_LED ───[R9]────┤2 PB3  7├──── POWER_CTRL (to Q2 gate driver)
+                         │        │
+ HEARTBEAT_LED ─────────┤3 PB4  6├──── SHUTDOWN_SIG (from Pi GPIO)
+                         │        │
+           GND ─────────┤4 GND  5├──── IGNITION_IN (from PC817 output)
+                         └────────┘
+
+Pin Assignments:
+- Pin 1 (PB5/RESET): Reset with 10kΩ pull-up to VCC
+- Pin 2 (PB3): Timer status LED (blinks during countdown)
+- Pin 3 (PB4): Heartbeat LED (blinks every 2s)
+- Pin 4: Ground
+- Pin 5 (PB0): Ignition detect input (LOW = ON, HIGH = OFF)
+- Pin 6 (PB1): Shutdown signal from Pi (HIGH = shutdown)
+- Pin 7 (PB2): Power control output (HIGH = power ON)
+- Pin 8 (VCC): 3.3V power (decoupled with C6)
 ```
 
 ### Components
 
 | Ref | Value | Part Number | Package | Specs | Digi-Key | Notes |
 |-----|-------|-------------|---------|-------|----------|-------|
-| **U3** | ATtiny85 | ATTINY85-20SU | SOIC-8 | 8-bit micro | ATTINY85-20SU-ND | Programmable timer |
+| **U3** | ATtiny85 | ATTINY85-20PU | DIP-8 | 8-bit micro | ATTINY85-20PU-ND | Programmable timer (3x) |
+| **U3 Socket** | DIP-8 | 4808-3000-CP | DIP-8 | IC socket | AE10012-ND | Easy reprogramming |
 | **C6** | 100nF | C0805C104K5RACTU | 0805 | Bypass cap | 399-1170-1-ND | Power decoupling |
 | **R8** | 10kΩ | RC0805FR-0710KL | 0805 | Reset pull-up | 311-10.0KCRCT-ND | Reset pin |
 | **R9** | 470Ω | RC0805FR-07470RL | 0805 | LED resistor | 311-470CRCT-ND | Timer LED |
+| **R14** | 470Ω | RC0805FR-07470RL | 0805 | LED resistor | 311-470CRCT-ND | Heartbeat LED |
 | **LED2** | Red | LTST-C150CKT | 0805 | Red LED | 160-1405-1-ND | Timer active |
+| **LED3** | Yellow | LTST-C150YKT | 0805 | Yellow LED | 160-1130-1-ND | Heartbeat (2s) |
 
 ### Programming Header (ISP)
 | Ref | Part Number | Package | Digi-Key |
@@ -221,11 +245,11 @@ void loop() {
 
 ### Schematic
 ```
-TIMER_OUTPUT ───[R10]───┬───[Q2 N-FET Gate]
-                        │
-                     [R11 10kΩ]
-                        │
-                       GND
+POWER_CTRL ───[R10]───┬───[Q2 N-FET Gate]
+(ATtiny85 PB2)        │
+                   [R11 10kΩ]
+                      │
+                     GND
 
 Q2 Drain ────── Q1 Gate (P-FET from Section 1)
 Q2 Source ───── GND
@@ -243,8 +267,13 @@ Q1 Drain ────── 12V_SWITCHED (to buck converter)
 | **R11** | 10kΩ | RC0805FR-0710KL | 0805 | Pull-down | 311-10.0KCRCT-ND | Ensure FET off |
 
 ### Operation
-- TIMER_OUTPUT HIGH → Q2 on → Q1 gate pulled to GND → Q1 on → 12V flows
-- TIMER_OUTPUT LOW → Q2 off → Q1 gate pulled high → Q1 off → 12V cut
+- POWER_CTRL HIGH (ATtiny85 PB2) → Q2 on → Q1 gate pulled to GND → Q1 on → 12V flows
+- POWER_CTRL LOW (ATtiny85 PB2) → Q2 off → Q1 gate pulled high → Q1 off → 12V cut
+
+**State Machine:**
+- Ignition ON → POWER_CTRL = HIGH → Power flows to Pi
+- Ignition OFF → Start 45s timer, POWER_CTRL = HIGH → Power still on
+- Timer expires OR Pi signals shutdown → POWER_CTRL = LOW → Power cut
 
 ---
 
@@ -266,18 +295,29 @@ Q1 Drain ────── 12V_SWITCHED (to buck converter)
                       U4: MCP2515-I/SO
 
                        ┌──────────────┐
-        TXD ───────────┤TXD      CANH├─── To J4 (CANH screw terminal)
-        RXD ───────────┤RXD      CANL├─── To J5 (CANL screw terminal)
+        TXD ───────────┤TXD      CANH├─── To J4 OBD-II Pin 6
+        RXD ───────────┤RXD      CANL├─── To J4 OBD-II Pin 14
                        │              │
        3.3V ───[C8]────┤VDD       GND├─── GND
                        └──────────────┘
                        U5: SN65HVD230DR
 
-   CANH ───┬─── J4 (screw terminal)
+   CANH ───┬─── J4 Pin 6 (OBD-II Female)
+           │
+           └─── J5 Pin 1 (Screw terminal - optional)
            │
         [JP1 120Ω]  ← Jumper-selectable termination resistor
            │
-   CANL ───┴─── J5 (screw terminal)
+   CANL ───┬─── J4 Pin 14 (OBD-II Female)
+           │
+           └─── J5 Pin 2 (Screw terminal - optional)
+
+           J4 Pin 4 (GND) ──→ Common GND (optional chassis ground)
+
+User Options:
+  - Option A: Plug OBD-II Y-splitter into J4 (most users)
+  - Option B: Wire directly to J5 screw terminals (custom setups)
+  - Both connected in parallel - use either or both
 ```
 
 ### Components
@@ -294,10 +334,35 @@ Q1 Drain ────── 12V_SWITCHED (to buck converter)
 | **R12** | 10kΩ | RC0805FR-0710KL | 0805 | INT pull-up | 311-10.0KCRCT-ND | Optional |
 | **R13** | 120Ω | RC0805FR-07120RL | 0805 | Termination | 311-120CRCT-ND | Via JP1 jumper |
 
-### CAN Connectors
-| Ref | Part Number | Package | Digi-Key |
-|-----|-------------|---------|----------|
-| **J4** | ED555/2DS | 5mm pitch 2-pos | ED2635-ND |
+### CAN Connectors (Dual Option - Maximum Flexibility)
+
+| Ref | Part Number | Package | Specs | Digi-Key | Notes |
+|-----|-------------|---------|-------|----------|-------|
+| **J4** | TE 1-1718644-1 | 16-pin OBD-II | J1962 Female | A115904-ND | Right-angle PCB mount |
+| **J5** | ED555/2DS | 5mm pitch 2-pos | Screw terminal | ED2635-ND | Optional backup |
+
+**J4 Pinout (OBD-II J1962):**
+```
+Pin 6:  CANH (CAN High)  → To SN65HVD230 CANH (also J5 Pin 1)
+Pin 14: CANL (CAN Low)   → To SN65HVD230 CANL (also J5 Pin 2)
+Pin 4:  Chassis Ground   → GND (optional)
+Pin 16: +12V Battery     → Not connected (already have via ISO A)
+All other pins: Not connected
+```
+
+**J5 Pinout (Screw Terminal - wired in parallel with J4):**
+```
+Pin 1: CANH (CAN High)  → Parallel with J4 Pin 6
+Pin 2: CANL (CAN Low)   → Parallel with J4 Pin 14
+```
+
+**User Options:**
+- **Option A (Most Users):** Plug OBD-II Y-splitter into J4
+  - Car OBD-II port → Splitter → J4 (plug and play!)
+- **Option B (Advanced/Custom):** Wire to J5 screw terminals
+  - Direct wire from CAN source (OBD-II extension, Seicane harness, etc.)
+- **Option C:** Use OBD-II extension cable plugged into J4
+  - Relocate OBD-II port closer to head unit location
 | **JP1** | Header 2-pin | 0.1" pitch | S1011EC-02-ND |
 
 ### Protection (CAN Lines)
@@ -439,12 +504,70 @@ While the Raspberry Pi provides 3.3V, add a backup regulator for reliability:
 
 **Critical Connections:**
 - Pin 2, 4: 5V from buck converter
+- Pin 3, 5: I2C (GPIO 2 SDA, GPIO 3 SCL) to PCM5142
 - Pin 6, 9, 14, 20, 25, 30, 34, 39: GND
 - Pin 11 (GPIO 17): Fan PWM output
-- Pin 12 (GPIO 18): Safe shutdown signal (input to HAT)
+- Pin 12 (GPIO 18): I2S_SCLK to PCM5142
 - Pin 19, 21, 23, 24 (GPIO 10, 9, 11, 8): SPI to MCP2515
 - Pin 22 (GPIO 25): INT from MCP2515
+- Pin 35 (GPIO 19): I2S_FS to PCM5142
 - Pin 37 (GPIO 26): Ignition detect input
+- Pin 40 (GPIO 21): I2S_DOUT to PCM5142
+
+---
+
+## Circuit Section 11: 4-Channel I2S DAC (Audio Output)
+
+### Schematic
+```
+Raspberry Pi I2S:
+  GPIO 18 (I2S_SCLK)  ───→ PCM5142 BCK (Bit Clock)
+  GPIO 19 (I2S_FS)    ───→ PCM5142 LRCK (Frame Sync)
+  GPIO 21 (I2S_DOUT)  ───→ PCM5142 DIN (Data In)
+  GPIO 2  (I2C_SDA)   ───→ PCM5142 SDA (Configuration)
+  GPIO 3  (I2C_SCL)   ───→ PCM5142 SCL (Configuration)
+
+                         ┌──────────────┐
+    3.3V ───[C13]───────┤VDD           │
+    3.3V ───[C14]───────┤DVDD          │
+                         │              │
+    I2S_SCLK ───────────┤BCK      OUTL1├───[C15 2.2µF]───[R16 1kΩ]─→ J7 Pin 1 (FL)
+    I2S_FS   ───────────┤LRCK     OUTR1├───[C16 2.2µF]───[R17 1kΩ]─→ J7 Pin 2 (FR)
+    I2S_DOUT ───────────┤DIN      OUTL2├───[C17 2.2µF]───[R18 1kΩ]─→ J7 Pin 3 (RL)
+                         │         OUTR2├───[C18 2.2µF]───[R19 1kΩ]─→ J7 Pin 4 (RR)
+    I2C_SDA  ───────────┤SDA           │
+    I2C_SCL  ───────────┤SCL       AGND├─→ GND
+                         │         DGND├─→ GND
+                         └──────────────┘
+                         U7: PCM5142RGZR
+
+J7 (6-pin audio output to amp module):
+  Pin 1: Front Left (FL)   ──→ To amp module
+  Pin 2: Front Right (FR)  ──→ To amp module
+  Pin 3: Rear Left (RL)    ──→ To amp module
+  Pin 4: Rear Right (RR)   ──→ To amp module
+  Pin 5: GND               ──→ To amp module
+  Pin 6: GND               ──→ To amp module
+```
+
+### Components
+
+| Ref | Value | Part Number | Package | Specs | Digi-Key | Notes |
+|-----|-------|-------------|---------|-------|----------|-------|
+| **U7** | PCM5142 | PCM5142RGZR | VQFN-48 | Quad I2S DAC | 296-38727-1-ND | 32-bit, 4-channel |
+| **C13** | 1µF | C0805C105K5RACTU | 0805 | VDD decoupling | 399-1284-1-ND | Ceramic |
+| **C14** | 1µF | C0805C105K5RACTU | 0805 | DVDD decoupling | 399-1284-1-ND | Ceramic |
+| **C15** | 2.2µF | GRM21BR61E225KA12L | 0805 | DC blocking | 490-3897-1-ND | Front Left |
+| **C16** | 2.2µF | GRM21BR61E225KA12L | 0805 | DC blocking | 490-3897-1-ND | Front Right |
+| **C17** | 2.2µF | GRM21BR61E225KA12L | 0805 | DC blocking | 490-3897-1-ND | Rear Left |
+| **C18** | 2.2µF | GRM21BR61E225KA12L | 0805 | DC blocking | 490-3897-1-ND | Rear Right |
+| **R16** | 1kΩ | RC0805FR-071KL | 0805 | Series resistor | 311-1.00KCRCT-ND | FL output |
+| **R17** | 1kΩ | RC0805FR-071KL | 0805 | Series resistor | 311-1.00KCRCT-ND | FR output |
+| **R18** | 1kΩ | RC0805FR-071KL | 0805 | Series resistor | 311-1.00KCRCT-ND | RL output |
+| **R19** | 1kΩ | RC0805FR-071KL | 0805 | Series resistor | 311-1.00KCRCT-ND | RR output |
+| **J7** | Audio Out | JST B6B-XH-A | 6-pin JST-XH | To amp module | 455-2249-ND | Line level output |
+
+**Output Signal:** Clean 2V RMS line-level stereo on 4 channels (FL, FR, RL, RR)
 
 ---
 
@@ -475,7 +598,8 @@ GND             ← Common ground
 - Inductors, diodes, capacitors
 
 **Control:**
-- 1x ATtiny85-20SU Microcontroller
+- 3x ATtiny85-20PU Microcontroller (DIP-8, order extras for firmware iteration)
+- 1x DIP-8 IC socket (for easy reprogramming)
 - 2x 2N7002 N-channel MOSFETs
 
 **CAN:**
@@ -492,19 +616,24 @@ GND             ← Common ground
 **Isolation:**
 - 1x LTV-817S Optoisolator
 
+**Audio:**
+- 1x PCM5142 Quad I2S DAC (4-channel output)
+
 **Passives:**
-- ~20x Resistors (0805)
-- ~15x Capacitors (0805, radial)
+- ~24x Resistors (0805)
+- ~18x Capacitors (0805, radial)
 - 4x LEDs (0805)
 
 **Connectors:**
-- 1x 40-pin stacking header
-- 3x Screw terminals (2-position, 5mm)
+- 1x 40-pin stacking header (GPIO)
+- 1x ISO 10487-A 8-pin (power input from car)
+- 1x OBD-II J1962 16-pin female (CAN bus plug-and-play)
+- 1x JST-XH 6-pin (audio output to amp module)
 - 1x JST-XH 2-pin (fan)
-- 1x ISP header (2x3)
-- 2x Jumpers (2-pin, 3-pin)
+- 1x ISP header 2x3 (ATtiny85 programming)
+- 2x Jumpers (CAN termination, fan voltage select)
 
-**Total Estimated Cost:** $25-35 per board (single quantity)
+**Total Estimated Cost:** $40-48 per board (single quantity)
 
 ---
 
