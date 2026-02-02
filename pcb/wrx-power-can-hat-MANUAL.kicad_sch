@@ -8087,27 +8087,6 @@
 			)
 		)
 	)
-	(global_label "HEARTBEAT_LED"
-		(shape input)
-		(at 254 500.38 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "5aeb7e0d-54e7-49b5-acdd-423ed60c14df")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 254 500.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "XTAL1"
 		(shape input)
 		(at 186.69 571.5 0)
@@ -8142,27 +8121,6 @@
 		(uuid "64592c31-5930-4e06-984c-a8b3b44666b7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 186.69 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "GND"
-		(shape input)
-		(at 243.84 508 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "652733c9-c365-4dc3-bda4-713f6343c7ea")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 243.84 508 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8234,27 +8192,6 @@
 			)
 		)
 	)
-	(global_label "IGN_DETECT"
-		(shape input)
-		(at 243.84 510.54 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6e25349e-b28c-4477-84bc-d05ee79c207e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 243.84 510.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "+5V"
 		(shape input)
 		(at 254 567.69 0)
@@ -8289,27 +8226,6 @@
 		(uuid "7dafb81c-6940-40d4-be8d-af854303d6f3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 436.88 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "TIMER_LED"
-		(shape input)
-		(at 254 518.16 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "81dfca0e-c46f-4335-8f1b-12cc5bc43265")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 254 518.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8436,27 +8352,6 @@
 		(uuid "977dfd51-f33a-4f48-b766-7e059bf2bfef")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 566.42 683.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SHUTDOWN_REQ"
-		(shape input)
-		(at 264.16 510.54 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "987989fb-7676-4fe8-82ef-f1d071684a97")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 264.16 510.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8635,27 +8530,6 @@
 	)
 	(global_label "GATE_CTRL"
 		(shape input)
-		(at 264.16 508 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "af1d1fd8-0f34-45a2-8952-064b7d248efa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 264.16 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "GATE_CTRL"
-		(shape input)
 		(at 375.92 127 0)
 		(fields_autoplaced yes)
 		(effects
@@ -8793,27 +8667,6 @@
 		(uuid "becbcd00-c7d6-47bf-88b4-f942c4a88801")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 317.5 504.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "+3.3V"
-		(shape input)
-		(at 243.84 513.08 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "c2d0583c-3446-477a-9879-c627deaea88e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 243.84 513.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11859,7 +11712,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "854d53e5-61cd-43fc-8785-bd1a33f15d07")
-		(property "Reference" "C_BOOT"
+		(property "Reference" "C_8"
 			(at 172.72 345.4399 0)
 			(effects
 				(font
@@ -11913,7 +11766,7 @@
 		(instances
 			(project ""
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "C_BOOT")
+					(reference "C_8")
 					(unit 1)
 				)
 			)
