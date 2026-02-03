@@ -1,0 +1,1173 @@
+{
+  "components": [
+    {
+      "reference": "C10",
+      "value": "10uF",
+      "lib_id": "Device:C",
+      "position": [
+        635.0,
+        190.5
+      ]
+    },
+    {
+      "reference": "#FLG02",
+      "value": "PWR_FLAG",
+      "lib_id": "power:PWR_FLAG",
+      "position": [
+        114.3,
+        334.01
+      ]
+    },
+    {
+      "reference": "R4",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "position": [
+        254.0,
+        381.0
+      ]
+    },
+    {
+      "reference": "R5",
+      "value": "51k",
+      "lib_id": "Device:R",
+      "position": [
+        317.5,
+        381.0
+      ]
+    },
+    {
+      "reference": "Y1",
+      "value": "8MHz",
+      "lib_id": "Device:Crystal",
+      "position": [
+        190.5,
+        571.5
+      ]
+    },
+    {
+      "reference": "#PWR04",
+      "value": "GND",
+      "lib_id": "power:GND",
+      "position": [
+        391.16,
+        194.31
+      ]
+    },
+    {
+      "reference": "C14",
+      "value": "2.2uF",
+      "lib_id": "Device:C",
+      "position": [
+        698.5,
+        762.0
+      ]
+    },
+    {
+      "reference": "U1",
+      "value": "TPS54560BDDA",
+      "lib_id": "Regulator_Switching:TPS54560BDDA",
+      "position": [
+        127.0,
+        339.09
+      ]
+    },
+    {
+      "reference": "J3",
+      "value": "OBD-II",
+      "lib_id": "Connector_Generic:Conn_01x16",
+      "position": [
+        444.5,
+        508.0
+      ]
+    },
+    {
+      "reference": "J6",
+      "value": "FAN",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "position": [
+        635.0,
+        571.5
+      ]
+    },
+    {
+      "reference": "R16",
+      "value": "470",
+      "lib_id": "Device:R",
+      "position": [
+        635.0,
+        381.0
+      ]
+    },
+    {
+      "reference": "R8",
+      "value": "120",
+      "lib_id": "Device:R",
+      "position": [
+        381.0,
+        508.0
+      ]
+    },
+    {
+      "reference": "#FLG01",
+      "value": "PWR_FLAG",
+      "lib_id": "power:PWR_FLAG",
+      "position": [
+        374.65,
+        433.07
+      ]
+    },
+    {
+      "reference": "C11",
+      "value": "1uF",
+      "lib_id": "Device:C",
+      "position": [
+        635.0,
+        698.5
+      ]
+    },
+    {
+      "reference": "J4",
+      "value": "CAN_Term",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "position": [
+        444.5,
+        571.5
+      ]
+    },
+    {
+      "reference": "D2",
+      "value": "SS34",
+      "lib_id": "Device:D_Schottky",
+      "position": [
+        254.0,
+        127.0
+      ]
+    },
+    {
+      "reference": "R21",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "position": [
+        346.71,
+        121.92
+      ]
+    },
+    {
+      "reference": "#FLG03",
+      "value": "PWR_FLAG",
+      "lib_id": "power:PWR_FLAG",
+      "position": [
+        127.0,
+        349.25
+      ]
+    },
+    {
+      "reference": "C8",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "position": [
+        571.5,
+        190.5
+      ]
+    },
+    {
+      "reference": "#PWR02",
+      "value": "GND",
+      "lib_id": "power:GND",
+      "position": [
+        318.77,
+        124.46
+      ]
+    },
+    {
+      "reference": "C6",
+      "value": "22pF",
+      "lib_id": "Device:C",
+      "position": [
+        381.0,
+        571.5
+      ]
+    },
+    {
+      "reference": "C12",
+      "value": "2.2uF",
+      "lib_id": "Device:C",
+      "position": [
+        635.0,
+        762.0
+      ]
+    },
+    {
+      "reference": "L1",
+      "value": "10uH",
+      "lib_id": "Device:L",
+      "position": [
+        190.5,
+        317.5
+      ]
+    },
+    {
+      "reference": "Q1",
+      "value": "IRLB8721PBF",
+      "lib_id": "Transistor_FET:IRLB8721PBF",
+      "position": [
+        316.23,
+        119.38
+      ]
+    },
+    {
+      "reference": "J1",
+      "value": "ISO_A",
+      "lib_id": "Connector_Generic:Conn_01x08",
+      "position": [
+        63.5,
+        127.0
+      ]
+    },
+    {
+      "reference": "U2",
+      "value": "LTV-817S",
+      "lib_id": "Isolator:LTV-817S",
+      "position": [
+        127.0,
+        698.5
+      ]
+    },
+    {
+      "reference": "J2",
+      "value": "Pi_GPIO",
+      "lib_id": "Connector_Generic:Conn_02x20_Odd_Even",
+      "position": [
+        381.0,
+        698.5
+      ]
+    },
+    {
+      "reference": "C4",
+      "value": "10uF",
+      "lib_id": "Device:C",
+      "position": [
+        254.0,
+        698.5
+      ]
+    },
+    {
+      "reference": "C16",
+      "value": "22pF",
+      "lib_id": "Device:C",
+      "position": [
+        433.07,
+        153.67
+      ]
+    },
+    {
+      "reference": "#PWR03",
+      "value": "GND",
+      "lib_id": "power:GND",
+      "position": [
+        346.71,
+        125.73
+      ]
+    },
+    {
+      "reference": "R15",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        571.5,
+        825.5
+      ]
+    },
+    {
+      "reference": "C7",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "position": [
+        444.5,
+        381.0
+      ]
+    },
+    {
+      "reference": "R18",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        698.5,
+        825.5
+      ]
+    },
+    {
+      "reference": "R14",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        571.5,
+        571.5
+      ]
+    },
+    {
+      "reference": "JP2",
+      "value": "5V/12V",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "position": [
+        698.5,
+        571.5
+      ]
+    },
+    {
+      "reference": "C17",
+      "value": "22pF",
+      "lib_id": "Device:C",
+      "position": [
+        424.18,
+        156.21
+      ]
+    },
+    {
+      "reference": "U4",
+      "value": "MCP2515",
+      "lib_id": "Interface_CAN_LIN:MCP2515-xSO",
+      "position": [
+        444.5,
+        127.0
+      ]
+    },
+    {
+      "reference": "C_BOOT1",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "position": [
+        168.91,
+        346.71
+      ]
+    },
+    {
+      "reference": "R6",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "position": [
+        317.5,
+        508.0
+      ]
+    },
+    {
+      "reference": "C19",
+      "value": "22uF",
+      "lib_id": "Device:C",
+      "position": [
+        403.86,
+        435.61
+      ]
+    },
+    {
+      "reference": "R11",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "position": [
+        508.0,
+        190.5
+      ]
+    },
+    {
+      "reference": "JP1",
+      "value": "Jumper",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "position": [
+        508.0,
+        571.5
+      ]
+    },
+    {
+      "reference": "R13",
+      "value": "470",
+      "lib_id": "Device:R",
+      "position": [
+        571.5,
+        381.0
+      ]
+    },
+    {
+      "reference": "C2",
+      "value": "10uF",
+      "lib_id": "Device:C",
+      "position": [
+        190.5,
+        698.5
+      ]
+    },
+    {
+      "reference": "R17",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        635.0,
+        825.5
+      ]
+    },
+    {
+      "reference": "Y2",
+      "value": "16Mhz Crystal",
+      "lib_id": "Device:Crystal",
+      "position": [
+        426.72,
+        147.32
+      ]
+    },
+    {
+      "reference": "R9",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "position": [
+        444.5,
+        127.0
+      ]
+    },
+    {
+      "reference": "R12",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "position": [
+        508.0,
+        381.0
+      ]
+    },
+    {
+      "reference": "J7",
+      "value": "Audio",
+      "lib_id": "Connector_Generic:Conn_01x06",
+      "position": [
+        825.5,
+        762.0
+      ]
+    },
+    {
+      "reference": "C9",
+      "value": "2.2uF",
+      "lib_id": "Device:C",
+      "position": [
+        571.5,
+        762.0
+      ]
+    },
+    {
+      "reference": "U5",
+      "value": "SN65HVD230",
+      "lib_id": "Interface_CAN_LIN:SN65HVD230",
+      "position": [
+        571.5,
+        698.5
+      ]
+    },
+    {
+      "reference": "Q2",
+      "value": "2N7002",
+      "lib_id": "Transistor_FET:2N7002",
+      "position": [
+        381.0,
+        127.0
+      ]
+    },
+    {
+      "reference": "LED3",
+      "value": "Yellow",
+      "lib_id": "Device:LED",
+      "position": [
+        571.5,
+        317.5
+      ]
+    },
+    {
+      "reference": "C3",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "position": [
+        254.0,
+        571.5
+      ]
+    },
+    {
+      "reference": "R10",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        444.5,
+        190.5
+      ]
+    },
+    {
+      "reference": "LED2",
+      "value": "Red",
+      "lib_id": "Device:LED",
+      "position": [
+        508.0,
+        317.5
+      ]
+    },
+    {
+      "reference": "Q3",
+      "value": "2N7002",
+      "lib_id": "Transistor_FET:2N7002",
+      "position": [
+        571.5,
+        508.0
+      ]
+    },
+    {
+      "reference": "LED1",
+      "value": "Green",
+      "lib_id": "Device:LED",
+      "position": [
+        381.0,
+        190.5
+      ]
+    },
+    {
+      "reference": "U3",
+      "value": "attiny85",
+      "lib_id": "MCU_Microchip_ATtiny:ATtiny85-20P",
+      "position": [
+        254.0,
+        508.0
+      ]
+    },
+    {
+      "reference": "C13",
+      "value": "1uF",
+      "lib_id": "Device:C",
+      "position": [
+        698.5,
+        698.5
+      ]
+    },
+    {
+      "reference": "C18",
+      "value": "10uF",
+      "lib_id": "Device:C",
+      "position": [
+        356.87,
+        434.34
+      ]
+    },
+    {
+      "reference": "C15",
+      "value": "2.2uF",
+      "lib_id": "Device:C",
+      "position": [
+        762.0,
+        762.0
+      ]
+    },
+    {
+      "reference": "R1",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        381.0,
+        190.5
+      ]
+    },
+    {
+      "reference": "J5",
+      "value": "ISP",
+      "lib_id": "Connector_Generic:Conn_02x03_Odd_Even",
+      "position": [
+        635.0,
+        317.5
+      ]
+    },
+    {
+      "reference": "C1",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "position": [
+        127.0,
+        571.5
+      ]
+    },
+    {
+      "reference": "R19",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        762.0,
+        825.5
+      ]
+    },
+    {
+      "reference": "D1",
+      "value": "SMBJ18A",
+      "lib_id": "Device:D_TVS",
+      "position": [
+        190.5,
+        127.0
+      ]
+    },
+    {
+      "reference": "#PWR05",
+      "value": "GND",
+      "lib_id": "power:GND",
+      "position": [
+        41.91,
+        140.97
+      ]
+    },
+    {
+      "reference": "F1",
+      "value": "5A",
+      "lib_id": "Device:Fuse",
+      "position": [
+        127.0,
+        127.0
+      ]
+    },
+    {
+      "reference": "C5",
+      "value": "22pF",
+      "lib_id": "Device:C",
+      "position": [
+        317.5,
+        571.5
+      ]
+    },
+    {
+      "reference": "#PWR01",
+      "value": "GND",
+      "lib_id": "power:GND",
+      "position": [
+        127.0,
+        350.52
+      ]
+    },
+    {
+      "reference": "U6",
+      "value": "AMS1117-3.3",
+      "lib_id": "Regulator_Linear:AMS1117-3.3",
+      "position": [
+        381.0,
+        433.07
+      ]
+    },
+    {
+      "reference": "R20",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "position": [
+        293.37,
+        121.92
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "name": "CANH",
+      "position": [
+        581.66,
+        698.5
+      ]
+    },
+    {
+      "name": "U1_FB",
+      "position": [
+        139.7,
+        344.17
+      ]
+    },
+    {
+      "name": "SPI_SCLK",
+      "position": [
+        44.45,
+        130.81
+      ]
+    },
+    {
+      "name": "U1_FB",
+      "position": [
+        254.0,
+        384.81
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        356.87,
+        438.15
+      ]
+    },
+    {
+      "name": "+3.3V",
+      "position": [
+        53.34,
+        118.11
+      ]
+    },
+    {
+      "name": "CAN_RX",
+      "position": [
+        561.34,
+        698.5
+      ]
+    },
+    {
+      "name": "12V_IN",
+      "position": [
+        133.35,
+        139.7
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        444.5,
+        147.32
+      ]
+    },
+    {
+      "name": "IGN_DETECT",
+      "position": [
+        269.24,
+        505.46
+      ]
+    },
+    {
+      "name": "12V_IN",
+      "position": [
+        44.45,
+        128.27
+      ]
+    },
+    {
+      "name": "+5V",
+      "position": [
+        190.5,
+        321.31
+      ]
+    },
+    {
+      "name": "CAN_INT",
+      "position": [
+        459.74,
+        127.0
+      ]
+    },
+    {
+      "name": "OSC2",
+      "position": [
+        422.91,
+        147.32
+      ]
+    },
+    {
+      "name": "SPI_SCLK",
+      "position": [
+        429.26,
+        119.38
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        254.0,
+        523.24
+      ]
+    },
+    {
+      "name": "Q1_GATE",
+      "position": [
+        293.37,
+        118.11
+      ]
+    },
+    {
+      "name": "IGN_DETECT",
+      "position": [
+        39.37,
+        137.16
+      ]
+    },
+    {
+      "name": "OSC1",
+      "position": [
+        433.07,
+        149.86
+      ]
+    },
+    {
+      "name": "12V_IGN",
+      "position": [
+        113.03,
+        339.09
+      ]
+    },
+    {
+      "name": "U1_BOOT",
+      "position": [
+        139.7,
+        334.01
+      ]
+    },
+    {
+      "name": "Q1_GATE",
+      "position": [
+        311.15,
+        119.38
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        561.34,
+        703.58
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        433.07,
+        157.48
+      ]
+    },
+    {
+      "name": "OSC2",
+      "position": [
+        424.18,
+        152.4
+      ]
+    },
+    {
+      "name": "U1_SW",
+      "position": [
+        168.91,
+        342.9
+      ]
+    },
+    {
+      "name": "U1_SW",
+      "position": [
+        190.5,
+        313.69
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        127.0,
+        350.52
+      ]
+    },
+    {
+      "name": "GROUND",
+      "position": [
+        41.91,
+        140.97
+      ]
+    },
+    {
+      "name": "U1_BOOT",
+      "position": [
+        168.91,
+        350.52
+      ]
+    },
+    {
+      "name": "+5V",
+      "position": [
+        373.38,
+        433.07
+      ]
+    },
+    {
+      "name": "SPI_MOSI",
+      "position": [
+        429.26,
+        111.76
+      ]
+    },
+    {
+      "name": "+3.3V",
+      "position": [
+        459.74,
+        142.24
+      ]
+    },
+    {
+      "name": "+5V",
+      "position": [
+        356.87,
+        430.53
+      ]
+    },
+    {
+      "name": "OSC1",
+      "position": [
+        429.26,
+        134.62
+      ]
+    },
+    {
+      "name": "+3.3V",
+      "position": [
+        444.5,
+        106.68
+      ]
+    },
+    {
+      "name": "U1_SW",
+      "position": [
+        140.97,
+        339.09
+      ]
+    },
+    {
+      "name": "RESET",
+      "position": [
+        269.24,
+        513.08
+      ]
+    },
+    {
+      "name": "Q1_GATE",
+      "position": [
+        346.71,
+        118.11
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        254.0,
+        377.19
+      ]
+    },
+    {
+      "name": "HEARTBEAT_LED",
+      "position": [
+        269.24,
+        500.38
+      ]
+    },
+    {
+      "name": "TIMER_LED",
+      "position": [
+        269.24,
+        502.92
+      ]
+    },
+    {
+      "name": "SPI_MOSI",
+      "position": [
+        45.72,
+        121.92
+      ]
+    },
+    {
+      "name": "CAN_RX",
+      "position": [
+        459.74,
+        111.76
+      ]
+    },
+    {
+      "name": "+3.3V",
+      "position": [
+        403.86,
+        431.8
+      ]
+    },
+    {
+      "name": "CAN_TX",
+      "position": [
+        561.34,
+        695.96
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        424.18,
+        160.02
+      ]
+    },
+    {
+      "name": "12V_IGN",
+      "position": [
+        113.03,
+        334.01
+      ]
+    },
+    {
+      "name": "SHUTDOWN_REQ",
+      "position": [
+        269.24,
+        510.54
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        571.5,
+        708.66
+      ]
+    },
+    {
+      "name": "OSC2",
+      "position": [
+        429.26,
+        132.08
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        403.86,
+        439.42
+      ]
+    },
+    {
+      "name": "+3.3V",
+      "position": [
+        571.5,
+        690.88
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        381.0,
+        440.69
+      ]
+    },
+    {
+      "name": "12V_IGN",
+      "position": [
+        384.81,
+        190.5
+      ]
+    },
+    {
+      "name": "+3.3V",
+      "position": [
+        388.62,
+        433.07
+      ]
+    },
+    {
+      "name": "GATE_CTRL",
+      "position": [
+        293.37,
+        125.73
+      ]
+    },
+    {
+      "name": "CANL",
+      "position": [
+        581.66,
+        701.04
+      ]
+    },
+    {
+      "name": "GND",
+      "position": [
+        58.42,
+        121.92
+      ]
+    },
+    {
+      "name": "OSC1",
+      "position": [
+        430.53,
+        147.32
+      ]
+    },
+    {
+      "name": "+3.3V",
+      "position": [
+        254.0,
+        492.76
+      ]
+    },
+    {
+      "name": "GATE_CTRL",
+      "position": [
+        269.24,
+        508.0
+      ]
+    },
+    {
+      "name": "U1_FB",
+      "position": [
+        317.5,
+        384.81
+      ]
+    },
+    {
+      "name": "CAN_TX",
+      "position": [
+        459.74,
+        114.3
+      ]
+    },
+    {
+      "name": "SPI_CE0",
+      "position": [
+        429.26,
+        116.84
+      ]
+    },
+    {
+      "name": "+5V",
+      "position": [
+        317.5,
+        377.19
+      ]
+    },
+    {
+      "name": "SPI_MISO",
+      "position": [
+        429.26,
+        114.3
+      ]
+    },
+    {
+      "name": "12V_FUSED",
+      "position": [
+        129.54,
+        120.65
+      ]
+    }
+  ],
+  "global_labels": [
+    "+5V",
+    "SPI_MOSI",
+    "CAN_INT",
+    "AUDIO_R+",
+    "IGN_DETECT",
+    "XTAL2",
+    "GND",
+    "12V_FUSED",
+    "TIMER_LED",
+    "CANH",
+    "FAN-",
+    "GATE_CTRL",
+    "SPI_CE0",
+    "CANL",
+    "LED3_ANODE",
+    "SHUTDOWN_REQ",
+    "SPI_MISO",
+    "LED2_ANODE",
+    "XTAL1",
+    "CAN_RX",
+    "Q2_GATE",
+    "+3.3V",
+    "FAN_PWM",
+    "HEARTBEAT_LED",
+    "CAN_TX",
+    "SPI_SCLK",
+    "12V_SWITCHED",
+    "AUDIO_L_OUT",
+    "RESET",
+    "12V_IGN",
+    "AUDIO_R-",
+    "AUDIO_R_OUT"
+  ]
+}

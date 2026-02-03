@@ -1,0 +1,42 @@
+================================================================================
+ACTION CHECKLIST - TODO ITEMS
+================================================================================
+
+PRIORITY 1: ADD MISSING COMPONENTS
+--------------------------------------------------------------------------------
+  [ ] Add R7 to schematic
+
+PRIORITY 2: FIX COMPONENT VALUES
+--------------------------------------------------------------------------------
+  [ ] Change L1 from '10uH' to '33µH'
+  [ ] Change Y1 from '8MHz' to '16MHz'
+
+PRIORITY 3: FIX J1 (ISO-A CONNECTOR) WIRING
+--------------------------------------------------------------------------------
+  [ ] Remove SPI_CE0 from J1 pins
+  [ ] Remove SPI_MISO from J1 pins
+  [ ] Remove SPI_MOSI from J1 pins
+  [ ] Remove SPI_SCLK from J1 pins
+  [ ] Change J1 Pin 7 from '+3.3V' to '12V_ACC'
+  [ ] Connect J1 Pin 8 to 'GND'
+  [ ] Leave J1 Pins 1,2,3,5,6 unconnected (not used)
+
+PRIORITY 4: VERIFY ALL COMPONENT CONNECTIONS
+--------------------------------------------------------------------------------
+  [ ] Verify U1 (TPS54560) feedback network
+  [ ] Verify U2 (LTV-817S) optoisolator connections
+  [ ] Verify U3 (ATtiny85) all GPIO pins assigned
+  [ ] Verify U4 (MCP2515) SPI connections to J2 (Pi GPIO)
+  [ ] Verify U5 (SN65HVD230) CAN connections to J3 (OBD-II)
+  [ ] Verify U6 (3.3V LDO) input from 5V, output to 3.3V
+  [ ] Verify Q1 gate drive circuit (R_Q1_GATE, R_Q1_PULLDOWN)
+  [ ] Verify Q2, Q3 LED driver circuits
+
+PRIORITY 5: FINAL VERIFICATION
+--------------------------------------------------------------------------------
+  [ ] Run ERC and verify <60 errors remaining
+  [ ] Review all power nets (12V_IGN, +5V, +3.3V, GND)
+  [ ] Review all signal nets for correct routing
+  [ ] Verify no net conflicts (like previous CAN_INT/SPI_CE0)
+  [ ] Create backup before PCB layout
+  [ ] Commit to git with detailed message
