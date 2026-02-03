@@ -10370,6 +10370,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 368.38 428.07 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "91f77e1c-135f-4435-a4f9-2c32f8482721")
+		(property "Reference" "#FLG0b08f0101"
+			(at 368.38 425.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 368.38 422.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 368.38 428.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 368.38 428.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 368.38 428.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "74f5998a-0ec5-4c14-8274-fd0ddf9d2dd0")
+		)
+		(instances
+			(project "can-hat"
+				(path "/7bb601d0-af23-47b8-978e-986fbee2569f"
+					(reference "#FLG0b08f0101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 508 381 0)
 		(unit 1)
@@ -11416,7 +11481,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "d9a4bd41-0608-45a2-98d5-db90a791052e")
+		(uuid "9a68fc82-de1a-4b03-964c-94d85cb3ef31")
 	)
 	(label "OSC2"
 		(at 194.31 571.5 0)
@@ -11426,47 +11491,37 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "8409f993-eb81-44d4-b548-36c073c09c11")
+		(uuid "2fe80054-8894-42ec-b42d-a6b4edc96b9e")
 	)
-	(label "GND"
-		(at 381 438.15 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "11a57117-6084-4d01-8ea6-7bfd2775af9e")
-	)
-	(label "OSC1"
-		(at 184.15 571.5 180)
+	(label "+5V"
+		(at 373.38 433.07 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "3dcbb425-3599-445a-b888-ba3534237709")
+		(uuid "3bdc96ad-1c24-48c4-8c04-f68f20e487e7")
 	)
-	(label "OSC2"
-		(at 196.85 571.5 0)
+	(label "+3.3V"
+		(at 388.62 433.07 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "0c042807-be0b-42b2-bcf3-efbd9830f427")
+		(uuid "fc7fac6d-b364-4c1b-99a4-09752d557e6d")
 	)
 	(label "GND"
-		(at 436.88 500.38 180)
+		(at 439.42 500.38 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "7b3e7eb6-48e1-4e5a-b5f2-bbfb1af3176b")
+		(uuid "78799875-555b-4c4d-bc33-bc179f27e7e4")
 	)
 	(sheet_instances
 		(path "/"

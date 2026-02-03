@@ -5,7 +5,8 @@ This directory contains the split schematics from the combined `wrx-power-can-ha
 ## Board Structure
 
 ### 1. Power HAT (`power-hat/`)
-**Status: ✅ ERC CLEAN - 0 Errors, 73 Warnings**
+**Schematic Status: ✅ ERC CLEAN - 0 Errors, 73 Warnings**
+**PCB Status: 🟡 Initial Layout Complete - Components Placed**
 
 Core power management and ignition control:
 - **U1**: TPS54560 5V/5A Buck Converter (12V → 5V)
@@ -25,8 +26,17 @@ Core power management and ignition control:
 - TIMER_LED (pin 13/GPIO27) - ATtiny85 → Pi timer status
 - IGN_DETECT (pin 15/GPIO22) - Optocoupler → Pi ignition state
 
+**PCB Layout Features:**
+- Board outline: 65mm × 56mm (standard Pi HAT)
+- 4× M2.5 mounting holes at corners
+- 40-pin GPIO header (J2) positioned for Pi stacking
+- Power section grouped on left side
+- MCU/control section in center-bottom
+- Layout script: `layout_power_hat.py`
+
 ### 2. CAN HAT (`can-hat/`)
-**Status: Major Wiring Complete (fix_can_hat.py) - Needs USB-C Components**
+**Schematic Status: ✅ ERC CLEAN - Fixed crystal, OBD-II, and power connections**
+**PCB Status: ⏳ Not Started**
 
 CAN bus communication interface:
 - **U2**: MCP2515 CAN Controller (SPI interface)
@@ -53,7 +63,8 @@ CAN bus communication interface:
 - Allows power from either GPIO header or USB-C
 
 ### 3. DAC/Amp Module (`dac-amp/`)
-**Status: Schematic Generated - Needs Wiring**
+**Schematic Status: ✅ Complete - I2S, I2C, power, and speaker outputs wired**
+**PCB Status: ⏳ Not Started**
 
 4-channel 50W Class D audio amplifier:
 - **U1**: PCM5142 Stereo I2S DAC
@@ -85,6 +96,8 @@ CAN bus communication interface:
 | `fix_power_hat_v14.py` | Wire U3 PB0/PB1 to GPIO17/GPIO27 for status signals |
 | `fix_can_hat.py` | Complete CAN HAT wiring (GPIO, SPI, CAN, power) |
 | `create_dac_amp_schematic.py` | Generate DAC/Amp schematic from scratch |
+| `layout_power_hat.py` | Power HAT PCB component placement |
+| `layout_power_hat_v2.py` | Improved layout with better spacing |
 
 ## Current ERC Status
 
@@ -170,7 +183,9 @@ For J2 at position (200, 150):
 ## Next Steps
 
 1. ✅ ~~Power HAT ERC clean~~ - COMPLETE
-2. Run ERC on CAN HAT, fix remaining errors
-3. Wire DAC/Amp schematic
-4. Create PCB layouts for each board
-5. Design stackable header connections
+2. ✅ ~~CAN HAT ERC clean~~ - COMPLETE
+3. ✅ ~~DAC/Amp schematic wiring~~ - COMPLETE
+4. 🟡 **Power HAT PCB** - Initial layout done, needs routing
+5. ⏳ CAN HAT PCB layout
+6. ⏳ DAC/Amp PCB layout
+7. ⏳ Design stackable header connections
