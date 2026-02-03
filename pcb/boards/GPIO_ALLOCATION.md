@@ -69,8 +69,10 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | CAN_INT | 25 | 22 | MCP2515 interrupt (active low) |
 
 **Internal signals:**
-- CANH, CANL: CAN bus differential pair
+- CANH, CANL: CAN bus differential pair (to J2 OBD-II and J3 screw terminal)
 - CAN_TX, CAN_RX: MCP2515 to SN65HVD230 transceiver
+- OSC1, OSC2: 16MHz crystal (Y1) for MCP2515 timing
+- +3.3V local: From AMS1117-3.3 (U1) regulator, fed by +5V from GPIO header
 
 ### DAC/Amp HAT
 | Signal | GPIO | Pin | Description |
@@ -113,3 +115,5 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | Date | Change |
 |------|--------|
 | 2026-02-03 | Initial GPIO allocation for 3-board stack |
+| 2026-02-03 | DAC/Amp HAT schematic complete: Added 40-pin GPIO header (J7), wired I2S (BCK→Pin12, LRCK→Pin35, DOUT→Pin40), I2C (SDA→Pin3, SCL→Pin5), power distribution, DAC-to-amp differential audio, speaker outputs (J3-J6), control pins |
+| 2026-02-03 | CAN HAT ERC fixes: Added OSC1/OSC2 labels at Y1 crystal, added GND to J2 OBD-II Pin 5, verified SPI/CAN_INT labels connect J1 to MCP2515, deleted orphan PWR_FLAG, U1 AMS1117-3.3 has +5V input and +3.3V/GND connected |
