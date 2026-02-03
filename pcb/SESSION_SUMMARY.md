@@ -1,12 +1,46 @@
 # Session Summary - Input Protection Circuit & Schematic Analysis
 
-**Date:** 2026-02-02 (Updated)
-**Status:** J1 Connector Fixed, Component Values Updated
+**Date:** 2026-02-02 (Updated - Session 3)
+**Status:** LED and MOSFET circuits wired
 **ERC Status:** Pending verification (run ERC in KiCad)
 
 ---
 
-## ✓ LATEST SESSION WORK (2026-02-02 Continuation)
+## ✓ SESSION 3 WORK (2026-02-02 Continued)
+
+### LED Indicator Circuits - WIRED ✓
+
+**LED2 (Red - Timer LED) Circuit:**
+- Changed incorrect GND at LED2 Anode to +3.3V
+- Added wires: LED2 Cathode (504.19, 317.5) → R12 Pin 1 (508, 377.19)
+- Added TIMER_LED global label at R12 Pin 2 (508, 384.81)
+- Circuit: +3.3V → LED2 → R12 (10kΩ) → TIMER_LED → ATtiny85
+
+**LED3 (Yellow - Heartbeat LED) Circuit:**
+- Changed misplaced LED3_ANODE label to +3.3V at correct position (575.31, 317.5)
+- Added wires: LED3 Cathode (567.69, 317.5) → R13 Pin 1 (571.5, 377.19)
+- Added HEARTBEAT_LED global label at R13 Pin 2 (571.5, 384.81)
+- Circuit: +3.3V → LED3 → R13 (470Ω) → HEARTBEAT_LED → ATtiny85
+
+### Q2 Gate Driver - WIRED ✓
+
+- Added GND global label at Q2 Source (383.54, 132.08)
+- Q2 drives Q1 gate for power MOSFET control
+
+### Q3 Fan PWM Control - WIRED ✓
+
+- Added FAN_PWM global label at Q3 Gate (566.42, 508)
+- Added FAN- global label at Q3 Drain (574.04, 502.92)
+- Added GND global label at Q3 Source (574.04, 513.08)
+- Circuit: FAN_PWM (GPIO) → Q3 Gate → Fan Negative (low-side switch)
+
+### Backup
+
+- Backup: wrx-power-can-hat-MANUAL-BACKUP10.kicad_sch
+
+---
+
+## ✓ PREVIOUS SESSION WORK (2026-02-02 Continuation)
 
 ### J1 ISO-A Connector - FIXED ✓
 
