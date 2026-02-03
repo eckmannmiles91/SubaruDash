@@ -1,8 +1,53 @@
 # Session Summary - Input Protection Circuit & Schematic Analysis
 
-**Date:** 2026-02-02
-**Status:** Input Protection Complete, J1 Connector Issues Identified
-**ERC Status:** 62 errors (down from 69)
+**Date:** 2026-02-02 (Updated)
+**Status:** J1 Connector Fixed, Component Values Updated
+**ERC Status:** Pending verification (run ERC in KiCad)
+
+---
+
+## ✓ LATEST SESSION WORK (2026-02-02 Continuation)
+
+### J1 ISO-A Connector - FIXED ✓
+
+**Changes Made:**
+- Removed SPI_MOSI label and wires from J1 Pin 3
+- Removed SPI_SCLK label and wires from J1 Pin 5
+- Removed +3.3V label and wires from J1 Pin 1
+- Removed GND label from J1 Pin 2
+- Changed J1 Pin 7 from IGN_DETECT to 12V_ACC (global label)
+- Changed J1 Pin 8 GROUND to GND for consistency
+- Added no_connect markers to unused pins (1, 2, 3, 5)
+
+**Correct J1 Wiring Now:**
+| Pin | Connection | Status |
+|-----|------------|--------|
+| 1 | NC (no_connect) | ✓ FIXED |
+| 2 | NC (no_connect) | ✓ FIXED |
+| 3 | NC (no_connect) | ✓ FIXED |
+| 4 | 12V_IN | ✓ Correct |
+| 5 | NC (no_connect) | ✓ FIXED |
+| 6 | Unconnected | ✓ Correct |
+| 7 | 12V_ACC | ✓ FIXED |
+| 8 | GND | ✓ FIXED |
+
+### U2 Optoisolator - FIXED ✓
+
+**Changes Made:**
+- Changed R6 input from 12V_IGN to 12V_ACC (connects J1 Pin 7 to optoisolator)
+- Changed U2 Pin 4 (Collector) from GND to +3.3V
+
+**Note:** R7 (10kΩ pull-up) should ideally be added as a discrete component between +3.3V and Pin 4 for current limiting. Current design connects +3.3V directly.
+
+### Component Values - FIXED ✓
+
+- **L1**: Changed from 10µH to 33µH (TPS54560 inductor)
+- **Y1**: Changed from 8MHz to 16MHz (crystal frequency)
+
+### Commit
+
+- Commit: 5da0fe7 "Fix J1 ISO-A connector wiring and component values"
+- Backup: wrx-power-can-hat-MANUAL-BACKUP9.kicad_sch
 
 ---
 
