@@ -31,11 +31,14 @@ Core power management and ignition control:
 
 **PCB Layout Features:**
 - Board outline: 65mm × 56mm (standard Pi HAT)
-- 4× M2.5 mounting holes at corners
-- 40-pin GPIO header (J2) positioned for Pi stacking
-- Power section grouped on left side
-- MCU/control section in center-bottom
-- Layout script: `layout_power_hat.py`
+- 4× M2.5 HAT mounting holes at corners (3.5, 3.5), (61.5, 3.5), (3.5, 52.5), (61.5, 52.5)
+- 4× M3 fan mounting holes for 30mm fan (24mm spacing) centered at (32.5, 32)
+- 40-pin GPIO header (J2) horizontal along top edge
+- Power section (U1, L1, D1, D2) on left side, clear of fan zone
+- MCU section (U3, Y1, R4-R7) on right side
+- Power switching (Q1, Q2, Q3) bottom-right
+- **All capacitors (C1-C9) placed on back layer (B.Cu)** for better front-side clearance
+- Layout scripts: `layout_power_hat_v3.py` (X735-style), `layout_power_hat_v4.py` (improved spacing)
 
 ### 2. CAN HAT (`can-hat/`)
 **Schematic Status: ✅ ERC CLEAN - Fixed crystal, OBD-II, and power connections**
@@ -104,6 +107,9 @@ CAN bus communication interface:
 | `layout_power_hat_v3.py` | X735-style layout with 30mm fan |
 | `fix_power_hat_fan.py` | Upgrade J4 from 2-pin to 4-pin fan connector |
 | `fix_power_hat_fan_complete.py` | Wire J4 pins 3,4 to GPIO12,13 for PWM fan control |
+| `layout_power_hat_v4.py` | Improved layout with fan clearance zones |
+| `move_caps_to_back.py` | Move capacitors to B.Cu (back layer) |
+| `fix_cap_pads.py` | Fix SMD pad layers for back-layer components |
 
 ## Current ERC Status
 
