@@ -17,8 +17,8 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | 9 | 21 | CAN | SPI_MISO | Input | MCP2515 data out |
 | 10 | 19 | CAN | SPI_MOSI | Output | MCP2515 data in |
 | 11 | 23 | CAN | SPI_SCLK | Output | MCP2515 clock |
-| 12 | 32 | - | - | - | **Available** |
-| 13 | 33 | - | - | - | **Available** |
+| 12 | 32 | Power | FAN_PWM | Pi→Fan | PWM fan speed control (25kHz) |
+| 13 | 33 | Power | FAN_TACH | Fan→Pi | Fan tachometer (2 pulses/rev) |
 | 14 | 8 | - | UART_TXD | - | Reserved (serial console) |
 | 15 | 10 | - | UART_RXD | - | Reserved (serial console) |
 | 16 | 36 | - | - | - | **Available** |
@@ -52,6 +52,8 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | HEARTBEAT_LED | 17 | 11 | ATtiny85 alive indicator (active = running) |
 | IGN_DETECT | 22 | 15 | Ignition on/off state from optocoupler |
 | TIMER_LED | 27 | 13 | Shutdown timer countdown indicator |
+| FAN_PWM | 12 | 32 | Pi outputs 25kHz PWM for fan speed control |
+| FAN_TACH | 13 | 33 | Fan tachometer input (2 pulses per revolution) |
 
 **Internal signals (not on GPIO header):**
 - GATE_CTRL: ATtiny85 → MOSFET gate driver
@@ -94,8 +96,6 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | 5 | 29 | General purpose |
 | 6 | 31 | General purpose |
 | 7 | 26 | SPI CE1 (if needed for second SPI device) |
-| 12 | 32 | PWM capable |
-| 13 | 33 | PWM capable |
 | 16 | 36 | General purpose |
 | 20 | 38 | General purpose |
 | 23 | 16 | General purpose |
@@ -108,13 +108,13 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 2. **I2C Bus**: Used by DAC/Amp for PCM5142 configuration. Other I2C devices can share.
 3. **I2S**: Directly driven by Pi's hardware I2S interface.
 4. **UART**: Pins 8/10 (GPIO14/15) reserved for debug console, not used by HATs.
-5. **PWM**: GPIO12/13 available for future PWM needs (fan speed control?).
+5. **PWM Fan Control**: GPIO12 (hardware PWM) controls fan speed, GPIO13 reads tachometer for RPM monitoring.
 
 ## Schematic Verification Status
 
 | Board | ERC Errors | ERC Warnings | Status |
 |-------|------------|--------------|--------|
-| Power HAT | 0 | 44 | ✅ Verified |
+| Power HAT | 0 | 49 | ✅ Verified |
 | CAN HAT | 0 | 48 | ✅ Verified |
 | DAC/Amp HAT | TBD | TBD | Pending |
 
@@ -133,3 +133,4 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | 2026-02-03 | CAN HAT schematic complete (0 ERC errors): U1 AMS1117-3.3 with PWR_FLAG for power, Y1 16MHz crystal wired to MCP2515, LED status indicators (R2/R3) grounded, J2 OBD-II connector with CANH/CANL/GND, SPI bus and CAN_INT connected to 40-pin GPIO header |
 | 2026-02-03 | Power HAT schematic verified (0 ERC errors): TPS54560 buck converter, ATtiny85 power sequencing, LTV-817S optocoupler for ignition detection, IRLB8721 power MOSFET, all GPIO signals connected to 40-pin header |
 | 2026-02-03 | Full verification: Both CAN HAT and Power HAT pass ERC with 0 errors, inter-board power and signal routing confirmed compatible |
+| 2026-02-03 | Power HAT fan control: GPIO12 (FAN_PWM) and GPIO13 (FAN_TACH) allocated for 4-pin PWM fan. Pi controls fan based on CPU temperature. |

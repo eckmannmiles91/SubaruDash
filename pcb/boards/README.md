@@ -5,7 +5,7 @@ This directory contains the split schematics from the combined `wrx-power-can-ha
 ## Board Structure
 
 ### 1. Power HAT (`power-hat/`)
-**Schematic Status: ✅ ERC CLEAN - 0 Errors, 73 Warnings**
+**Schematic Status: ✅ ERC CLEAN - 0 Errors, 49 Warnings**
 **PCB Status: 🟡 Initial Layout Complete - Components Placed**
 
 Core power management and ignition control:
@@ -13,6 +13,7 @@ Core power management and ignition control:
 - **U3**: ATtiny85 Power Management MCU
 - **J1**: 12V Input Screw Terminal
 - **J2**: 40-pin Raspberry Pi GPIO Header
+- **J4**: 4-pin PWM Fan Connector (30mm fan)
 - **F1**: Input Fuse
 - MOSFETs (Q1, Q2, Q3) for power switching
 - Ignition detection optocoupler circuit
@@ -25,6 +26,8 @@ Core power management and ignition control:
 - HEARTBEAT_LED (pin 11/GPIO17) - ATtiny85 → Pi heartbeat status
 - TIMER_LED (pin 13/GPIO27) - ATtiny85 → Pi timer status
 - IGN_DETECT (pin 15/GPIO22) - Optocoupler → Pi ignition state
+- FAN_PWM (pin 32/GPIO12) - Pi → Fan PWM speed control
+- FAN_TACH (pin 33/GPIO13) - Fan → Pi tachometer feedback
 
 **PCB Layout Features:**
 - Board outline: 65mm × 56mm (standard Pi HAT)
@@ -98,6 +101,9 @@ CAN bus communication interface:
 | `create_dac_amp_schematic.py` | Generate DAC/Amp schematic from scratch |
 | `layout_power_hat.py` | Power HAT PCB component placement |
 | `layout_power_hat_v2.py` | Improved layout with better spacing |
+| `layout_power_hat_v3.py` | X735-style layout with 30mm fan |
+| `fix_power_hat_fan.py` | Upgrade J4 from 2-pin to 4-pin fan connector |
+| `fix_power_hat_fan_complete.py` | Wire J4 pins 3,4 to GPIO12,13 for PWM fan control |
 
 ## Current ERC Status
 
