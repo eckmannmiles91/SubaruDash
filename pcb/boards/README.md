@@ -34,11 +34,24 @@ Core power management and ignition control:
 - 4× M2.5 HAT mounting holes at corners (3.5, 3.5), (61.5, 3.5), (3.5, 52.5), (61.5, 52.5)
 - 4× M3 fan mounting holes for 30mm fan (24mm spacing) centered at (32.5, 32)
 - 40-pin GPIO header (J2) horizontal along top edge
-- Power section (U1, L1, D1, D2) on left side, clear of fan zone
-- MCU section (U3, Y1, R4-R7) on right side
-- Power switching (Q1, Q2, Q3) bottom-right
-- **All capacitors (C1-C9) placed on back layer (B.Cu)** for better front-side clearance
+- Power section (U1, L1) on left side, clear of fan zone
+- MCU section (U3, Y1) on right side
+- Power switching (Q1) bottom-right
 - Layout scripts: `layout_power_hat_v3.py` (X735-style), `layout_power_hat_v4.py` (improved spacing)
+
+**Two-Layer Component Strategy:**
+- **Front layer (F.Cu):** Through-hole and thermal components
+  - Connectors: J1, J2, J3, J4, JP1, JP2
+  - ICs: U1 (TPS54560), U2 (optocoupler), U3 (ATtiny85)
+  - Power: Q1 (TO-220 MOSFET), L1 (inductor), F1 (fuse)
+  - Crystal: Y1
+- **Back layer (B.Cu):** SMD passives positioned under related front components
+  - Under U1 (buck converter): R1, R2, R_RT1, R_COMP1, D2
+  - Under U3 (MCU): R4, R5, R6, R7
+  - Under U2 (optocoupler): R8, R9
+  - Under Q1 (MOSFET): Q2, Q3, R10
+  - Under J1 (power input): D1
+  - Capacitors: C1-C9, C_BOOT1, C_COMP1
 
 ### 2. CAN HAT (`can-hat/`)
 **Schematic Status: ✅ ERC CLEAN - Fixed crystal, OBD-II, and power connections**
@@ -110,6 +123,8 @@ CAN bus communication interface:
 | `layout_power_hat_v4.py` | Improved layout with fan clearance zones |
 | `move_caps_to_back.py` | Move capacitors to B.Cu (back layer) |
 | `fix_cap_pads.py` | Fix SMD pad layers for back-layer components |
+| `move_smd_to_back.py` | Move resistors, diodes, SOT-23 MOSFETs to B.Cu |
+| `fix_back_positions.py` | Apply board offset to back-layer component positions |
 
 ## Current ERC Status
 

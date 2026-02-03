@@ -135,3 +135,4 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | 2026-02-03 | Full verification: Both CAN HAT and Power HAT pass ERC with 0 errors, inter-board power and signal routing confirmed compatible |
 | 2026-02-03 | Power HAT fan control: GPIO12 (FAN_PWM) and GPIO13 (FAN_TACH) allocated for 4-pin PWM fan. Pi controls fan based on CPU temperature. |
 | 2026-02-03 | Power HAT PCB layout v4: 8 mounting holes (4× M2.5 HAT corners, 4× M3 for 30mm fan), all capacitors moved to B.Cu (back layer), components repositioned around fan clearance zones |
+| 2026-02-03 | Power HAT PCB back-layer optimization: Moved 16 SMD components to B.Cu (12 resistors, 2 diodes, 2 SOT-23 MOSFETs) positioned strategically under related front-layer ICs for shorter traces |
