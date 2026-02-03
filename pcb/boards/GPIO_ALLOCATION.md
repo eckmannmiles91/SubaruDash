@@ -110,6 +110,20 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 4. **UART**: Pins 8/10 (GPIO14/15) reserved for debug console, not used by HATs.
 5. **PWM**: GPIO12/13 available for future PWM needs (fan speed control?).
 
+## Schematic Verification Status
+
+| Board | ERC Errors | ERC Warnings | Status |
+|-------|------------|--------------|--------|
+| Power HAT | 0 | 44 | ✅ Verified |
+| CAN HAT | 0 | 48 | ✅ Verified |
+| DAC/Amp HAT | TBD | TBD | Pending |
+
+### Inter-Board Connectivity Verified:
+- **Power**: +5V from TPS54560 (Power HAT) → GPIO pins 2/4 → AMS1117-3.3 (CAN HAT)
+- **Ground**: Shared across all boards via GPIO pins 6, 9, 14, 20, 25, 30, 34, 39
+- **SPI Bus**: Pi ↔ MCP2515 via GPIO 8-11 (no conflicts)
+- **Power Signals**: GPIO 4, 17, 22, 27 for ATtiny85 communication (no conflicts)
+
 ## Revision History
 
 | Date | Change |
@@ -117,3 +131,5 @@ This document tracks GPIO pin usage across all three stackable HAT boards.
 | 2026-02-03 | Initial GPIO allocation for 3-board stack |
 | 2026-02-03 | DAC/Amp HAT schematic complete: Added 40-pin GPIO header (J7), wired I2S (BCK→Pin12, LRCK→Pin35, DOUT→Pin40), I2C (SDA→Pin3, SCL→Pin5), power distribution, DAC-to-amp differential audio, speaker outputs (J3-J6), control pins |
 | 2026-02-03 | CAN HAT schematic complete (0 ERC errors): U1 AMS1117-3.3 with PWR_FLAG for power, Y1 16MHz crystal wired to MCP2515, LED status indicators (R2/R3) grounded, J2 OBD-II connector with CANH/CANL/GND, SPI bus and CAN_INT connected to 40-pin GPIO header |
+| 2026-02-03 | Power HAT schematic verified (0 ERC errors): TPS54560 buck converter, ATtiny85 power sequencing, LTV-817S optocoupler for ignition detection, IRLB8721 power MOSFET, all GPIO signals connected to 40-pin header |
+| 2026-02-03 | Full verification: Both CAN HAT and Power HAT pass ERC with 0 errors, inter-board power and signal routing confirmed compatible |
