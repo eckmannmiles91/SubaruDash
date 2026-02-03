@@ -6206,7 +6206,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_FET:IRF9540N"
+		(symbol "Transistor_FET:IRLB8721PBF"
 			(pin_names
 				(hide yes)
 			)
@@ -6222,7 +6222,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "IRF9540N"
+			(property "Value" "IRLB8721PBF"
 				(at 5.08 0 0)
 				(effects
 					(font
@@ -6242,7 +6242,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "http://www.irf.com/product-info/datasheets/data/irf9540n.pdf"
+			(property "Datasheet" "http://www.infineon.com/dgdl/irlb8721pbf.pdf?fileId=5546d462533600a40153566056732591"
 				(at 5.08 -3.81 0)
 				(effects
 					(font
@@ -6252,7 +6252,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "-23A Id, -100V Vds, 117mOhm Rds, P-Channel HEXFET Power MOSFET, TO-220"
+			(property "Description" "62A Id, 30V Vds, 8.7 mOhm Rds, N-Channel HEXFET Power MOSFET, TO-220"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6261,7 +6261,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "P-Channel MOSFET HEXFET"
+			(property "ki_keywords" "N-Channel HEXFET MOSFET Logic-Level"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6279,7 +6279,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "IRF9540N_0_1"
+			(symbol "IRLB8721PBF_0_1"
 				(polyline
 					(pts
 						(xy 0.254 1.905) (xy 0.254 -1.905)
@@ -6318,18 +6318,6 @@
 				)
 				(polyline
 					(pts
-						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy 0.762 0.508) (xy 0.762 -0.508)
 					)
 					(stroke
@@ -6352,6 +6340,30 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
 				(circle
 					(center 1.651 0)
 					(radius 2.794)
@@ -6361,18 +6373,6 @@
 					)
 					(fill
 						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
 					)
 				)
 				(polyline
@@ -6423,7 +6423,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.794 -0.508) (xy 2.921 -0.381) (xy 3.683 -0.381) (xy 3.81 -0.254)
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
 					)
 					(stroke
 						(width 0)
@@ -6435,7 +6435,7 @@
 				)
 				(polyline
 					(pts
-						(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
 					)
 					(stroke
 						(width 0)
@@ -6446,7 +6446,7 @@
 					)
 				)
 			)
-			(symbol "IRF9540N_1_1"
+			(symbol "IRLB8721PBF_1_1"
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -7142,6 +7142,16 @@
 			(justify left bottom)
 		)
 		(uuid "336f050a-3506-48d6-acd2-e9e4a55e8ff8")
+	)
+	(label "Q1_GATE"
+		(at 311.15 119.38 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3572b454-1a1f-409d-b347-e8ad11dbe86d")
 	)
 	(label "GND"
 		(at 561.34 703.58 0)
@@ -7879,7 +7889,7 @@
 	)
 	(global_label "12V_FUSED"
 		(shape input)
-		(at 312.42 127 0)
+		(at 299.72 106.68 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7889,7 +7899,7 @@
 		)
 		(uuid "29114f89-4853-4cd9-9a62-215a460f43a2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 312.42 127 0)
+			(at 299.72 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8087,6 +8097,27 @@
 			)
 		)
 	)
+	(global_label "HEARTBEAT_LED"
+		(shape input)
+		(at 254 500.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5aeb7e0d-54e7-49b5-acdd-423ed60c14df")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 254 500.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "XTAL1"
 		(shape input)
 		(at 186.69 571.5 0)
@@ -8121,6 +8152,27 @@
 		(uuid "64592c31-5930-4e06-984c-a8b3b44666b7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 186.69 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 243.84 508 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "652733c9-c365-4dc3-bda4-713f6343c7ea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 243.84 508 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8192,6 +8244,27 @@
 			)
 		)
 	)
+	(global_label "IGN_DETECT"
+		(shape input)
+		(at 243.84 510.54 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6e25349e-b28c-4477-84bc-d05ee79c207e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 243.84 510.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "+5V"
 		(shape input)
 		(at 254 567.69 0)
@@ -8226,6 +8299,27 @@
 		(uuid "7dafb81c-6940-40d4-be8d-af854303d6f3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 436.88 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "TIMER_LED"
+		(shape input)
+		(at 254 518.16 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "81dfca0e-c46f-4335-8f1b-12cc5bc43265")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 254 518.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8352,6 +8446,27 @@
 		(uuid "977dfd51-f33a-4f48-b766-7e059bf2bfef")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 566.42 683.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SHUTDOWN_REQ"
+		(shape input)
+		(at 264.16 510.54 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "987989fb-7676-4fe8-82ef-f1d071684a97")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 264.16 510.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8530,6 +8645,27 @@
 	)
 	(global_label "GATE_CTRL"
 		(shape input)
+		(at 264.16 508 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "af1d1fd8-0f34-45a2-8952-064b7d248efa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 264.16 508 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE_CTRL"
+		(shape input)
 		(at 375.92 127 0)
 		(fields_autoplaced yes)
 		(effects
@@ -8635,7 +8771,7 @@
 	)
 	(global_label "12V_SWITCHED"
 		(shape input)
-		(at 320.04 132.08 0)
+		(at 318.77 114.3 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8645,7 +8781,7 @@
 		)
 		(uuid "bec3050c-0c52-4168-984c-988d244e05e8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 320.04 132.08 0)
+			(at 318.77 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8667,6 +8803,27 @@
 		(uuid "becbcd00-c7d6-47bf-88b4-f942c4a88801")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 317.5 504.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3.3V"
+		(shape input)
+		(at 243.84 513.08 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c2d0583c-3446-477a-9879-c627deaea88e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 243.84 513.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10514,6 +10671,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 318.77 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "44be17f7-e5df-430e-aeab-d2645c0684ed")
+		(property "Reference" "#PWR02"
+			(at 318.77 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 318.77 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 318.77 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 318.77 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 318.77 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a440dae-3b3d-4177-b297-3ca5ffa0d4e4")
+		)
+		(instances
+			(project ""
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 381 571.5 0)
 		(unit 1)
@@ -10706,6 +10929,82 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLB8721PBF")
+		(at 316.23 119.38 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4bf19320-bfa7-48b4-bf95-f086daf39c01")
+		(property "Reference" "Q1"
+			(at 322.58 118.1099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRLB8721PBF"
+			(at 322.58 120.6499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+			(at 321.31 121.285 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.infineon.com/dgdl/irlb8721pbf.pdf?fileId=5546d462533600a40153566056732591"
+			(at 321.31 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "62A Id, 30V Vds, 8.7 mOhm Rds, N-Channel HEXFET Power MOSFET, TO-220"
+			(at 316.23 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "67f606b3-6686-4721-8ad2-78bf188b7054")
+		)
+		(pin "1"
+			(uuid "bf0390b3-f156-4fca-83d2-b9af86749304")
+		)
+		(pin "3"
+			(uuid "19208003-5448-4308-a7de-508d2fdf0fac")
+		)
+		(instances
+			(project ""
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -11712,7 +12011,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "854d53e5-61cd-43fc-8785-bd1a33f15d07")
-		(property "Reference" "C_8"
+		(property "Reference" "C_BOOT1"
 			(at 172.72 345.4399 0)
 			(effects
 				(font
@@ -11766,7 +12065,7 @@
 		(instances
 			(project ""
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "C_8")
+					(reference "C_BOOT1")
 					(unit 1)
 				)
 			)
@@ -14117,75 +14416,6 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "C5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Transistor_FET:IRF9540N")
-		(at 317.5 127 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f83bfdc8-ea64-4619-8b1a-9205bbd0de99")
-		(property "Reference" "Q1"
-			(at 317.5 122 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "IRF9540N"
-			(at 317.5 132 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
-			(at 317.5 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.irf.com/product-info/datasheets/data/irf9540n.pdf"
-			(at 317.5 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "-23A Id, -100V Vds, 117mOhm Rds, P-Channel HEXFET Power MOSFET, TO-220"
-			(at 318.262 119.634 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2a83babc-db35-46b5-aa20-e03f87140049")
-		)
-		(pin "3"
-			(uuid "7ad47498-e35f-4de4-bc95-e1b9c002429c")
-		)
-		(pin "2"
-			(uuid "aa58ea33-f1fc-496a-bd9d-c85a4abb32cf")
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "Q1")
 					(unit 1)
 				)
 			)
