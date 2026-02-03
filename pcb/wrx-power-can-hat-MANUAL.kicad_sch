@@ -7349,7 +7349,7 @@
 		)
 		(uuid "fd9bcbb5-9514-40d7-ac7e-af3668072240")
 	)
-	(label "CANH"
+	(label "CANH_U5"
 		(at 581.66 698.5 0)
 		(effects
 			(font
@@ -7929,7 +7929,7 @@
 		)
 		(uuid "dda04e68-def4-4168-b057-13bd2321be5b")
 	)
-	(label "CANL"
+	(label "CANL_U5"
 		(at 581.66 701.04 0)
 		(effects
 			(font
@@ -7938,6 +7938,46 @@
 			(justify left bottom)
 		)
 		(uuid "e290dd7b-aabe-4941-a67c-8f78071f6a49")
+	)
+	(label "CANH_U5"
+		(at 596.19 698.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5fd5b677-a704-4aab-9b1d-a5b5d34eae2d")
+	)
+	(label "CANH"
+		(at 603.81 698.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b1da0ceb-60f1-41cf-92f0-3ffc1dac575a")
+	)
+	(label "CANL_U5"
+		(at 596.19 701.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0ff4d4fe-6f0d-4d41-9598-0b64d2685072")
+	)
+	(label "CANL"
+		(at 603.81 701.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2ca95dfc-30c9-452d-a4b4-cece0c4e0dc5")
 	)
 	(label "OSC1"
 		(at 430.53 147.32 0)
@@ -9678,6 +9718,48 @@
 			)
 		)
 	)
+	(global_label "12V_IGN"
+		(shape input)
+		(at 645 186.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6dd9f78d-4e36-4db2-86b2-28764f804adc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 645 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 645 194.31 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fedb5675-e5b2-4952-ac97-028ad2b2b552")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 645 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "+3.3V"
 		(shape input)
 		(at 381 504.19 0)
@@ -10585,6 +10667,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 645 190.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "82823e82-d536-48c3-8549-db37c0a913e7")
+		(property "Reference" "C20"
+			(at 645 185.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22uF"
+			(at 645 195.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 645 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 645 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 645 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a25a377d-1e95-40e2-acc1-f0cd5fafbccb")
+		)
+		(pin "2"
+			(uuid "cffc01b4-0235-41b7-85b1-421b84fc9969")
+		)
+		(instances
+			(project "wrx-power-can-hat-AUTO"
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "C20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 114.3 334.01 0)
 		(unit 1)
@@ -10667,7 +10815,7 @@
 				)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "10k 1%"
 			(at 254 386 0)
 			(effects
 				(font
@@ -10733,7 +10881,7 @@
 				)
 			)
 		)
-		(property "Value" "51k"
+		(property "Value" "51k 1%"
 			(at 317.5 386 0)
 			(effects
 				(font
@@ -12166,6 +12314,140 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:L")
+		(at 600 698.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "505611ed-23b5-4283-8c55-92a8237706de")
+		(property "Reference" "L2"
+			(at 600 693.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Ferrite"
+			(at 600 703.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 600 698.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 600 698.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAN bus EMI filter - insert in series with CANH"
+			(at 600 698.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2c08c716-2499-4e4a-a9ca-c67b6b442f58")
+		)
+		(pin "2"
+			(uuid "52144bda-3b21-4018-b763-f6676ddbf077")
+		)
+		(instances
+			(project "wrx-power-can-hat-AUTO"
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "L2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:L")
+		(at 600 701.04 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7577f95e-3cd8-4f2a-b092-e71e4f668588")
+		(property "Reference" "L3"
+			(at 600 696.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Ferrite"
+			(at 600 706.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 600 701.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 600 708.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAN bus EMI filter - insert in series with CANL"
+			(at 600 708.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f61874ee-971c-4178-aa0d-d1ea7eeb275a")
+		)
+		(pin "2"
+			(uuid "65a00bbb-bdf6-464f-8340-c03890882447")
+		)
+		(instances
+			(project "wrx-power-can-hat-AUTO"
+				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
+					(reference "L3")
 					(unit 1)
 				)
 			)
@@ -16024,7 +16306,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "470"
 			(at 295.91 123.1899 0)
 			(effects
 				(font
