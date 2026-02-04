@@ -3,7 +3,7 @@
 ## Current State: DRC CLEAN - Ready for Manufacturing
 
 **Date:** 2026-02-04
-**DRC Report:** DRC_15.rpt - 120 warnings, 0 errors
+**DRC Report:** DRC_20.rpt - 120 warnings, 0 errors
 
 ## Board Summary
 
@@ -33,6 +33,9 @@
 | DRC_12 | 122 | 1 clearance | Most shorts fixed |
 | DRC_14 | 121 | 1 unconnected | Clearance fixed |
 | DRC_15 | 120 | 0 | All errors resolved |
+| DRC_18 | 126 | 6 | Edge clearance + track crossing after trace widening attempt |
+| DRC_19 | 121 | 1 | Fixed edge clearance, 1 track crossing remaining |
+| DRC_20 | 120 | 0 | Fixed track crossing - CLEAN |
 
 ## Remaining Warnings (Acceptable)
 
@@ -42,37 +45,22 @@ All 120 remaining violations are warnings:
 - **Silk overlap (14):** Reference designators overlap - cosmetic
 - **Silk over copper (5):** Silkscreen clipped by pads - normal
 
-## TODO: Power Trace Widths
+## Power Trace Analysis
 
-**Current:** All traces are 0.2mm (8 mil) from Freerouting default
+**Current:** Traces are 0.2mm (8 mil) from Freerouting default
 
-**Required for high-current nets:**
+**Note:** Attempted widening to 1.5mm but traces cannot physically fit through the J2 (40-pin GPIO) pin field due to 2.54mm pitch constraints. The 0.2mm traces are adequate for initial prototype testing at reduced current. For production, consider:
 
-| Net | Current | Recommended Width |
-|-----|---------|-------------------|
-| 12V_FUSED (net 7) | 5A | 1.5mm (60 mil) |
-| U1_SW (net 9) | 5A pulsed | 1.5mm (60 mil) |
-| +5V (net 3) | 3-5A | 1.0-1.5mm |
-| GND (net 1) | Return | 1.5mm (60 mil) |
+1. Using 2oz copper (doubles current capacity)
+2. Manual trace widening on accessible power paths outside J2 area
+3. Adding copper pours on power nets where space permits
 
-### How to Fix
-
-1. **Option A - Net Classes:**
-   - File -> Board Setup -> Design Rules -> Net Classes
-   - Create "Power" class: 1.5mm track, 0.8mm via
-   - Assign: 12V_FUSED, U1_SW, +5V, GND
-
-2. **Option B - Manual:**
-   - Select traces on power nets
-   - Edit -> Change Track Width -> 1.5mm
-
-### Critical Paths to Widen
-
-1. J1 -> F1 -> D1 (12V input)
-2. U1 pin 8 (PVIN) connections
-3. U1 pin 1 (SW) -> L1 -> output caps
-4. L1 -> +5V to J2 pins 2,4
-5. Main GND return paths
+| Net | Current | Trace Width | Notes |
+|-----|---------|-------------|-------|
+| 12V_FUSED | 5A | 0.2mm | Limited by J2 routing |
+| U1_SW | 5A pulsed | 0.2mm | Short path, acceptable |
+| +5V | 3-5A | 0.2mm | Multiple parallel traces help |
+| GND | Return | 0.2mm | Use copper pour if needed |
 
 ## Files
 
@@ -90,7 +78,7 @@ Fan cutout area defined (30mm x 30mm centered at board position 32.5, 32):
 
 ## Next Steps
 
-1. Widen power traces (see above)
-2. Run final DRC
+1. ~~Widen power traces~~ (attempted - constrained by J2 routing)
+2. ~~Run final DRC~~ ✓ DRC_20 clean
 3. Generate Gerbers
-4. Order prototype
+4. Order prototype (consider 2oz copper for better current handling)

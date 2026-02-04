@@ -24,9 +24,7 @@
       (path pcb 0  166375 -90567.5  101375 -90567.5  101375 -34567.5  166375 -34567.5
             166375 -90567.5)
     )
-    (plane GND (polygon B.Cu 0  101400 -34584.4  101406 -34584.4  101393 -90545.2  166369 -90544.6
-            166376 -34577.5  101416 -34566.7  101500 -34500  101400 -34584.4))
-    (via "Via[0-1]_600:300_um")
+    (via "Via[0-1]_600:300_um" "Via[0-1]_1000:500_um" "Via[0-1]_800:400_um")
     (rule
       (width 250)
       (clearance 200)
@@ -501,6 +499,16 @@
       (shape (circle B.Cu 600))
       (attach off)
     )
+    (padstack "Via[0-1]_1000:500_um"
+      (shape (circle F.Cu 1000))
+      (shape (circle B.Cu 1000))
+      (attach off)
+    )
+    (padstack "Via[0-1]_800:400_um"
+      (shape (circle F.Cu 800))
+      (shape (circle B.Cu 800))
+      (attach off)
+    )
   )
   (network
     (net +12V
@@ -689,28 +697,46 @@
     (net "Net-(U1-OUTR-)"
       (pins U4-7 U1-24 U3-7)
     )
-    (class kicad_default +12V +3.3V GND I2C_SCL I2C_SDA I2S_BCK I2S_DOUT I2S_LRCK
-      "Net-(J3-Pin_1)" "Net-(J3-Pin_2)" "Net-(J4-Pin_1)" "Net-(J4-Pin_2)"
-      "Net-(J5-Pin_1)" "Net-(J5-Pin_2)" "Net-(J6-Pin_1)" "Net-(J6-Pin_2)"
-      "Net-(U1-OUTL+)" "Net-(U1-OUTL-)" "Net-(U1-OUTR+)" "Net-(U1-OUTR-)"
-      "unconnected-(J1-Pin_1-Pad1)" "unconnected-(J1-Pin_2-Pad2)" "unconnected-(J1-Pin_4-Pad4)"
-      "unconnected-(J1-Pin_5-Pad5)" "unconnected-(J1-Pin_6-Pad6)" "unconnected-(J7-Pin_1-Pad1)"
-      "unconnected-(J7-Pin_10-Pad10)" "unconnected-(J7-Pin_11-Pad11)" "unconnected-(J7-Pin_13-Pad13)"
-      "unconnected-(J7-Pin_14-Pad14)" "unconnected-(J7-Pin_15-Pad15)" "unconnected-(J7-Pin_16-Pad16)"
-      "unconnected-(J7-Pin_17-Pad17)" "unconnected-(J7-Pin_18-Pad18)" "unconnected-(J7-Pin_19-Pad19)"
-      "unconnected-(J7-Pin_2-Pad2)" "unconnected-(J7-Pin_20-Pad20)" "unconnected-(J7-Pin_21-Pad21)"
-      "unconnected-(J7-Pin_22-Pad22)" "unconnected-(J7-Pin_23-Pad23)" "unconnected-(J7-Pin_24-Pad24)"
-      "unconnected-(J7-Pin_25-Pad25)" "unconnected-(J7-Pin_26-Pad26)" "unconnected-(J7-Pin_27-Pad27)"
-      "unconnected-(J7-Pin_28-Pad28)" "unconnected-(J7-Pin_29-Pad29)" "unconnected-(J7-Pin_30-Pad30)"
-      "unconnected-(J7-Pin_31-Pad31)" "unconnected-(J7-Pin_32-Pad32)" "unconnected-(J7-Pin_33-Pad33)"
-      "unconnected-(J7-Pin_36-Pad36)" "unconnected-(J7-Pin_37-Pad37)" "unconnected-(J7-Pin_38-Pad38)"
-      "unconnected-(J7-Pin_39-Pad39)" "unconnected-(J7-Pin_4-Pad4)" "unconnected-(J7-Pin_6-Pad6)"
-      "unconnected-(J7-Pin_7-Pad7)" "unconnected-(J7-Pin_8-Pad8)" "unconnected-(J7-Pin_9-Pad9)"
+    (class kicad_default GND I2C_SCL I2C_SDA I2S_BCK I2S_DOUT I2S_LRCK "Net-(J3-Pin_1)"
+      "Net-(J3-Pin_2)" "Net-(J4-Pin_1)" "Net-(J4-Pin_2)" "Net-(J5-Pin_1)"
+      "Net-(J5-Pin_2)" "Net-(J6-Pin_1)" "Net-(J6-Pin_2)" "Net-(U1-OUTL+)"
+      "Net-(U1-OUTL-)" "Net-(U1-OUTR+)" "Net-(U1-OUTR-)" "unconnected-(J1-Pin_1-Pad1)"
+      "unconnected-(J1-Pin_2-Pad2)" "unconnected-(J1-Pin_4-Pad4)" "unconnected-(J1-Pin_5-Pad5)"
+      "unconnected-(J1-Pin_6-Pad6)" "unconnected-(J7-Pin_1-Pad1)" "unconnected-(J7-Pin_10-Pad10)"
+      "unconnected-(J7-Pin_11-Pad11)" "unconnected-(J7-Pin_13-Pad13)" "unconnected-(J7-Pin_14-Pad14)"
+      "unconnected-(J7-Pin_15-Pad15)" "unconnected-(J7-Pin_16-Pad16)" "unconnected-(J7-Pin_17-Pad17)"
+      "unconnected-(J7-Pin_18-Pad18)" "unconnected-(J7-Pin_19-Pad19)" "unconnected-(J7-Pin_2-Pad2)"
+      "unconnected-(J7-Pin_20-Pad20)" "unconnected-(J7-Pin_21-Pad21)" "unconnected-(J7-Pin_22-Pad22)"
+      "unconnected-(J7-Pin_23-Pad23)" "unconnected-(J7-Pin_24-Pad24)" "unconnected-(J7-Pin_25-Pad25)"
+      "unconnected-(J7-Pin_26-Pad26)" "unconnected-(J7-Pin_27-Pad27)" "unconnected-(J7-Pin_28-Pad28)"
+      "unconnected-(J7-Pin_29-Pad29)" "unconnected-(J7-Pin_30-Pad30)" "unconnected-(J7-Pin_31-Pad31)"
+      "unconnected-(J7-Pin_32-Pad32)" "unconnected-(J7-Pin_33-Pad33)" "unconnected-(J7-Pin_36-Pad36)"
+      "unconnected-(J7-Pin_37-Pad37)" "unconnected-(J7-Pin_38-Pad38)" "unconnected-(J7-Pin_39-Pad39)"
+      "unconnected-(J7-Pin_4-Pad4)" "unconnected-(J7-Pin_6-Pad6)" "unconnected-(J7-Pin_7-Pad7)"
+      "unconnected-(J7-Pin_8-Pad8)" "unconnected-(J7-Pin_9-Pad9)"
       (circuit
         (use_via "Via[0-1]_600:300_um")
       )
       (rule
         (width 250)
+        (clearance 200)
+      )
+    )
+    (class +12V,Default +12V
+      (circuit
+        (use_via "Via[0-1]_1000:500_um")
+      )
+      (rule
+        (width 800)
+        (clearance 250)
+      )
+    )
+    (class +3.3V,Default +3.3V
+      (circuit
+        (use_via "Via[0-1]_800:400_um")
+      )
+      (rule
+        (width 400)
         (clearance 200)
       )
     )

@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [],
@@ -482,20 +482,44 @@
         "wire_width": 6
       },
       {
-        "clearance": 0.3,
-        "name": "Power",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.5
-      },
-      {
-        "clearance": 0.4,
-        "name": "Speaker",
+        "clearance": 0.25,
+        "name": "+12V",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 1.0
+        "track_width": 0.8,
+        "via_diameter": 1.0,
+        "via_drill": 0.5
+      },
+      {
+        "clearance": 0.2,
+        "name": "+3.3V",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.4,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      },
+      {
+        "clearance": 0.2,
+        "name": "+5V",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.4,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      },
+      {
+        "clearance": 0.25,
+        "name": "Speaker",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.8,
+        "via_diameter": 1.0,
+        "via_drill": 0.5
       }
     ],
     "meta": {
@@ -505,8 +529,8 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Power",
-        "pattern": "+12V, +3,3V, GND"
+        "netclass": "+12V",
+        "pattern": "+12V"
       },
       {
         "netclass": "Speaker",
@@ -515,6 +539,14 @@
       {
         "netclass": "Default",
         "pattern": "All Signals"
+      },
+      {
+        "netclass": "+3.3V",
+        "pattern": "+3.3V"
+      },
+      {
+        "netclass": "+5V",
+        "pattern": "+5V"
       }
     ]
   },

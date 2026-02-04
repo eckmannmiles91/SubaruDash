@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [],
@@ -117,7 +117,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.2,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
@@ -129,10 +129,10 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.2,
-        "min_track_width": 0.0,
+        "min_through_hole_diameter": 0.3,
+        "min_track_width": 0.2,
         "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.5,
+        "min_via_diameter": 0.6,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -446,12 +446,19 @@
       "wire_dangling": "error"
     }
   },
+  "lib_tables": {
+    "sym_lib_table": {
+      "custom": "../../kicad/library/custom.kicad_sym"
+    }
+  },
   "libraries": {
     "pinned_footprint_libs": [],
-    "pinned_symbol_libs": []
+    "pinned_symbol_libs": [
+      "custom"
+    ]
   },
   "meta": {
-    "filename": "power-hat.kicad_pro",
+    "filename": "dac_amp_test.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -469,19 +476,50 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.2,
+        "track_width": 0.25,
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
       },
       {
-        "name": "Power",
+        "clearance": 0.25,
+        "name": "+12V",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.6,
-        "via_diameter": 0.8,
-        "via_drill": 0.4
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
+        "clearance": 0.2,
+        "name": "+3.3V",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
+        "clearance": 0.2,
+        "name": "+5V",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
+        "clearance": 0.25,
+        "name": "Speaker",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.8,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
       }
     ],
     "meta": {
@@ -491,20 +529,24 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Power",
-        "pattern": "GND"
+        "netclass": "+12V",
+        "pattern": "+12V"
       },
       {
-        "netclass": "Power",
+        "netclass": "Speaker",
+        "pattern": "Net-(J3-), Net-(J4-), Net-(J5-), Net-(J6)-"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "All Signals"
+      },
+      {
+        "netclass": "+3.3V",
+        "pattern": "+3.3V"
+      },
+      {
+        "netclass": "+5V",
         "pattern": "+5V"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "12V_FUSED"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/U1_SW"
       }
     ]
   },
@@ -515,7 +557,7 @@
       "netlist": "",
       "plot": "",
       "pos_files": "",
-      "specctra_dsn": "power-hat.dsn",
+      "specctra_dsn": "dac-amp_test_2.dsn",
       "step": "",
       "svg": "",
       "vrml": ""
@@ -637,7 +679,7 @@
   },
   "sheets": [
     [
-      "29b54e26-6a52-4b51-8c39-076401b40ee9",
+      "7096513a-14c7-4807-8696-a403804fdad9",
       "Root"
     ]
   ],

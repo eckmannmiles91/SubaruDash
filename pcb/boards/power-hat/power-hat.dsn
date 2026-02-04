@@ -28,7 +28,7 @@
             116280 -74000))
     (keepout "" (polygon B.Cu 0  116280 -74000  140280 -74000  140280 -98000  116280 -98000
             116280 -74000))
-    (via "Via[0-1]_600:300_um")
+    (via "Via[0-1]_600:300_um" "Via[0-1]_800:400_um")
     (rule
       (width 200)
       (clearance 200)
@@ -71,7 +71,7 @@
       (place F1 107040.000000 -64600.000000 front 0.000000 (PN 5A))
     )
     (component Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical
-      (place J2 104209.546000 -59107.699000 front 90.000000 (PN Raspberry_Pi_GPIO))
+      (place J2 104209.500000 -59107.700000 front 90.000000 (PN Raspberry_Pi_GPIO))
     )
     (component Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
       (place JP2 142500.000000 -63000.000000 front 0.000000 (PN 5V/12V))
@@ -108,7 +108,7 @@
       (place R10 139780.000000 -104000.000000 back 180.000000 (PN 1k))
       (place R_RT1 99780.000000 -102000.000000 back 180.000000 (PN 100k))
       (place R8 123780.000000 -104000.000000 back 180.000000 (PN 10k))
-      (place R_COMP1 116587.500000 -107500.000000 back 180.000000 (PN 10k))
+      (place R_COMP1 120000.000000 -101500.000000 back 180.000000 (PN 10k))
     )
     (component Capacitor_SMD:C_0805_2012Metric::1
       (place C1 103780.000000 -106000.000000 back 180.000000 (PN 100nF))
@@ -583,23 +583,23 @@
       (pin Round[A]Pad_1600.000000_um 4 7620 0)
     )
     (image Diode_SMD:D_SMA
+      (outline (path signal 120  -3510 1650  2000 1650))
       (outline (path signal 120  -3510 -1650  -3510 1650))
       (outline (path signal 120  -3510 -1650  2000 -1650))
-      (outline (path signal 120  -3510 1650  2000 1650))
-      (outline (path signal 50  -3500 -1750  3500 -1750))
       (outline (path signal 50  -3500 1750  -3500 -1750))
-      (outline (path signal 50  3500 -1750  3500 1750))
       (outline (path signal 50  3500 1750  -3500 1750))
+      (outline (path signal 50  -3500 -1750  3500 -1750))
+      (outline (path signal 50  3500 -1750  3500 1750))
       (outline (path signal 100  -2300 1500  -2300 -1500))
-      (outline (path signal 100  -649.44 -799.08  -649.44 801.12))
+      (outline (path signal 100  2300 1500  -2300 1500))
+      (outline (path signal 100  501.18 750.32  501.18 -799.08))
+      (outline (path signal 100  -649.44 1.02  501.18 750.32))
       (outline (path signal 100  -649.44 1.02  -1551.14 1.02))
       (outline (path signal 100  -649.44 1.02  501.18 -799.08))
-      (outline (path signal 100  -649.44 1.02  501.18 750.32))
       (outline (path signal 100  501.18 1.02  1499.4 1.02))
-      (outline (path signal 100  501.18 750.32  501.18 -799.08))
-      (outline (path signal 100  2300 -1500  -2300 -1500))
+      (outline (path signal 100  -649.44 -799.08  -649.44 801.12))
       (outline (path signal 100  2300 -1500  2300 1500))
-      (outline (path signal 100  2300 1500  -2300 1500))
+      (outline (path signal 100  2300 -1500  -2300 -1500))
       (pin RoundRect[T]Pad_2500.000000x1800.000000_250.951000_um_0.000000_0 1 -2000 0)
       (pin RoundRect[T]Pad_2500.000000x1800.000000_250.951000_um_0.000000_0 2 2000 0)
     )
@@ -844,6 +844,11 @@
       (shape (circle B.Cu 600))
       (attach off)
     )
+    (padstack "Via[0-1]_800:400_um"
+      (shape (circle F.Cu 800))
+      (shape (circle B.Cu 800))
+      (attach off)
+    )
   )
   (network
     (net GND
@@ -1044,27 +1049,36 @@
     (net 12V_IGN
       (pins U1-3 F1-1 F1-1@1 J1-1 J1-2 D2-2 R6-1)
     )
-    (class kicad_default +3.3V +5V /COMP_RC /Q1_GATE /RT_CLK /U1_BOOT /U1_COMP
-      /U1_FB /U1_SW 12V_ACC 12V_FUSED 12V_IGN 12V_SWITCHED FAN+ "FAN-" FAN_PWM
-      FAN_TACH GATE_CTRL GND HEARTBEAT_LED IGN_DETECT Q2_GATE R6_OUT RESET
-      SHUTDOWN_REQ TIMER_LED "U1-FB" XTAL1 XTAL2 "unconnected-(J2-Pin_10-Pad10)"
-      "unconnected-(J2-Pin_11-Pad11)" "unconnected-(J2-Pin_12-Pad12)" "unconnected-(J2-Pin_13-Pad13)"
-      "unconnected-(J2-Pin_16-Pad16)" "unconnected-(J2-Pin_18-Pad18)" "unconnected-(J2-Pin_19-Pad19)"
-      "unconnected-(J2-Pin_21-Pad21)" "unconnected-(J2-Pin_22-Pad22)" "unconnected-(J2-Pin_23-Pad23)"
-      "unconnected-(J2-Pin_24-Pad24)" "unconnected-(J2-Pin_26-Pad26)" "unconnected-(J2-Pin_27-Pad27)"
-      "unconnected-(J2-Pin_28-Pad28)" "unconnected-(J2-Pin_29-Pad29)" "unconnected-(J2-Pin_3-Pad3)"
-      "unconnected-(J2-Pin_31-Pad31)" "unconnected-(J2-Pin_35-Pad35)" "unconnected-(J2-Pin_36-Pad36)"
-      "unconnected-(J2-Pin_37-Pad37)" "unconnected-(J2-Pin_38-Pad38)" "unconnected-(J2-Pin_40-Pad40)"
-      "unconnected-(J2-Pin_5-Pad5)" "unconnected-(J2-Pin_7-Pad7)" "unconnected-(J2-Pin_8-Pad8)"
-      "unconnected-(J3-Pin_1-Pad1)" "unconnected-(J3-Pin_2-Pad2)" "unconnected-(J3-Pin_3-Pad3)"
-      "unconnected-(J3-Pin_4-Pad4)" "unconnected-(J3-Pin_5-Pad5)" "unconnected-(J3-Pin_6-Pad6)"
-      "unconnected-(JP1-Pin_1-Pad1)" "unconnected-(JP1-Pin_2-Pad2)" "unconnected-(JP2-Pin_1-Pad1)"
-      "unconnected-(JP2-Pin_2-Pad2)" "unconnected-(JP2-Pin_3-Pad3)"
+    (class kicad_default +3.3V /COMP_RC /Q1_GATE /RT_CLK /U1_BOOT /U1_COMP
+      /U1_FB 12V_ACC 12V_IGN 12V_SWITCHED FAN+ "FAN-" FAN_PWM FAN_TACH GATE_CTRL
+      HEARTBEAT_LED IGN_DETECT Q2_GATE R6_OUT RESET SHUTDOWN_REQ TIMER_LED
+      "U1-FB" XTAL1 XTAL2 "unconnected-(J2-Pin_10-Pad10)" "unconnected-(J2-Pin_11-Pad11)"
+      "unconnected-(J2-Pin_12-Pad12)" "unconnected-(J2-Pin_13-Pad13)" "unconnected-(J2-Pin_16-Pad16)"
+      "unconnected-(J2-Pin_18-Pad18)" "unconnected-(J2-Pin_19-Pad19)" "unconnected-(J2-Pin_21-Pad21)"
+      "unconnected-(J2-Pin_22-Pad22)" "unconnected-(J2-Pin_23-Pad23)" "unconnected-(J2-Pin_24-Pad24)"
+      "unconnected-(J2-Pin_26-Pad26)" "unconnected-(J2-Pin_27-Pad27)" "unconnected-(J2-Pin_28-Pad28)"
+      "unconnected-(J2-Pin_29-Pad29)" "unconnected-(J2-Pin_3-Pad3)" "unconnected-(J2-Pin_31-Pad31)"
+      "unconnected-(J2-Pin_35-Pad35)" "unconnected-(J2-Pin_36-Pad36)" "unconnected-(J2-Pin_37-Pad37)"
+      "unconnected-(J2-Pin_38-Pad38)" "unconnected-(J2-Pin_40-Pad40)" "unconnected-(J2-Pin_5-Pad5)"
+      "unconnected-(J2-Pin_7-Pad7)" "unconnected-(J2-Pin_8-Pad8)" "unconnected-(J3-Pin_1-Pad1)"
+      "unconnected-(J3-Pin_2-Pad2)" "unconnected-(J3-Pin_3-Pad3)" "unconnected-(J3-Pin_4-Pad4)"
+      "unconnected-(J3-Pin_5-Pad5)" "unconnected-(J3-Pin_6-Pad6)" "unconnected-(JP1-Pin_1-Pad1)"
+      "unconnected-(JP1-Pin_2-Pad2)" "unconnected-(JP2-Pin_1-Pad1)" "unconnected-(JP2-Pin_2-Pad2)"
+      "unconnected-(JP2-Pin_3-Pad3)"
       (circuit
         (use_via "Via[0-1]_600:300_um")
       )
       (rule
         (width 200)
+        (clearance 200)
+      )
+    )
+    (class Power,Default +5V /U1_SW 12V_FUSED GND
+      (circuit
+        (use_via "Via[0-1]_800:400_um")
+      )
+      (rule
+        (width 600)
         (clearance 200)
       )
     )
