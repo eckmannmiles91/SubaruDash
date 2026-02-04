@@ -5,13 +5,13 @@ This directory contains the split schematics from the combined `wrx-power-can-ha
 ## Board Structure
 
 ### 1. Power HAT (`power-hat/`)
-**Schematic Status: ✅ ERC CLEAN - 0 Errors, 49 Warnings**
-**PCB Status: 🟡 Initial Layout Complete - Components Placed**
+**Schematic Status: ✅ ERC CLEAN - 0 Errors, 55 Warnings**
+**PCB Status: 🟡 Layout v6 Ready - J1 updated to Micro-Fit 3.0 6-pin**
 
 Core power management and ignition control:
 - **U1**: TPS54560 5V/5A Buck Converter (12V → 5V)
 - **U3**: ATtiny85 Power Management MCU
-- **J1**: 12V Input Screw Terminal
+- **J1**: 12V Input Molex Micro-Fit 3.0 (6-pin)
 - **J2**: 40-pin Raspberry Pi GPIO Header
 - **J4**: 4-pin PWM Fan Connector (30mm fan)
 - **F1**: Input Fuse
@@ -37,7 +37,7 @@ Core power management and ignition control:
 - Power section (U1, L1) on left side, clear of fan zone
 - MCU section (U3, Y1) on right side
 - Power switching (Q1) bottom-right
-- Layout scripts: `layout_power_hat_v3.py` (X735-style), `layout_power_hat_v4.py` (improved spacing)
+- Layout scripts: `layout_power_hat_v5.py` (optimized), `layout_power_hat_v6.py` (DRC-compliant)
 
 **Two-Layer Component Strategy:**
 - **Front layer (F.Cu):** Through-hole and thermal components
@@ -125,6 +125,9 @@ CAN bus communication interface:
 | `fix_cap_pads.py` | Fix SMD pad layers for back-layer components |
 | `move_smd_to_back.py` | Move resistors, diodes, SOT-23 MOSFETs to B.Cu |
 | `fix_back_positions.py` | Apply board offset to back-layer component positions |
+| `fix_boot_comp_caps.py` | Move C_BOOT1/C_COMP1 to B.Cu (back layer) |
+| `layout_power_hat_v5.py` | Optimized layout with all components positioned |
+| `layout_power_hat_v6.py` | DRC-compliant spacing, J1 Micro-Fit 3.0 support |
 
 ## Current ERC Status
 
@@ -151,7 +154,15 @@ After running fix scripts v2 through v5:
 - ✅ Orphan labels deleted manually
 - ✅ U3 PB0 (HEARTBEAT_LED) -> J2 Pin 11 (GPIO17) (v14)
 - ✅ U3 PB1 (TIMER_LED) -> J2 Pin 13 (GPIO27) (v14)
-- ✅ **ERC: 0 ERRORS** (warnings are non-critical)
+- ✅ J1 updated to Molex Micro-Fit 3.0 6-pin (manual)
+- ✅ C6 fixed: bottom pin changed from +3.3V to GND (was shorted)
+- ✅ C8 reconnected as feedforward cap: +5V to U1-FB (was incorrectly on XTAL2)
+- ✅ C9 label fixed: 12V_FUSED (was 12V_IGN)
+- ✅ R6 label fixed: 12V_IGN to GND (ignition detection divider)
+- ✅ D1 (TVS) moved away from J2, reconnected: 12V_FUSED to GND
+- ✅ Removed stray 12V_IGN label hidden behind U1
+- ✅ PWR_FLAG added to 12V_FUSED and +3.3V nets
+- ✅ **ERC: 0 ERRORS, 55 WARNINGS** (warnings are non-critical)
 
 ### CAN HAT
 After running fix_can_hat.py:
@@ -209,10 +220,11 @@ For J2 at position (200, 150):
 
 ## Next Steps
 
-1. ✅ ~~Power HAT ERC clean~~ - COMPLETE
+1. ✅ ~~Power HAT ERC clean~~ - COMPLETE (0 errors)
 2. ✅ ~~CAN HAT ERC clean~~ - COMPLETE
 3. ✅ ~~DAC/Amp schematic wiring~~ - COMPLETE
-4. 🟡 **Power HAT PCB** - Initial layout done, needs routing
+4. 🟡 **Power HAT PCB** - Update from schematic, run layout_power_hat_v6.py, route traces
 5. ⏳ CAN HAT PCB layout
 6. ⏳ DAC/Amp PCB layout
 7. ⏳ Design stackable header connections
+8. ⏳ Add crystal load caps (~22pF) for Y1 (ATtiny85) - optional improvement
