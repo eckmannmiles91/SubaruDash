@@ -13225,4 +13225,268 @@
 		)
 	)
 	(embedded_fonts no)
+	(symbol
+		(lib_id "Device:C")
+		(at 415.0 160.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4ddf1ad2-140f-4869-8f01-de2fa142f861")
+		(property "Reference" "C10"
+			(at 415.0 156.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22pF"
+			(at 415.0 164.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 415.0 160.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 415.0 160.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Crystal load capacitor"
+			(at 415.0 160.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d15beb86-7a8e-4e1a-9d21-784f49c75e15")
+		)
+		(pin "2"
+			(uuid "d4c99348-7436-4cae-bdd1-4250ea24ab42")
+		)
+		(instances
+			(project "power-hat"
+				(path "/29b54e26-6a52-4b51-8c39-076401b40ee9"
+					(reference "C10")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(symbol
+		(lib_id "Device:C")
+		(at 435.0 160.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "72c051b3-d4f4-423b-96c8-84204eb9e471")
+		(property "Reference" "C11"
+			(at 435.0 156.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22pF"
+			(at 435.0 164.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 435.0 160.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 435.0 160.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Crystal load capacitor"
+			(at 435.0 160.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b524caba-1e7e-4799-9bd3-66b25ccf414b")
+		)
+		(pin "2"
+			(uuid "d53ba9bc-f54a-4ac8-9f20-f400ee51ab0a")
+		)
+		(instances
+			(project "power-hat"
+				(path "/29b54e26-6a52-4b51-8c39-076401b40ee9"
+					(reference "C11")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(global_label "XTAL1"
+		(shape passive)
+		(at 415.0 156.19 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "46af06f5-dbbe-454b-a986-622b2aafdce5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 415.0 156.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+
+	(global_label "GND"
+		(shape passive)
+		(at 415.0 163.81 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9886c333-998c-44e4-b733-ef58d5d03f5e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 415.0 163.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+
+	(global_label "XTAL2"
+		(shape passive)
+		(at 435.0 156.19 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2099e0ab-5a6a-45ee-a568-7549ec295363")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 435.0 156.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+
+	(global_label "GND"
+		(shape passive)
+		(at 435.0 163.81 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3056da19-15f4-420e-ab2f-8d0fd2e7013d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 435.0 163.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+
+	(wire
+		(pts
+			(xy 415.0 156.19) (xy 415.0 157.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dad1262e-5ede-41ba-9790-b02ac9fcbabc")
+	)
+
+	(wire
+		(pts
+			(xy 415.0 162.54) (xy 415.0 163.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4578083-866d-4baf-92ee-8b57a42dc8d3")
+	)
+
+	(wire
+		(pts
+			(xy 435.0 156.19) (xy 435.0 157.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e4d01ae-5596-41f0-8093-20381225ce3c")
+	)
+
+	(wire
+		(pts
+			(xy 435.0 162.54) (xy 435.0 163.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "030f1aa3-4c1c-4115-96dc-d3ad7d352af5")
+	)
+
 )
