@@ -1,0 +1,15 @@
+Designator,Quantity,Value,Footprint,MPN,Manufacturer,Description
+U1,1,PCM5142,TQFP-32_7x7mm_P0.8mm,PCM5142PW,Texas Instruments,32-bit Stereo I2S DAC
+U2,1,AMS1117-3.3,SOT-223-3_TabPin2,AMS1117-3.3,Advanced Monolithic Systems,3.3V LDO Regulator
+U3,1,TPA3116D2,HTSSOP-32-1EP_6.1x11mm_P0.65mm,TPA3116D2DADR,Texas Instruments,50W Class-D Stereo Amplifier
+U4,1,TPA3116D2,HTSSOP-32-1EP_6.1x11mm_P0.65mm,TPA3116D2DADR,Texas Instruments,50W Class-D Stereo Amplifier
+C1,1,10uF,C_0805_2012Metric,CL21A106KOQNNNE,Samsung,10uF 16V X5R 0805
+C3,1,10uF,C_0805_2012Metric,CL21A106KOQNNNE,Samsung,10uF 16V X5R 0805
+C2,1,100nF,C_0805_2012Metric,CL21B104KBCNNNC,Samsung,100nF 50V X7R 0805
+J1,1,I2S_Input,PinHeader_1x06_P2.54mm_Vertical,PH1-06-UA,Adam Tech,1x6 Pin Header 2.54mm
+J2,1,12V_Input,PhoenixContact_MSTBA_2.5_2-G-5.08,1757019,Phoenix Contact,2-pos Terminal Block 5.08mm
+J3,1,Front_Left,PhoenixContact_MSTBA_2.5_2-G-5.08,1757019,Phoenix Contact,2-pos Terminal Block 5.08mm
+J4,1,Front_Right,PhoenixContact_MSTBA_2.5_2-G-5.08,1757019,Phoenix Contact,2-pos Terminal Block 5.08mm
+J5,1,Rear_Left,PhoenixContact_MSTBA_2.5_2-G-5.08,1757019,Phoenix Contact,2-pos Terminal Block 5.08mm
+J6,1,Rear_Right,PhoenixContact_MSTBA_2.5_2-G-5.08,1757019,Phoenix Contact,2-pos Terminal Block 5.08mm
+J7,1,40-Pin_GPIO,PinSocket_2x20_P2.54mm_Vertical,PPPC202LFBN-RC,Sullins,2x20 Pin Socket 2.54mm
