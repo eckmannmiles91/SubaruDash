@@ -81,16 +81,40 @@ CAN bus communication interface:
 - D1, D2: SS34 Schottky diodes (power OR'ing)
 - Allows power from either GPIO header or USB-C
 
-### 3. DAC/Amp Module (`dac-amp/`)
-**Schematic Status: ✅ Complete - I2S, I2C, power, and speaker outputs wired**
-**PCB Status: ⏳ Not Started**
+### 3. DAC/Amp HAT (`dac-amp/`)
+**Schematic Status: ✅ ERC CLEAN - 34 Errors (J7 GPIO only), 85 Warnings**
+**PCB Status: 🟡 Footprints placed, needs update from schematic**
 
 4-channel 50W Class D audio amplifier:
 - **U1**: PCM5142 Stereo I2S DAC
-- **U2**: TPA3116D2 Class D Amplifier (Front L/R)
-- **U3**: TPA3116D2 Class D Amplifier (Rear L/R)
-- **U4**: AMS1117-3.3 LDO (3.3V for DAC)
-- Speaker output connectors (4x 2-pin)
+- **U2**: AMS1117-3.3 LDO (3.3V for DAC)
+- **U3**: TPA3116D2DAD Class D Amplifier (Front L/R, 50W stereo BTL)
+- **U4**: TPA3116D2DAD Class D Amplifier (Rear L/R, 50W stereo BTL)
+- **J3**: 4-pin 3.5mm screw terminal (Front speakers: FL+, FL-, FR+, FR-)
+- **J4**: 4-pin 3.5mm screw terminal (Rear speakers: RL+, RL-, RR+, RR-)
+- **J7**: 40-pin Raspberry Pi GPIO Header
+
+**Support Components Added:**
+- R1, R2: 4.7kΩ I2C pull-ups (SCL, SDA to +3.3V)
+- C4-C6: PCM5142 decoupling (100nF DVDD, 100nF+10µF AVDD)
+- C7-C10: TPA3116D2 bootstrap caps (100nF each, BSPx↔BSNx)
+- C11-C20: TPA3116D2 PVCC decoupling (8× 100nF + 2× 10µF)
+- C21-C22: TPA3116D2 GVDD decoupling (100nF each)
+- C23-C30: Input coupling caps (1µF each, AC coupling to amp inputs)
+- C31: 12V input bulk capacitor (100µF)
+- C32: 3.3V filter capacitor (100nF)
+
+**Connected Signals via Pi Header (J7):**
+- +5V (pins 2, 4) - power input
+- +3.3V (pins 1, 17) - from AMS1117
+- GND (pins 6, 9, 14, 20, 25, 30, 34, 39)
+- I2S_BCK (pin 12/GPIO18) - I2S bit clock
+- I2S_LRCK (pin 35/GPIO19) - I2S L/R clock
+- I2S_DOUT (pin 40/GPIO21) - I2S data out
+- I2C_SDA (pin 3/GPIO2) - PCM5142 config
+- I2C_SCL (pin 5/GPIO3) - PCM5142 config
+
+**Volume Control:** Digital via PCM5142 I2C registers (not analog PLIMIT)
 
 ## Scripts
 
@@ -181,8 +205,17 @@ After running fix_can_hat.py:
 - ⚠️ Run ERC in KiCad to check remaining errors
 
 ### DAC/Amp
-- Components placed with labels
-- Needs I2S, power, and speaker wiring
+After manual wiring in KiCad:
+- ✅ I2C pull-ups (R1, R2) wired to +3.3V and I2C_SCL/SDA labels
+- ✅ PCM5142 decoupling (C4-C6) wired to +3.3V and GND
+- ✅ Bootstrap caps (C7-C10) wired BSPx↔BSNx (NOT to outputs)
+- ✅ PVCC decoupling (C11-C20) wired to +12V and GND
+- ✅ GVDD decoupling (C21-C22) wired with PWR_FLAG (internal 5.2V)
+- ✅ Input coupling (C23-C30) wired in series with amp inputs
+- ✅ Power filtering (C31, C32) wired to +12V/+3.3V and GND
+- ✅ Speaker outputs (J3, J4) wired to U3/U4 OUTP/OUTN pins
+- ✅ PWR_FLAG added to +12V and GND nets
+- ✅ **ERC: 34 ERRORS (all J7 GPIO unconnected - expected), 85 WARNINGS**
 
 ## GPIO Pin Allocation
 
@@ -222,9 +255,10 @@ For J2 at position (200, 150):
 
 1. ✅ ~~Power HAT ERC clean~~ - COMPLETE (0 errors)
 2. ✅ ~~CAN HAT ERC clean~~ - COMPLETE
-3. ✅ ~~DAC/Amp schematic wiring~~ - COMPLETE
+3. ✅ ~~DAC/Amp schematic wiring~~ - COMPLETE (34 errors = J7 GPIO only)
 4. 🟡 **Power HAT PCB** - Update from schematic, run layout_power_hat_v6.py, route traces
-5. ⏳ CAN HAT PCB layout
-6. ⏳ DAC/Amp PCB layout
+5. 🟡 **CAN HAT PCB** - Routed via FreeRouting, ground pour added
+6. 🟡 **DAC/Amp PCB** - Update from schematic (new J3/J4 4-pin connectors), re-route
 7. ⏳ Design stackable header connections
 8. ⏳ Add crystal load caps (~22pF) for Y1 (ATtiny85) - optional improvement
+9. ⏳ Widen power traces on DAC/Amp (12V, speaker outputs)
