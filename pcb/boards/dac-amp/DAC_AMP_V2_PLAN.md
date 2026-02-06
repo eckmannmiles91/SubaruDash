@@ -1,8 +1,8 @@
-# DAC/Amp HAT v2.0 - Design Plan
+# DAC/Amp HAT v2.0 - Realistic Design Plan
 
 ## Overview
 
-Improved revision of the 4-channel Class D amplifier HAT with better audio quality, EMI compliance, and thermal management.
+Improved revision focusing on changes that **actually fit** on the 65×56mm HAT form factor.
 
 ## v1.0 Baseline (Current)
 
@@ -19,322 +19,302 @@ Improved revision of the 4-channel Class D amplifier HAT with better audio quali
 
 ---
 
-## v2.0 Target Specifications
+## v2.0 Realistic Targets
 
-| Spec | Target |
-|------|--------|
-| DAC | PCM5142 or PCM5242 |
-| Amps | 2× TPA3116D2DAD (keep for compatibility) |
-| Layers | **4-layer** (F.Cu, GND, +12V, B.Cu) |
-| Power traces | +12V @ 2.0mm, speakers @ 1.5mm |
-| Thermal vias | **16+ per amp** |
-| Output filtering | **LC filter per channel** |
-| Ground topology | **Split analog/digital** |
-| Protection | **TVS + polyfuse + mute relay** |
+| Spec | Target | Fits? |
+|------|--------|-------|
+| Layers | **4-layer** (GND + 12V planes) | ✅ |
+| Thermal vias | **16 per amp** | ✅ |
+| Power traces | **1.5mm** (12V), **1.0mm** (speakers) | ✅ |
+| Input protection | **TVS + polyfuse** | ✅ |
+| Power filtering | **Ferrite beads on 3.3V** | ✅ |
+| Bulk cap upgrade | **470µF** (vs 100µF) | ✅ |
+| Mute control | **Software via PCM5142** | ✅ |
+| Output LC filters | ❌ **Skipped** (no space) | - |
+| Hardware mute relay | ❌ **Skipped** (no space) | - |
 
 ---
 
-## Schematic Changes
+## What We're Adding (Fits on HAT)
 
-### 1. Output LC Filters (Per Channel - 8 Total)
+### 1. 4-Layer PCB Stackup
 
-```
-Amp Output ──┬── L (10µH) ──┬── Speaker Terminal
-             │              │
-             └── C (680nF) ─┴── GND
-```
+| Layer | Purpose |
+|-------|---------|
+| F.Cu (Top) | Signal, components |
+| In1.Cu | **GND plane** (solid) |
+| In2.Cu | **+12V plane** (for amps) |
+| B.Cu (Bottom) | Signal, components |
 
-**Components to add:**
-| Ref | Value | Package | Purpose |
-|-----|-------|---------|---------|
-| L1-L8 | 10µH | 1210 or through-hole | Output filter inductor |
-| C33-C40 | 680nF | 0805 (100V rated) | Output filter capacitor |
+**Benefits:**
+- Much easier routing (signals only on outer layers)
+- Lower impedance power delivery
+- Better thermal spreading via planes
+- Improved EMI shielding
+- Cost: ~$20 more for 5 boards
 
-**Inductor spec:**
-- Current rating: >5A
-- DCR: <50mΩ
-- Shielded preferred (reduces EMI radiation)
-- Example: Bourns SRR1210A-100M
-
-### 2. Input Protection
+### 2. Input Protection Circuit
 
 ```
-J2 +12V ──┬── F1 (polyfuse 5A) ──┬── TVS ──┬── +12V_FUSED
-          │                      │         │
-          └──────────────────────┴─────────┴── GND
+J2 +12V ──┬── F2 (polyfuse) ── D1 (TVS) ──┬── +12V_PROTECTED
+          │                               │
+          └───────────────────────────────┴── GND
 ```
 
-**Components to add:**
-| Ref | Value | Package | Purpose |
-|-----|-------|---------|---------|
-| F2 | 5A polyfuse | 1812 | Resettable overcurrent protection |
-| D1 | SMBJ15A | SMB | TVS for transient suppression |
+| Ref | Value | Package | MPN |
+|-----|-------|---------|-----|
+| F2 | 5A polyfuse | 1812 | MF-MSMF500/24X-2 |
+| D1 | TVS 15V | SMB | SMBJ15CA |
 
-### 3. Mute Relay Circuit
+**Footprint:** ~25mm² total - **fits easily**
 
-```
-+12V ────┬── D2 (flyback) ──┬── Relay Coil ── Q1 (MOSFET) ── GND
-         │                  │                      │
-         └──────────────────┘                GPIO_MUTE
-
-Relay contacts in series with speaker outputs (normally open)
-```
-
-**Components to add:**
-| Ref | Value | Package | Purpose |
-|-----|-------|---------|---------|
-| K1 | G5V-2 (DPDT) | Through-hole | Mute relay (front channels) |
-| K2 | G5V-2 (DPDT) | Through-hole | Mute relay (rear channels) |
-| Q5 | 2N7002 | SOT-23 | Relay driver MOSFET |
-| D2 | 1N4148 | SOD-123 | Flyback diode |
-| R3 | 10k | 0805 | Gate pull-down |
-
-**GPIO Assignment:** GPIO24 (pin 18) for mute control
-
-### 4. Soft-Start Circuit
+### 3. Power Rail Filtering
 
 ```
-+12V_FUSED ── R (10Ω 5W) ──┬── C (1000µF) ──┬── +12V_SOFT
-                           │               │
-                           └── Relay bypass┘
++3.3V_RAW (from AMS1117) ── FB1 ── +3.3V_CLEAN (to DAC analog)
 ```
 
-Delays full power to amps, prevents speaker pop.
+| Ref | Value | Package | MPN |
+|-----|-------|---------|-----|
+| FB1 | 600Ω@100MHz | 0805 | BLM21PG601SN1D |
+| FB2 | 600Ω@100MHz | 0805 | BLM21PG601SN1D |
 
-### 5. Bulk Capacitance Upgrade
+**Footprint:** ~8mm² total - **fits easily**
+
+### 4. Bulk Capacitor Upgrade
 
 | Current | Upgraded |
 |---------|----------|
-| C31: 100µF | C31: 470µF (or 1000µF) |
+| C31: 100µF 8mm dia | C31: 470µF 10mm dia |
 
-Add parallel caps for lower ESR:
-| Ref | Value | Package |
-|-----|-------|---------|
-| C41 | 100µF | 0805 (MLCC, optional parallel) |
-| C42 | 100µF | 0805 (MLCC, optional parallel) |
+**Note:** May need to verify 10mm cap fits in current location, or use 8mm 220µF
 
-### 6. Ferrite Beads on Power Rails
+### 5. More Thermal Vias
 
 ```
-+3.3V_RAW ── FB1 ── +3.3V_ANALOG (to DAC)
-+3.3V_RAW ── FB2 ── +3.3V_DIGITAL (to DAC digital)
+Current: 6-8 vias per amp
+Target:  16 vias per amp (4×4 grid)
+
+  ┌───────────────┐
+  │ o  o  o  o    │
+  │ o  o  o  o    │  Thermal pad
+  │ o  o  o  o    │  ~3.7 × 3.8mm
+  │ o  o  o  o    │
+  └───────────────┘
 ```
 
-| Ref | Value | Package |
-|-----|-------|---------|
-| FB1 | 600Ω@100MHz | 0805 |
-| FB2 | 600Ω@100MHz | 0805 |
+**Footprint:** Zero additional space (vias go under existing thermal pads)
+
+### 6. Software Mute (No Hardware)
+
+The PCM5142 supports **soft mute** via I2C register:
+- Register 0x03, bit 4 = mute
+- Gradual volume ramp prevents pop
+- Controlled by Raspberry Pi on shutdown
+
+**No additional components needed.**
+
+---
+
+## What We're NOT Adding (Won't Fit)
+
+### ❌ Output LC Filters
+
+| Component | Size | Problem |
+|-----------|------|---------|
+| 8× Inductors (10µH 5A) | 12mm dia or 12×12mm SMD | Would need ~800mm² |
+| 8× Filter caps | Small (0805) | Caps fit, inductors don't |
+
+**Alternative:** Add external filter board between amp and speakers if EMI is an issue.
+
+### ❌ Hardware Mute Relays
+
+| Component | Size | Problem |
+|-----------|------|---------|
+| 2× DPDT Relay (G5V-2) | 20×10mm each | Would need ~400mm² |
+| Driver circuit | ~50mm² | Additional space |
+
+**Alternative:** Software mute via PCM5142 is adequate for car use.
+
+---
+
+## Revised BOM Changes
+
+### New Components (6 total)
+
+| Ref | Description | Package | MPN | Qty |
+|-----|-------------|---------|-----|-----|
+| F2 | 5A polyfuse | 1812 | MF-MSMF500/24X-2 | 1 |
+| D1 | TVS 15V bidir | SMB | SMBJ15CA | 1 |
+| FB1 | Ferrite 600Ω | 0805 | BLM21PG601SN1D | 1 |
+| FB2 | Ferrite 600Ω | 0805 | BLM21PG601SN1D | 1 |
+| C31 | 470µF 25V | Radial 10mm | UVR1E471MED1TD | 1 |
+
+**Total new footprint:** ~40mm² (easily fits)
+
+### Removed/Changed
+
+| Ref | Change |
+|-----|--------|
+| C31 | Upgraded from 100µF to 470µF |
 
 ---
 
 ## PCB Layout Changes
 
-### 1. 4-Layer Stackup
+### 1. Layer Stackup (4-Layer)
 
-| Layer | Purpose |
-|-------|---------|
-| F.Cu (Top) | Signal, components |
-| In1.Cu | **GND plane** |
-| In2.Cu | **+12V plane** |
-| B.Cu (Bottom) | Signal, components |
-
-**Benefits:**
-- Lower power impedance
-- Better heat spreading
-- Improved EMI shielding
-- Cleaner routing
-
-### 2. Ground Plane Split
-
+Standard 1.6mm 4-layer:
 ```
-┌─────────────────────────────────────┐
-│  DIGITAL GND        │  ANALOG GND   │
-│  (DAC digital,      │  (DAC analog, │
-│   Pi GPIO)          │   amp inputs) │
-│                     │               │
-│         ← Single point bridge →     │
-└─────────────────────────────────────┘
+F.Cu    ─── 0.035mm (1oz copper)
+Prepreg ─── 0.2mm
+In1.Cu  ─── 0.035mm (1oz, GND plane)
+Core    ─── 1.0mm
+In2.Cu  ─── 0.035mm (1oz, +12V plane)
+Prepreg ─── 0.2mm
+B.Cu    ─── 0.035mm (1oz copper)
 ```
 
-- Bridge at power input (star ground)
-- Keeps digital switching noise away from analog
+### 2. Trace Width Targets
 
-### 3. Thermal Via Array
+| Net | v1.0 | v2.0 |
+|-----|------|------|
+| +12V (to amps) | 1.0mm | **Via to +12V plane** |
+| Speaker outputs | 0.75mm | **1.0mm** |
+| Audio signals | 0.25mm | 0.25mm |
+| I2S/I2C | 0.25mm | 0.25mm |
 
+**Note:** With internal +12V plane, surface traces only need to connect to vias.
+
+### 3. Ground Plane Strategy
+
+With 4-layer board, GND plane (In1.Cu) is solid under entire board.
+- Digital and analog share plane (acceptable for this design)
+- Plane provides low-impedance return path
+- No need for split plane complexity
+
+### 4. Thermal Via Upgrade
+
+| Amp | Current | Target |
+|-----|---------|--------|
+| U3 | 6 vias | 16 vias (4×4) |
+| U4 | 8 vias | 16 vias (4×4) |
+
+Via spec:
+- Drill: 0.3mm
+- Pad: 0.6mm
+- Spacing: 0.9mm grid
+- All on GND net
+
+### 5. Protection Component Placement
+
+Place near J2 (12V input):
 ```
-  ┌─────────────────┐
-  │ o o o o o o o o │
-  │ o o o o o o o o │  ← 16 vias minimum
-  │ o o o o o o o o │     (4×4 or 4×5 grid)
-  │ o o o o o o o o │
-  └─────────────────┘
+J2 ──[F2]──[D1]── to +12V distribution
 ```
 
-- Via size: 0.4mm drill, 0.8mm pad
-- Spacing: 1.0mm grid
-- All connected to GND plane
-
-### 4. Component Placement Zones
-
+Place FB1/FB2 between AMS1117 output and DAC:
 ```
-┌────────────────────────────────────────────────┐
-│ [Power Input]  [Bulk Caps]  [Protection]       │
-│                                                │
-│ [DAC Section]          [Amp U3]    [Amp U4]   │
-│  - PCM5142              - TPA3116   - TPA3116 │
-│  - 3.3V LDO             - Bootstrap - Bootstrap│
-│  - Decoupling           - PVCC caps - PVCC caps│
-│                                                │
-│ [Output Filters]       [Mute Relays]          │
-│                                                │
-│ [Speaker Terminals J3]  [Speaker Terminals J4]│
-└────────────────────────────────────────────────┘
+U2 out ──[FB1]── U1 AVDD
+U2 out ──[FB2]── U1 DVDD
 ```
-
-### 5. Trace Width Targets
-
-| Net | v1.0 | v2.0 Target |
-|-----|------|-------------|
-| +12V main | 1.0mm | 2.0mm |
-| Speaker outputs | 0.75mm | 1.5mm |
-| GND return | Pour | Plane (4-layer) |
-| Audio signals | 0.25mm | 0.3mm (with guard traces) |
-| I2S/I2C | 0.25mm | 0.25mm (matched length) |
 
 ---
 
-## New BOM (Additional Components)
-
-### Output Filters (8 channels)
-
-| Ref | Description | MPN | Qty |
-|-----|-------------|-----|-----|
-| L1-L8 | 10µH 5A shielded | SRR1210A-100M | 8 |
-| C33-C40 | 680nF 100V X7R | GRM31CR72A684KA88L | 8 |
-
-### Protection
-
-| Ref | Description | MPN | Qty |
-|-----|-------------|-----|-----|
-| F2 | 5A polyfuse | MF-MSMF500 | 1 |
-| D1 | TVS 15V bidirectional | SMBJ15CA | 1 |
-
-### Mute Circuit
-
-| Ref | Description | MPN | Qty |
-|-----|-------------|-----|-----|
-| K1, K2 | DPDT relay 12V | G5V-2-DC12 | 2 |
-| Q5 | N-FET SOT-23 | 2N7002 | 1 |
-| D2 | Flyback diode | 1N4148WS | 1 |
-| R3 | 10k 0805 | RC0805FR-0710KL | 1 |
-
-### Ferrites
-
-| Ref | Description | MPN | Qty |
-|-----|-------------|-----|-----|
-| FB1, FB2 | 600Ω@100MHz | BLM21PG601SN1D | 2 |
-
-### Bulk Caps
-
-| Ref | Description | MPN | Qty |
-|-----|-------------|-----|-----|
-| C31 | 470µF 25V | UVR1E471MED | 1 |
-
----
-
-## GPIO Allocation Update
-
-| GPIO | Pin | Function | v1.0 | v2.0 |
-|------|-----|----------|------|------|
-| GPIO2 | 3 | I2C_SDA | DAC config | DAC config |
-| GPIO3 | 5 | I2C_SCL | DAC config | DAC config |
-| GPIO18 | 12 | I2S_BCK | I2S clock | I2S clock |
-| GPIO19 | 35 | I2S_LRCK | I2S L/R | I2S L/R |
-| GPIO21 | 40 | I2S_DOUT | I2S data | I2S data |
-| GPIO24 | 18 | MUTE | - | **Mute relay control** |
-| GPIO23 | 16 | FAULT | - | **Amp fault status** |
-
----
-
-## Manufacturing Changes
+## Manufacturing Specs
 
 | Spec | v1.0 | v2.0 |
 |------|------|------|
 | Layers | 2 | **4** |
-| Copper weight | 1-2oz | **2oz all layers** |
+| Copper weight | 1oz | **2oz outer, 1oz inner** |
 | Board thickness | 1.6mm | 1.6mm |
-| Min trace | 4/4mil | 6/6mil |
+| Min trace/space | 4/4mil | 6/6mil (easier with planes) |
+| Min hole | 0.3mm | 0.3mm |
 | Surface finish | ENIG | ENIG |
-| Estimated cost (5 pcs) | ~$45 | ~$80-100 |
+| Via process | Tenting | Tenting |
+
+**Estimated cost (5 pcs PCBA):**
+- v1.0: ~$70-100
+- v2.0: ~$90-120 (+$20-30 for 4-layer)
 
 ---
 
-## Implementation Phases
+## Implementation Checklist
 
 ### Phase 1: Schematic Updates
-1. [ ] Add output LC filter network (L1-L8, C33-C40)
-2. [ ] Add TVS and polyfuse to 12V input
-3. [ ] Add mute relay circuit
-4. [ ] Add ferrite beads to 3.3V rails
-5. [ ] Upgrade bulk capacitor value
-6. [ ] Add FAULT and MUTE GPIO connections
-7. [ ] Run ERC
+- [ ] Add F2 (polyfuse) in series with +12V input
+- [ ] Add D1 (TVS) from +12V to GND
+- [ ] Add FB1 between AMS1117 and DAC AVDD
+- [ ] Add FB2 between AMS1117 and DAC DVDD
+- [ ] Change C31 value to 470µF
+- [ ] Run ERC
 
 ### Phase 2: PCB Layout
-1. [ ] Create 4-layer board stackup
-2. [ ] Define ground plane split regions
-3. [ ] Place new components
-4. [ ] Increase thermal via count (16+ per amp)
-5. [ ] Widen power traces
-6. [ ] Route with guard traces on audio signals
-7. [ ] Add via stitching around board edges
-8. [ ] Run DRC
+- [ ] Change board to 4-layer stackup
+- [ ] Define In1.Cu as GND plane (solid fill)
+- [ ] Define In2.Cu as +12V plane (connected to amp PVCC)
+- [ ] Place F2 and D1 near J2
+- [ ] Place FB1 and FB2 near U2/U1
+- [ ] Increase thermal vias to 16 per amp
+- [ ] Verify C31 footprint fits 10mm cap (or use 8mm 220µF)
+- [ ] Route remaining signals
+- [ ] Run DRC
 
-### Phase 3: Manufacturing Files
-1. [ ] Generate Gerbers (4-layer)
-2. [ ] Update BOM with new components
-3. [ ] Generate placement file
-4. [ ] Review in PCBWay viewer
-5. [ ] Order prototypes
+### Phase 3: Manufacturing
+- [ ] Generate 4-layer Gerbers
+- [ ] Update BOM
+- [ ] Generate placement file
+- [ ] Verify in PCBWay viewer
+- [ ] Order prototypes
 
 ---
 
 ## Risk Assessment
 
-| Risk | Mitigation |
-|------|------------|
-| 4-layer routing complexity | Use inner planes for power, simplifies routing |
-| Relay adds pop when muting | Add RC delay to relay drive |
-| LC filter resonance | Calculate corner frequency, verify no ringing |
-| Cost increase | Worth it for production quality |
-| Board space for relays | May need to move to larger form factor or vertical mount |
+| Risk | Likelihood | Mitigation |
+|------|------------|------------|
+| 4-layer routing issues | Low | Inner planes simplify routing |
+| 470µF cap doesn't fit | Medium | Fall back to 220µF 8mm or parallel 100µF |
+| Cost increase | Certain | ~$20-30 more, worth it |
+| EMI without output filters | Medium | Test v1.0 first, add external if needed |
 
 ---
 
-## Timeline
+## Testing Plan
 
-| Phase | Estimated Effort |
-|-------|------------------|
-| Schematic updates | 2-3 hours |
-| PCB layout | 4-6 hours |
-| Review and DRC | 1-2 hours |
-| Order and receive | 1-2 weeks |
-| Test v2.0 | 2-3 hours |
+### v1.0 Prototype Testing
+1. Basic power-up test (no smoke)
+2. I2S audio playback test
+3. Volume control via I2C
+4. Thermal monitoring at various power levels
+5. Listen for noise/interference
+6. Measure output with oscilloscope
 
----
-
-## Notes
-
-- Test v1.0 first to validate basic functionality
-- v2.0 changes can be incremental (do output filters first, then 4-layer)
-- Consider making output filters a daughter board if space is tight
-- Mute relay is optional but highly recommended for car install
+### v2.0 Improvements to Verify
+1. Thermal performance (should run cooler)
+2. Power supply noise (should be cleaner)
+3. Protection circuit (verify TVS clamps transients)
 
 ---
 
-## References
+## Summary
 
-- TPA3116D2 Datasheet: Output filter design guidelines
-- PCM5142 Datasheet: Layout recommendations
-- TI Application Note SLOA119: Class D output filter design
-- IPC-2221: PCB trace current capacity
+**v2.0 Realistic Scope:**
+
+| Feature | Status |
+|---------|--------|
+| 4-layer board | ✅ Adding |
+| TVS protection | ✅ Adding |
+| Polyfuse protection | ✅ Adding |
+| Ferrite filtering | ✅ Adding |
+| More thermal vias | ✅ Adding |
+| Larger bulk cap | ✅ Adding |
+| Software mute | ✅ Via PCM5142 |
+| Output LC filters | ❌ Won't fit |
+| Hardware mute relay | ❌ Won't fit |
+
+**Total new components:** 5 (plus upgraded C31)
+**Additional board space needed:** ~40mm² (fits easily)
+**Cost increase:** ~$20-30 per 5 boards
+
+This is a practical, achievable improvement that makes the board more robust without requiring a form factor change.
