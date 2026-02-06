@@ -26,3 +26,33 @@ desktop.ini
 # Temporary files
 *.tmp
 *.temp
+
+# KiCad backup files
+*-BACKUP*.kicad_sch
+*-BACKUP*.kicad_pcb
+*.kicad_prl
+
+# FreeRouting intermediate files
+*.dsn
+*.ses
+*.rules
+
+# Development/fix scripts (keep final versions only)
+pcb/boards/fix_*.py
+pcb/boards/layout_*.py
+pcb/fix_*.py
+pcb/add_*.py
+pcb/assign_*.py
+pcb/delete_*.py
+pcb/place_*.py
+pcb/remove_*.py
+pcb/replace_*.py
+pcb/setup_*.py
+pcb/wire_*.py
+pcb/open_kicad_*.bat
+
+# Old schematic iterations
+pcb/wrx-power-can-hat-*.kicad_sch
+pcb/wrx-power-can-hat-*.kicad_pcb
+pcb/wrx-power-can-hat-*.kicad_pro
+pcb/wrx-power-can-hat-*.kicad_prl
