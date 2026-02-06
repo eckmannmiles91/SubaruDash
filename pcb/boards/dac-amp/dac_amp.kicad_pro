@@ -483,17 +483,7 @@
       },
       {
         "clearance": 0.25,
-        "name": "+12V",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
-        "via_diameter": 0.6,
-        "via_drill": 0.3
-      },
-      {
-        "clearance": 0.2,
-        "name": "+3.3V",
+        "name": "GND",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -502,14 +492,14 @@
         "via_drill": 0.3
       },
       {
-        "clearance": 0.2,
-        "name": "+5V",
+        "clearance": 0.25,
+        "name": "Power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 3,
+        "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.4,
-        "via_diameter": 0.6,
-        "via_drill": 0.3
+        "track_width": 1.0,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
       },
       {
         "clearance": 0.25,
@@ -517,9 +507,9 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.8,
-        "via_diameter": 0.6,
-        "via_drill": 0.3
+        "track_width": 1.0,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
       }
     ],
     "meta": {
@@ -529,24 +519,28 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "+12V",
-        "pattern": "+12V"
+        "netclass": "Default",
+        "pattern": "I2C, I2S, signals"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "/*12V*"
+      },
+      {
+        "netclass": "GND",
+        "pattern": "GND"
       },
       {
         "netclass": "Speaker",
-        "pattern": "Net-(J3-), Net-(J4-), Net-(J5-), Net-(J6)-"
+        "pattern": "U3_OUTPL, U3_OUTNL, U3_OUTNR, U4_OUTPL, U4_OUTNL, U4_OUTPR, U4_OUTNR"
       },
       {
-        "netclass": "Default",
-        "pattern": "All Signals"
+        "netclass": "Power",
+        "pattern": "/*5V*"
       },
       {
-        "netclass": "+3.3V",
-        "pattern": "+3.3V"
-      },
-      {
-        "netclass": "+5V",
-        "pattern": "+5V"
+        "netclass": "Power",
+        "pattern": "/*3.3V"
       }
     ]
   },
@@ -555,9 +549,9 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Gerbers/",
+      "plot": "gerbers/",
       "pos_files": "gerbers/",
-      "specctra_dsn": "dac-amp_test_2.dsn",
+      "specctra_dsn": "dac-amp.dsn",
       "step": "",
       "svg": "",
       "vrml": ""

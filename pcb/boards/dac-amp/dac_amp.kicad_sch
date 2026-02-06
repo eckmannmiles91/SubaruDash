@@ -6560,7 +6560,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:HTSSOP-32-1EP_6.1x11mm_P0.65mm_EP5.2x5.2mm"
+		(property "Footprint" "Package_SO:Texas_DAD0032A_HTSSOP-32_6.1x11mm_P0.65mm_TopEP3.71x3.81mm"
 			(at 182.88 110.49 0)
 			(effects
 				(font
@@ -8238,7 +8238,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-4-3.5-H_1x04_P3.50mm_Horizontal"
 			(at 234.95 179.07 0)
 			(effects
 				(font
@@ -9242,7 +9242,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:HTSSOP-32-1EP_6.1x11mm_P0.65mm_EP5.2x5.2mm"
+		(property "Footprint" "Package_SO:Texas_DAD0032A_HTSSOP-32_6.1x11mm_P0.65mm_TopEP3.71x3.81mm"
 			(at 182.88 215.9 0)
 			(effects
 				(font
@@ -9578,7 +9578,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-4-3.5-H_1x04_P3.50mm_Horizontal"
 			(at 234.95 158.75 0)
 			(effects
 				(font

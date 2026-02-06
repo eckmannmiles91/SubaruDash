@@ -83,7 +83,7 @@ CAN bus communication interface:
 
 ### 3. DAC/Amp HAT (`dac-amp/`)
 **Schematic Status: ✅ ERC CLEAN - 34 Errors (J7 GPIO only), 85 Warnings**
-**PCB Status: 🟡 Footprints placed, needs update from schematic**
+**PCB Status: ✅ READY FOR PCBA - DRC clean, Gerbers generated**
 
 4-channel 50W Class D audio amplifier:
 - **U1**: PCM5142 Stereo I2S DAC
@@ -115,6 +115,21 @@ CAN bus communication interface:
 - I2C_SCL (pin 5/GPIO3) - PCM5142 config
 
 **Volume Control:** Digital via PCM5142 I2C registers (not analog PLIMIT)
+
+**PCB Layout Features:**
+- Board outline: 65mm × 56mm (standard Pi HAT)
+- 4× M2.5 HAT mounting holes at standard positions
+- 2-layer board, routed via FreeRouting auto-router
+- GND copper pour on back layer for thermal dissipation
+- Thermal vias under U3 and U4 (6-8 vias each)
+- Widened power traces: +12V @ 1.0mm, speaker outputs @ 0.75mm
+- 3× fiducials for pick-and-place assembly
+- Components on both front and back layers
+
+**Manufacturing Recommendations:**
+- Copper weight: 2oz preferred (1oz acceptable for prototypes)
+- Surface finish: ENIG (for PCBA) or HASL lead-free
+- Assembly: PCBA recommended (TPA3116D2 and PCM5142 are SMD with fine pitch)
 
 ## Scripts
 
@@ -258,7 +273,8 @@ For J2 at position (200, 150):
 3. ✅ ~~DAC/Amp schematic wiring~~ - COMPLETE (34 errors = J7 GPIO only)
 4. 🟡 **Power HAT PCB** - Update from schematic, run layout_power_hat_v6.py, route traces
 5. 🟡 **CAN HAT PCB** - Routed via FreeRouting, ground pour added
-6. 🟡 **DAC/Amp PCB** - Update from schematic (new J3/J4 4-pin connectors), re-route
+6. ✅ ~~DAC/Amp PCB~~ - COMPLETE (DRC clean, Gerbers ready, BOM with MPNs)
 7. ⏳ Design stackable header connections
 8. ⏳ Add crystal load caps (~22pF) for Y1 (ATtiny85) - optional improvement
-9. ⏳ Widen power traces on DAC/Amp (12V, speaker outputs)
+9. ✅ ~~Widen power traces on DAC/Amp~~ - COMPLETE (+12V @ 1.0mm, speakers @ 0.75mm)
+10. ⏳ **Order DAC/Amp prototypes** - Ready for PCBWay PCBA

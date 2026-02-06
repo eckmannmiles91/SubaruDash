@@ -1,0 +1,14 @@
+Designator,Quantity,Value,Footprint,MPN,Manufacturer,Description
+U1,1,PCM5142,TQFP-32_7x7mm_P0.8mm,PCM5142PW,Texas Instruments,32-bit Stereo I2S DAC
+U2,1,AMS1117-3.3,SOT-223-3_TabPin2,AMS1117-3.3,Advanced Monolithic Systems,3.3V 1A LDO Regulator
+"U3,U4",2,TPA3116D2DAD,Texas_DAD0032A_HTSSOP-32_6.1x11mm_P0.65mm_TopEP3.71x3.81mm,TPA3116D2DADR,Texas Instruments,50W Class-D Stereo Amplifier
+"R1,R2",2,4.7k,R_0805_2012Metric,RC0805FR-074K7L,Yageo,4.7kΩ 1% 0805 Resistor
+"C2,C4,C5,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C21,C22,C32",18,100nF,C_0805_2012Metric,CL21B104KBCNNNC,Samsung Electro-Mechanics,100nF 50V X7R 0805
+"C1,C3,C6",3,10uF,C_0805_2012Metric,CL21A106KOQNNNE,Samsung Electro-Mechanics,10µF 16V X5R 0805
+"C19,C20",2,10uF,C_1206_3216Metric,CL31A106KBHNNNE,Samsung Electro-Mechanics,10µF 25V X5R 1206 (PVCC bulk)
+"C23,C24,C25,C26,C27,C28,C29,C30",8,1uF,C_0805_2012Metric,CL21B105KAFNNNE,Samsung Electro-Mechanics,1µF 25V X7R 0805 (Input coupling)
+C31,1,100uF,CP_Radial_D8.0mm_P3.50mm,UVR1C101MED,Nichicon,100µF 16V Aluminum Electrolytic
+J1,1,I2S_Input,PinHeader_1x06_P2.54mm_Vertical,PH1-06-UA,Adam Tech,1x6 Pin Header 2.54mm
+J2,1,12V_Input,PhoenixContact_MSTBA_2.5_2-G-5.08_1x02_P5.08mm_Horizontal,1757019,Phoenix Contact,2-pos Terminal Block 5.08mm
+"J3,J4",2,Speaker_Output,TerminalBlock_Phoenix_PT-1.5-4-3.5-H_1x04_P3.50mm_Horizontal,1984620,Phoenix Contact,4-pos Terminal Block 3.5mm
+J7,1,40-Pin_GPIO,PinSocket_2x20_P2.54mm_Vertical,PPPC202LFBN-RC,Sullins,2x20 Pin Socket 2.54mm (Raspberry Pi HAT)
