@@ -5,8 +5,8 @@ File: wrx-power-can-hat-MANUAL.kicad_sch
 
 SUMMARY:
   Total Components: 73
-  Total Labels: 68
-  Global Labels: 32
+  Total Labels: 63
+  Global Labels: 33
 
 COMPONENT INVENTORY BY CATEGORY:
 --------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ Connectors (9):
   JP2      = 5V/12V               @ (698.5, 571.5)
 
 Crystals (2):
-  Y1       = 8MHz                 @ (190.5, 571.5)
+  Y1       = 16MHz                @ (190.5, 571.5)
   Y2       = 16Mhz Crystal        @ (426.7, 147.3)
 
 Diodes (2):
@@ -64,7 +64,7 @@ ICs (6):
   U6       = AMS1117-3.3          @ (381.0, 433.1)
 
 Inductors (1):
-  L1       = 10uH                 @ (190.5, 317.5)
+  L1       = 33uH                 @ (190.5, 317.5)
 
 LEDs (3):
   LED1     = Green                @ (381.0, 190.5)
@@ -123,7 +123,7 @@ Power Supply:
 --------------------------------------------------------------------------------
   ✓ U1       OK - TPS54560BDDA
   ✓ U6       OK - AMS1117-3.3
-  ⚠ L1       VALUE MISMATCH - Expected: 33µH, Got: 10uH
+  ⚠ L1       VALUE MISMATCH - Expected: 33µH, Got: 33uH
 
 Power Management:
 --------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ CAN Bus Interface:
 --------------------------------------------------------------------------------
   ✓ U4       OK - MCP2515
   ✓ U5       OK - SN65HVD230
-  ⚠ Y1       VALUE MISMATCH - Expected: 16MHz, Got: 8MHz
+  ✓ Y1       OK - 16MHz
   ✓ R8       OK - 120
 
 Ignition Detection:
@@ -158,9 +158,8 @@ ISSUES SUMMARY
 ✗ MISSING COMPONENTS (1):
   - R7
 
-⚠ VALUE MISMATCHES (2):
-  - L1: Expected '33µH', Got '10uH'
-  - Y1: Expected '16MHz', Got '8MHz'
+⚠ VALUE MISMATCHES (1):
+  - L1: Expected '33µH', Got '33uH'
 
 ================================================================================
 CRITICAL SIGNAL NETS

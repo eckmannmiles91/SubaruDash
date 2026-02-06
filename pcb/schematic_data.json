@@ -38,7 +38,7 @@
     },
     {
       "reference": "Y1",
-      "value": "8MHz",
+      "value": "16MHz",
       "lib_id": "Device:Crystal",
       "position": [
         190.5,
@@ -200,7 +200,7 @@
     },
     {
       "reference": "L1",
-      "value": "10uH",
+      "value": "33uH",
       "lib_id": "Device:L",
       "position": [
         190.5,
@@ -674,13 +674,6 @@
       ]
     },
     {
-      "name": "SPI_SCLK",
-      "position": [
-        44.45,
-        130.81
-      ]
-    },
-    {
       "name": "U1_FB",
       "position": [
         254.0,
@@ -692,13 +685,6 @@
       "position": [
         356.87,
         438.15
-      ]
-    },
-    {
-      "name": "+3.3V",
-      "position": [
-        53.34,
-        118.11
       ]
     },
     {
@@ -776,13 +762,6 @@
       "position": [
         293.37,
         118.11
-      ]
-    },
-    {
-      "name": "IGN_DETECT",
-      "position": [
-        39.37,
-        137.16
       ]
     },
     {
@@ -954,13 +933,6 @@
       ]
     },
     {
-      "name": "SPI_MOSI",
-      "position": [
-        45.72,
-        121.92
-      ]
-    },
-    {
       "name": "CAN_RX",
       "position": [
         459.74,
@@ -1066,13 +1038,6 @@
       ]
     },
     {
-      "name": "GND",
-      "position": [
-        58.42,
-        121.92
-      ]
-    },
-    {
       "name": "OSC1",
       "position": [
         430.53,
@@ -1137,37 +1102,38 @@
     }
   ],
   "global_labels": [
-    "+5V",
-    "SPI_MOSI",
-    "CAN_INT",
-    "AUDIO_R+",
-    "IGN_DETECT",
-    "XTAL2",
-    "GND",
-    "12V_FUSED",
-    "TIMER_LED",
-    "CANH",
-    "FAN-",
-    "GATE_CTRL",
-    "SPI_CE0",
     "CANL",
     "LED3_ANODE",
-    "SHUTDOWN_REQ",
-    "SPI_MISO",
-    "LED2_ANODE",
-    "XTAL1",
-    "CAN_RX",
-    "Q2_GATE",
-    "+3.3V",
-    "FAN_PWM",
-    "HEARTBEAT_LED",
-    "CAN_TX",
-    "SPI_SCLK",
-    "12V_SWITCHED",
-    "AUDIO_L_OUT",
-    "RESET",
-    "12V_IGN",
+    "+5V",
+    "GND",
+    "AUDIO_R+",
     "AUDIO_R-",
-    "AUDIO_R_OUT"
+    "FAN_PWM",
+    "12V_SWITCHED",
+    "XTAL2",
+    "CAN_TX",
+    "HEARTBEAT_LED",
+    "Q2_GATE",
+    "12V_FUSED",
+    "AUDIO_R_OUT",
+    "+3.3V",
+    "SPI_MISO",
+    "SPI_MOSI",
+    "SPI_SCLK",
+    "LED2_ANODE",
+    "12V_IGN",
+    "RESET",
+    "12V_ACC",
+    "IGN_DETECT",
+    "CAN_RX",
+    "CAN_INT",
+    "AUDIO_L_OUT",
+    "SPI_CE0",
+    "TIMER_LED",
+    "GATE_CTRL",
+    "XTAL1",
+    "CANH",
+    "FAN-",
+    "SHUTDOWN_REQ"
   ]
 }

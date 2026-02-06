@@ -3450,174 +3450,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:D"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "D"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Device" "D"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=K 2=A"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "D_0_1"
-				(polyline
-					(pts
-						(xy -1.27 1.27) (xy -1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "D_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:D_Schottky"
 			(pin_numbers
 				(hide yes)
@@ -5963,256 +5795,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+3.3V"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+3.3V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+3.3V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+3.3V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "power:+5V"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+5V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+5V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+5V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+5V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:GND"
 			(power)
 			(pin_numbers
@@ -6837,6 +6419,34 @@
 		(color 0 0 0 0)
 		(uuid "fec63fc0-23fd-43aa-b13c-ddf83c5e5216")
 	)
+	(no_connect
+		(at 58.42 129.54)
+		(uuid "07dc8c6f-90ab-4303-896f-f7ead1de47bc")
+	)
+	(no_connect
+		(at 13.97 617.22)
+		(uuid "26cf18bc-adc0-4228-aaca-0a28679a2d13")
+	)
+	(no_connect
+		(at 63.5 121.92)
+		(uuid "446d6e1a-562b-417c-9957-b41f04657b17")
+	)
+	(no_connect
+		(at 63.5 119.38)
+		(uuid "4814073d-8c1f-42d2-a7aa-a3ddfd53401c")
+	)
+	(no_connect
+		(at 63.5 132.08)
+		(uuid "b0fb7df5-f2e0-4384-945e-6d131c509f00")
+	)
+	(no_connect
+		(at 63.5 129.54)
+		(uuid "bf8d9ac4-505d-4623-a784-d86f9ab75a84")
+	)
+	(no_connect
+		(at 63.5 124.46)
+		(uuid "ec4cb78b-cc45-4bc8-9d5c-17e328dac682")
+	)
 	(wire
 		(pts
 			(xy 734.06 821.69) (xy 734.06 767.08)
@@ -6849,7 +6459,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 317.5) (xy 408.94 317.5)
+			(xy 195.58 317.5) (xy 250.19 317.5)
 		)
 		(stroke
 			(width 0)
@@ -7009,16 +6619,6 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 127) (xy 198.12 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0fde3554-2b47-4e06-b093-136dd6588922")
-	)
-	(wire
-		(pts
 			(xy 421.64 129.54) (xy 421.64 518.16)
 		)
 		(stroke
@@ -7056,6 +6656,16 @@
 			(type default)
 		)
 		(uuid "127e36ba-6177-42a2-b173-379424a7f2f7")
+	)
+	(wire
+		(pts
+			(xy 571.5 384.81) (xy 571.5 568.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12fbc134-fa30-4bfd-9c26-212970b763a1")
 	)
 	(wire
 		(pts
@@ -7389,7 +6999,7 @@
 	)
 	(wire
 		(pts
-			(xy 698.5 384.81) (xy 698.5 765.81)
+			(xy 698.5 384.81) (xy 698.5 694.69)
 		)
 		(stroke
 			(width 0)
@@ -7436,6 +7046,26 @@
 			(type default)
 		)
 		(uuid "49508b2e-8c77-4d6b-93ef-6f2e2b8696c6")
+	)
+	(wire
+		(pts
+			(xy 58.42 134.62) (xy 63.5 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a026cce-9b30-459f-99de-3636f278d0fe")
+	)
+	(wire
+		(pts
+			(xy 698.5 702.31) (xy 698.5 758.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a72f250-80d9-4435-8e7c-345ff5c144bb")
 	)
 	(wire
 		(pts
@@ -7496,16 +7126,6 @@
 			(type default)
 		)
 		(uuid "53a155e8-d77b-4e0e-b78a-313d8e616994")
-	)
-	(wire
-		(pts
-			(xy 186.69 571.5) (xy 378.46 571.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "548d6bc2-d045-451f-b891-46e984960d4f")
 	)
 	(wire
 		(pts
@@ -7646,16 +7266,6 @@
 			(type default)
 		)
 		(uuid "5f189442-5131-4643-be10-d41d6b3635c2")
-	)
-	(wire
-		(pts
-			(xy 58.42 127) (xy 104.14 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f965575-8b0e-4eee-a7c9-ae918c29a822")
 	)
 	(wire
 		(pts
@@ -8159,13 +7769,23 @@
 	)
 	(wire
 		(pts
-			(xy 474.98 317.5) (xy 568.96 317.5)
+			(xy 474.98 317.5) (xy 504.19 317.5)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "93136652-43e3-4008-9aa3-b5f651a57343")
+	)
+	(wire
+		(pts
+			(xy 194.31 571.5) (xy 378.46 571.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "95864adf-4d75-4960-ba4d-ec64fb19bb12")
 	)
 	(wire
 		(pts
@@ -8409,6 +8029,16 @@
 	)
 	(wire
 		(pts
+			(xy 257.81 127) (xy 276.86 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a96680bd-c02e-4015-a435-752dad4dd836")
+	)
+	(wire
+		(pts
 			(xy 276.86 194.31) (xy 276.86 314.96)
 		)
 		(stroke
@@ -8489,6 +8119,16 @@
 	)
 	(wire
 		(pts
+			(xy 257.81 317.5) (xy 408.94 317.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b522222c-ca8b-422b-ab11-7e0f47504e19")
+	)
+	(wire
+		(pts
 			(xy 314.96 186.69) (xy 320.04 186.69)
 		)
 		(stroke
@@ -8506,6 +8146,16 @@
 			(type default)
 		)
 		(uuid "b6cd4ab6-c244-48b0-9e8e-9971276d4a14")
+	)
+	(wire
+		(pts
+			(xy 58.42 137.16) (xy 63.5 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b88b7e8c-ddb6-4936-919f-94c030885b7c")
 	)
 	(wire
 		(pts
@@ -8559,7 +8209,7 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 127) (xy 276.86 127)
+			(xy 198.12 127) (xy 250.19 127)
 		)
 		(stroke
 			(width 0)
@@ -8659,6 +8309,16 @@
 	)
 	(wire
 		(pts
+			(xy 194.31 127) (xy 198.12 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf017463-0f5d-4111-80f4-3bca63235b43")
+	)
+	(wire
+		(pts
 			(xy 127 194.31) (xy 104.14 194.31)
 		)
 		(stroke
@@ -8719,7 +8379,7 @@
 	)
 	(wire
 		(pts
-			(xy 571.5 320.04) (xy 571.5 568.96)
+			(xy 571.5 320.04) (xy 571.5 377.19)
 		)
 		(stroke
 			(width 0)
@@ -8976,6 +8636,26 @@
 			(type default)
 		)
 		(uuid "f5bc220f-61de-4771-90df-af95bc8ca716")
+	)
+	(wire
+		(pts
+			(xy 58.42 127) (xy 104.14 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f71751c0-10eb-440a-8ffc-5b08726a9ddd")
+	)
+	(wire
+		(pts
+			(xy 511.81 317.5) (xy 568.96 317.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f727598c-3d8a-4ee9-92e7-8d37f2841d14")
 	)
 	(wire
 		(pts
@@ -9602,66 +9282,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:CP")
-		(at 190.5 381 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2612b7a1-7c70-480b-a812-8ef71ea04bef")
-		(property "Reference" "C?"
-			(at 190.5 376 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220uF"
-			(at 190.5 386 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 190.5 381 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 190.5 381 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 190.5 381 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "C?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 635 381 0)
 		(unit 1)
@@ -9788,90 +9408,6 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "R8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 635 508 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3155210d-4ca1-4a44-8bb5-88ed088e9db9")
-		(property "Reference" "D4"
-			(at 635 503 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 635 513 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 635 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 635 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 635 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 635 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 635 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c201b871-d548-4a86-beb2-630edfb1739d")
-		)
-		(pin "2"
-			(uuid "c706bdfe-ff98-4182-8971-fceb291b7ead")
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -10274,66 +9810,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:CP")
-		(at 317.5 190.5 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4a259b66-9b91-4785-8c9c-358ee9e2c0a6")
-		(property "Reference" "C?"
-			(at 317.5 185.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "100uF"
-			(at 317.5 195.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 317.5 190.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 317.5 190.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 317.5 190.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "C?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:L")
 		(at 190.5 317.5 0)
 		(unit 1)
@@ -10409,7 +9885,7 @@
 		(dnp no)
 		(uuid "4c91f1d9-fa51-46de-8ba9-0ff06b6ea417")
 		(property "Reference" "J1"
-			(at 63.5 122 0)
+			(at 54.61 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10417,7 +9893,7 @@
 			)
 		)
 		(property "Value" "ISO_A"
-			(at 63.5 132 0)
+			(at 54.864 127.254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10443,7 +9919,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 63.5 127 0)
+			(at 70.612 110.998 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10865,65 +10341,6 @@
 		)
 	)
 	(symbol
-		(lib_id "MCU_Microchip_ATtiny:ATtiny85-20PU")
-		(at 444.5 317.5 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "6a52aa15-2162-4510-8cb6-4d43a8345225")
-		(property "Reference" "U?"
-			(at 444.5 312.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ATtiny85"
-			(at 444.5 322.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 444.5 317.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 444.5 317.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 444.5 317.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "U?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 444.5 381 0)
 		(unit 1)
@@ -10984,68 +10401,6 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "C7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 63.5 635 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "761286da-1f77-419e-985c-fd55541d15b1")
-		(property "Reference" "#PWR03"
-			(at 63.5 630 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 63.5 638 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 63.5 635 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 63.5 635 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 63.5 635 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "5ef33014-f9e8-4fbd-88c7-7388e2f87a97")
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -13023,68 +12378,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 381 444.5 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d30e3a6c-d2e3-40d5-b49d-ec8b078ac159")
-		(property "Reference" "#PWR06"
-			(at 381 439.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 381 447.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 381 444.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 381 444.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 381 444.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "76b03315-ee88-47eb-aa5e-a7ecbf67ec8c")
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 762 762 0)
 		(unit 1)
@@ -13289,66 +12582,6 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "J5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Interface_CAN_LIN:MCP2515-I_SO")
-		(at 127 508 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e203acdf-87dd-4c8f-ac06-7681de50d0aa")
-		(property "Reference" "U?"
-			(at 127 503 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MCP2515"
-			(at 127 513 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 127 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 127 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 127 508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "U?")
 					(unit 1)
 				)
 			)
@@ -13876,66 +13109,6 @@
 			(project "wrx-power-can-hat-AUTO"
 				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
 					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:CP")
-		(at 127 381 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "fcc94b90-2135-4595-9cd0-9c2da8d492a9")
-		(property "Reference" "C?"
-			(at 127 376 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "100uF"
-			(at 127 386 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 127 381 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 127 381 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 127 381 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "wrx-power-can-hat-AUTO"
-				(path "/95587948-5deb-4ec6-b123-ccc764cd888f"
-					(reference "C?")
 					(unit 1)
 				)
 			)

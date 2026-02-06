@@ -4,25 +4,25 @@
     fortyfive_degree
   )
   (autoroute_settings
-    (fanout on)
+    (fanout off)
     (autoroute on)
     (postroute on)
     (vias on)
-    (via_costs 50)
+    (via_costs 30)
     (plane_via_costs 5)
-    (start_ripup_costs 100)
+    (start_ripup_costs 150)
     (start_pass_no 1)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
       (preferred_direction_trace_costs 1.0)
-      (against_preferred_direction_trace_costs 3.7)
+      (against_preferred_direction_trace_costs 2.5)
     )
     (layer_rule B.Cu
       (active on)
       (preferred_direction vertical)
       (preferred_direction_trace_costs 1.0)
-      (against_preferred_direction_trace_costs 3.4)
+      (against_preferred_direction_trace_costs 2.5)
     )
   )
   (rule
@@ -31,8 +31,7 @@
     (clearance 125.0 (type smd_to_turn_gap))
     (clearance 50.0 (type smd))
     (clearance 200.0 (type "kicad_default"))
-    (clearance 250.0 (type +12V,Default))
-    (clearance 200.0 (type +3.3V,Default))
+    (clearance 250.0 (type GND,Default))
   )
   (padstack "Via[0-1]_600:300_um"
     (shape
@@ -43,59 +42,14 @@
     )
     (attach off)
   )
-  (padstack "Via[0-1]_1000:500_um"
-    (shape
-      (circle F.Cu 1000.0 0.0 0.0)
-    )
-    (shape
-      (circle B.Cu 1000.0 0.0 0.0)
-    )
-    (attach off)
-  )
-  (padstack "Via[0-1]_800:400_um"
-    (shape
-      (circle F.Cu 800.0 0.0 0.0)
-    )
-    (shape
-      (circle B.Cu 800.0 0.0 0.0)
-    )
-    (attach off)
-  )
   (via 
     "Via[0-1]_600:300_um" "Via[0-1]_600:300_um" default
-  )
-  (via 
-    "Via[0-1]_1000:500_um" "Via[0-1]_1000:500_um" default
-  )
-  (via 
-    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
   )
   (via 
     "Via[0-1]_600:300_um-kicad_default" "Via[0-1]_600:300_um" "kicad_default"
   )
   (via 
-    "Via[0-1]_1000:500_um-kicad_default" "Via[0-1]_1000:500_um" "kicad_default"
-  )
-  (via 
-    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
-  )
-  (via 
-    "Via[0-1]_600:300_um-+12V,Default" "Via[0-1]_600:300_um" +12V,Default
-  )
-  (via 
-    "Via[0-1]_1000:500_um-+12V,Default" "Via[0-1]_1000:500_um" +12V,Default
-  )
-  (via 
-    "Via[0-1]_800:400_um-+12V,Default" "Via[0-1]_800:400_um" +12V,Default
-  )
-  (via 
-    "Via[0-1]_600:300_um-+3.3V,Default" "Via[0-1]_600:300_um" +3.3V,Default
-  )
-  (via 
-    "Via[0-1]_1000:500_um-+3.3V,Default" "Via[0-1]_1000:500_um" +3.3V,Default
-  )
-  (via 
-    "Via[0-1]_800:400_um-+3.3V,Default" "Via[0-1]_800:400_um" +3.3V,Default
+    "Via[0-1]_600:300_um-GND,Default" "Via[0-1]_600:300_um" GND,Default
   )
   (via_rule
     default "Via[0-1]_600:300_um"
@@ -104,10 +58,7 @@
     "kicad_default" "Via[0-1]_600:300_um-kicad_default"
   )
   (via_rule
-    +12V,Default "Via[0-1]_1000:500_um-+12V,Default"
-  )
-  (via_rule
-    +3.3V,Default "Via[0-1]_800:400_um-+3.3V,Default"
+    GND,Default "Via[0-1]_600:300_um-GND,Default"
   )
   (class default
     (clearance_class default)
@@ -120,14 +71,17 @@
     )
   )
   (class "kicad_default"
-    GND "I2S_BCK" "unconnected-(J1-Pin_1-Pad1)" "unconnected-(J1-Pin_4-Pad4)" "unconnected-(J1-Pin_6-Pad6)" "unconnected-(J1-Pin_2-Pad2)" "unconnected-(J1-Pin_5-Pad5)" "Net-(J3-Pin_1)"
-    "Net-(J3-Pin_2)" "Net-(J4-Pin_2)" "Net-(J4-Pin_1)" "Net-(J5-Pin_1)" "Net-(J5-Pin_2)" "Net-(J6-Pin_1)" "Net-(J6-Pin_2)" "unconnected-(J7-Pin_38-Pad38)"
+    +3.3V "I2S_BCK" "unconnected-(J1-Pin_1-Pad1)" "unconnected-(J1-Pin_4-Pad4)" "unconnected-(J1-Pin_6-Pad6)" "unconnected-(J1-Pin_2-Pad2)" "unconnected-(J1-Pin_5-Pad5)" "unconnected-(J7-Pin_38-Pad38)"
     "unconnected-(J7-Pin_14-Pad14)" "unconnected-(J7-Pin_33-Pad33)" "unconnected-(J7-Pin_1-Pad1)" "I2C_SDA" "unconnected-(J7-Pin_6-Pad6)" "unconnected-(J7-Pin_30-Pad30)" "unconnected-(J7-Pin_19-Pad19)" "unconnected-(J7-Pin_32-Pad32)"
     "unconnected-(J7-Pin_26-Pad26)" "unconnected-(J7-Pin_2-Pad2)" "unconnected-(J7-Pin_18-Pad18)" "I2S_LRCK" "unconnected-(J7-Pin_36-Pad36)" "unconnected-(J7-Pin_16-Pad16)" "unconnected-(J7-Pin_17-Pad17)" "unconnected-(J7-Pin_23-Pad23)"
     "unconnected-(J7-Pin_22-Pad22)" "unconnected-(J7-Pin_37-Pad37)" "unconnected-(J7-Pin_13-Pad13)" "unconnected-(J7-Pin_25-Pad25)" "unconnected-(J7-Pin_27-Pad27)" "unconnected-(J7-Pin_20-Pad20)" "unconnected-(J7-Pin_31-Pad31)" "unconnected-(J7-Pin_9-Pad9)"
     "unconnected-(J7-Pin_28-Pad28)" "unconnected-(J7-Pin_15-Pad15)" "I2C_SCL" "unconnected-(J7-Pin_39-Pad39)" "unconnected-(J7-Pin_21-Pad21)" "unconnected-(J7-Pin_11-Pad11)" "unconnected-(J7-Pin_8-Pad8)" "I2S_DOUT"
-    "unconnected-(J7-Pin_10-Pad10)" "unconnected-(J7-Pin_4-Pad4)" "unconnected-(J7-Pin_29-Pad29)" "unconnected-(J7-Pin_7-Pad7)" "unconnected-(J7-Pin_24-Pad24)" "Net-(U1-OUTL-)" "Net-(U1-OUTR+)" "Net-(U1-OUTL+)"
-    "Net-(U1-OUTR-)"
+    "unconnected-(J7-Pin_10-Pad10)" "unconnected-(J7-Pin_4-Pad4)" "unconnected-(J7-Pin_29-Pad29)" "unconnected-(J7-Pin_7-Pad7)" "unconnected-(J7-Pin_24-Pad24)" /+12V "/U3_BSPL" "/U3_BSNL"
+    "/U3_BSPR" "/U3_BSNR" "/U4_BSNL" "/U4_BSPL" "/U4_BSNR" "/U4_BSPR" "/U3_GVDD" "/U4_GVDD"
+    "/DAC_OUTL+" "/U3_LINP" "/U3_LINN" "/DAC_OUTL-" "/U3_RINP" "/DAC_OUTR+" "/DAC_OUTR-" "/U3_RINN"
+    "/U4_LINP" "/U4_LINN" "/U4_RINP" "/U4_RINN" "/U3_OUTNL" "/U3_OUTNR" "/U3_OUTPR" "/U3_OUTPL"
+    "/U4_OUTNR" "/U4_OUTNL" "/U4_OUTPL" "/U4_OUTPR" "unconnected-(U3-FAULTZ-Pad3)" "unconnected-(U3-PLIMIT-Pad6)" "unconnected-(U3-SYNC-Pad16)" "unconnected-(U4-FAULTZ-Pad3)"
+    "unconnected-(U4-PLIMIT-Pad6)" "unconnected-(U4-SYNC-Pad16)"
     (clearance_class "kicad_default")
     (via_rule "kicad_default")
     (rule
@@ -137,21 +91,10 @@
       (use_layer F.Cu B.Cu)
     )
   )
-  (class +12V,Default
-    +12V
-    (clearance_class +12V,Default)
-    (via_rule +12V,Default)
-    (rule
-      (width 1000.0)
-    )
-    (circuit 
-      (use_layer F.Cu B.Cu)
-    )
-  )
-  (class +3.3V,Default
-    +3.3V
-    (clearance_class +3.3V,Default)
-    (via_rule +3.3V,Default)
+  (class GND,Default
+    GND
+    (clearance_class GND,Default)
+    (via_rule GND,Default)
     (rule
       (width 400.0)
     )

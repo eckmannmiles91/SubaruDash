@@ -8,8 +8,7 @@ PRIORITY 1: ADD MISSING COMPONENTS
 
 PRIORITY 2: FIX COMPONENT VALUES
 --------------------------------------------------------------------------------
-  [ ] Change L1 from '10uH' to '33µH'
-  [ ] Change Y1 from '8MHz' to '16MHz'
+  [ ] Change L1 from '33uH' to '33µH'
 
 PRIORITY 3: FIX J1 (ISO-A CONNECTOR) WIRING
 --------------------------------------------------------------------------------
